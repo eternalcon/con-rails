@@ -28,6 +28,10 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# Use high voltage for static pages with rails
+
+gem 'high_voltage', '~> 3.0.0'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
