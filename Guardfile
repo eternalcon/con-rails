@@ -2,7 +2,7 @@ guard "bundler" do
   watch("Gemfile")
 end
 
-guard "cucumber", command_prefix: "zeus", bundler: false do
+guard "cucumber", cmd => 'zeus-cucumber' do
   watch(%r{^features/.+\.feature$})
   watch(%r{^features/support/.+$}) { "features" }
   watch(%r{^features/step.+/.+$})  { "features" }
