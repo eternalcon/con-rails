@@ -20,7 +20,7 @@ default: &default
   socket: /var/run/mysqld/mysqld.sock
 
 development: *default
-test: &test
+test: *default
 production: *default
 
 #development:
@@ -60,5 +60,5 @@ production: *default
 #  username: con-rails
 #  password: <%= ENV['CON-RAILS_DATABASE_PASSWORD'] %>
 
-cucumber:
-  <<: *test
+#cucumber:
+#  <<: *test
