@@ -17,9 +17,9 @@
 # property set. Specify the username and a domain or IP for the server.
 # Don't use `:all`, it's a meta role.
 
-# role :app, %w{deploy@example.com}, my_property: :my_value
-# role :web, %w{user1@primary.com user2@additional.com}, other_property: :other_value
-# role :db,  %w{deploy@example.com}
+ role :app, %w{con-rails@eternal-con.de} #, my_property: :my_value
+ role :web, %w{con-rails@eternal-con.de} #, other_property: :other_value
+ role :db,  %w{con-rails@eternal-con.de}
 
 
 
@@ -47,6 +47,13 @@
 #    auth_methods: %w(password)
 #  }
 #
+set :ssh_options, {
+  #keys: %w(/path-to-your-ec2-key.pem),
+  #forward_agent: false,
+  auth_methods: %w(publickey)
+}
+
+
 # The server-based syntax can be used to override options:
 # ------------------------------------
 # server 'example.com',
