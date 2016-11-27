@@ -2,6 +2,7 @@
 ENV["RAILS_ENV"] ||= 'test'
 require 'rspec/rails'
 require 'spec_helper'
+require 'support/factory_girl'
 require File.expand_path("../../config/environment", __FILE__)
 # Add additional requires below this line. Rails is not loaded until this point!
 
