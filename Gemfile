@@ -1,6 +1,4 @@
 source 'https://rubygems.org'
-
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '>= 5.0.0.rc2', '< 5.1'
 # Use mysql as the database for Active Record
@@ -10,9 +8,9 @@ gem 'mysql2', '>= 0.3.18', '< 0.5'
 # use passenger as web server
 gem "passenger", ">= 5.0.25", require: "phusion_passenger/rack_handler"
 # Use SCSS for stylesheets
-#gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 5.0'
 # Use LESS for stylesheets
-gem 'less-rails'
+#gem 'less-rails'
 #gem 'less-rails', '2.3.3'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -34,7 +32,13 @@ gem 'jbuilder', '~> 2.5'
 gem 'high_voltage', '~> 3.0.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-gem "twitter-bootstrap-rails"
+
+# Use Bootstrap 4 for layout
+gem 'bootstrap', '~> 4.0.0.alpha5'
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.1.0'
+end
+#gem "twitter-bootstrap-rails"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
