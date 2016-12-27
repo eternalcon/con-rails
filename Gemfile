@@ -31,21 +31,18 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 # Use high voltage for static pages with rails
 gem 'high_voltage', '~> 3.0.0'
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
 # Use Bootstrap 4 for layout
 gem 'bootstrap', '~> 4.0.0.alpha5'
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
 end
-#gem "twitter-bootstrap-rails"
 # Use activeadmin for administration interface
 gem 'activeadmin', '~> 1.0.0.pre4'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'devise'
+
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+# Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   gem "rspec-rails"
   gem "factory_girl_rails", "~> 4.0"
@@ -68,18 +65,14 @@ group :development do
   gem "rb-inotify", require: false
   gem "rb-fsevent", require: false
   gem "rb-fchange", require: false
-  
   # add capistrano for automatic deployment
   gem 'capistrano'
   gem 'capistrano-bundler'
   gem 'capistrano-passenger', '>= 0.1.1'
-
   # Remove the following if your app does not use Rails
   gem 'capistrano-rails'
-
   # Remove the following if your server does not use RVM
   gem 'capistrano-rvm'
-
 end
 
 group :test do
@@ -93,5 +86,3 @@ group :test do
 end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
-
