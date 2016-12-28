@@ -8,7 +8,7 @@ class CreateParticipants < ActiveRecord::Migration[5.0]
       t.string :postcode
       t.string :city
       t.string :country
-      t.string :notes
+#      t.string :notes
       t.string :newsletter
 
       t.timestamps
