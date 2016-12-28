@@ -15,7 +15,7 @@ class RegistrationsController < ApplicationController
     #@registration.notes = t(:registration_notice_value)
     #@registration.freeform_skill_value = nil
 
-    @lang = params[:lang].gsub("'","") unless params[:lang].blank?
+    #@lang = params[:lang].gsub("'","") unless params[:lang].blank?
     @lang =  "en" if @lang.blank?
     I18n.locale = @lang
 
@@ -35,49 +35,49 @@ class RegistrationsController < ApplicationController
   #  @participant = Participant.new(params[:participant])
     @registration = Registration.new(registration_params)
 
-    if verify_recaptcha(:model => @registration )
+    if verify_recaptcha(:model => @registration)
+    #we try to find if the person have already registered for a early event
+#    participant = Participant.find(:first, :conditions => ['first_name=? AND last_name=?', @participant.first_name, @participant.last_name])
 
-      #we try to find if the person have already registered for a early event
-  #    participant = Participant.find(:first, :conditions => ['first_name=? AND last_name=?', @participant.first_name, @participant.last_name])
-
-  #    if participant
-  #      @registration.participant = participant
-  #    else
-  #      @registration.participant = @participant
-  #    end
-      if @registration.save
-         is_create = true
-         flash[:notice] = t(:fn_registration_success)
-      else
-        flash[:error] = t(:fe_registration_error)
-      end
+#    if participant
+#      @registration.participant = participant
+#    else
+#      @registration.participant = @participant
+#    end
+      #respond_to do |format|
+        if @registration.save
+          is_create = true
+          flash[:notice] = t(:fn_registration_success)
+          # Tell the RegistrationMailer to send welcome email after save
+          RegistrationMailer.Welcome_Email(@registration).deliver_now #.deliver_later
+          #RegistrationMailer.Team_Email(@registration).deliver_now #.deliver_later
+          unless is_create
+            render :action => "new"
+          end
+#          format.js{
+#            render :update do |page|
+#          #page.replace_html "flash_messages", :partial => "/shared/flash_messages"
+#              unless is_create
+#                page.replace_html "registerFormDiv", :partial => "form" 
+#                page.replace_html "recaptcha_div", :partial => "recaptcha"
+#              end
+#         
+#          #page.redirect_to new_registration_path(:error => true) unless is_create
+#              page.replace_html "registerFormDiv", :partial => "after_registration" if is_create
+#          end
+#          }
+        else
+          flash[:error] = t(:fe_registration_error) 
+        end
+      render
+      #end
     else
       @recaptcha_error = true 
-     @registration.valid? 
-     render :action => "new"
-     is_create = false
-     flash[:error] = t(:fe_captcha_controller)
+      @registration.valid? 
+      render :action => "new"
+      is_create = false
+      flash[:error] = t(:fe_captcha_controller)
     end
-
-    #respond_to do |format|
-    #  format.html{
-    #  unless is_create
-    #    render :action => "new"
-    #  end
-    #  }
-    #  format.js{
-    #    render :update do |page|
-    #      #page.replace_html "flash_messages", :partial => "/shared/flash_messages"
-    #      unless is_create
-    #        page.replace_html "registerFormDiv", :partial => "form" 
-    #        page.replace_html "recaptcha_div", :partial => "recaptcha"
-    #      end
-    #     
-    #      #page.redirect_to new_registration_path(:error => true) unless is_create
-    #      page.replace_html "registerFormDiv", :partial => "after_registration" if is_create 
-    #    end
-    #  }
-    #end
   end   
   
   private
