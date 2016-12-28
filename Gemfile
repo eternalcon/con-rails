@@ -47,6 +47,8 @@ group :development, :test do
   gem "rspec-rails"
   gem "factory_girl_rails", "~> 4.0"
 end
+# Use simple_forms for forms templates
+gem 'simple_form'
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
