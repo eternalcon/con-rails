@@ -51,6 +51,9 @@ end
 gem 'simple_form'
 # use country_select with simple_forms
 gem 'country_select'
+# Use Googles ReCaptcha for spam prevention
+gem "recaptcha", require: "recaptcha/rails"
+
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
