@@ -13,7 +13,7 @@ class ParticipantsController < ApplicationController
         flash(:notice => "Participant already exists in Database") 
       else
         if @participant.save
-          redirect_to( :controller => "registration", :action => "new", :notice => 'Participant Record Created', :participant => @participant )
+          redirect_to( :controller => "registrations", :action => "new", :notice => 'Participant Record Created', :participant => @participant )
         else
           flash(:notice => "Error") 
         end
@@ -23,9 +23,9 @@ class ParticipantsController < ApplicationController
     end
   end
 
-  def show
-      @participant = Participant.find(params[:id])
-  end
+#  def show
+#      @participant = Participant.find(params[:id])
+#  end
   
   private
     # Using a private method to encapsulate the permissible parameters
@@ -33,6 +33,6 @@ class ParticipantsController < ApplicationController
     # permit list between create and update. Also, you can specialize
     # this method with per-user checking of permissible attributes.
     def participant_params
-      params.fetch(:participant, {}).permit(:first_name, :last_name, :email, :street, :postcode, :city, :country, :birthdate, :newsletter)
+      params.fetch(:participant, {}).permit(:first_name, :last_name, :nickname, :email, :street, :postcode, :city, :country, :birthdate, :newsletter)
     end
 end

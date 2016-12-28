@@ -3,6 +3,7 @@ class CreateParticipants < ActiveRecord::Migration[5.0]
     create_table :participants do |t|
       t.string :first_name
       t.string :last_name
+      t.string :nickname
       t.string :email
       t.string :street
       t.string :postcode
