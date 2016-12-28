@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :participants
+  resources :registrations
   #get 'participants/new'
 
   #get 'participants/create'

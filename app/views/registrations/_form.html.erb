@@ -1,0 +1,25 @@
+<%= simple_form_for(@registration ) do |r| %>
+  <div>
+  <p><%= @registration.participant.first_name %></p>
+  <p><%= @registration.participant.last_name %></p>
+  <p><%= @registration.participant.nickname %></p>
+  <p><%= @registration.participant.email %></p>
+  <p><%= @registration.participant.street %></p>
+  <p><%= @registration.participant.postcode %> 
+  <p><%= @participant.city %></p>
+  <p><%= @registration.participant.country %></p>
+  <p><%= @registration.participant.birthdate %></p>
+  </div>
+  <%= r.error_notification %>
+  <div class="form-inputs">
+    <%= r.association :event, as: :hidden %>
+    <%= r.association :participant, as: :hidden %>
+    <%= r.input :notes %>
+    <%= r.input :shuttle %>
+    <%= r.input :extra_night %>
+    <%= recaptcha_tags %>
+  </div>
+  <div class="form-actions">
+    <%= r.button :submit %>
+  </div>
+<% end %>

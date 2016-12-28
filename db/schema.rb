@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20161228003705) do
   create_table "participants", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "nickname"
     t.string   "email"
     t.string   "street"
     t.string   "postcode"
