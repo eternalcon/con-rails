@@ -15,6 +15,6 @@ class Event < ApplicationRecord
   # TODO: make work with multiple events in database
   # either by selecting most recent active event or by automatically inactivating events
   # when finished
-    Event.find_by active: "1"
+    Event.find_by active: true
   end
 end

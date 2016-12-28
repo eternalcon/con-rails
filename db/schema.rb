@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161228003705) do
+ActiveRecord::Schema.define(version: 20161228180656) do
 
   create_table "active_admin_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "namespace"
@@ -43,6 +43,15 @@ ActiveRecord::Schema.define(version: 20161228003705) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  create_table "event_prices", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "event_id"
+    t.integer  "price_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_event_prices_on_event_id", using: :btree
+    t.index ["price_id"], name: "index_event_prices_on_price_id", using: :btree
+  end
+
   create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",                         null: false
     t.string   "subtitle"
@@ -69,12 +78,21 @@ ActiveRecord::Schema.define(version: 20161228003705) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "prices", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.decimal  "value",       precision: 10, null: false
+    t.date     "valid_from",                 null: false
+    t.date     "valid_until",                null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
   create_table "registrations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "event_id"
     t.integer  "participant_id"
     t.text     "notes",          limit: 65535
     t.boolean  "shuttle"
     t.boolean  "extra_night"
+    t.string   "room_type"
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.index ["event_id"], name: "index_registrations_on_event_id", using: :btree
