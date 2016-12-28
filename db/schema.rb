@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161227230002) do
+ActiveRecord::Schema.define(version: 20161228003705) do
 
   create_table "active_admin_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "namespace"
@@ -43,4 +43,43 @@ ActiveRecord::Schema.define(version: 20161227230002) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name",                         null: false
+    t.string   "subtitle"
+    t.string   "startdate",                    null: false
+    t.string   "enddate",                      null: false
+    t.boolean  "active",       default: false
+    t.integer  "status_value", default: 10
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+  end
+
+  create_table "participants", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "street"
+    t.string   "postcode"
+    t.string   "city"
+    t.string   "country"
+    t.date     "birthdate"
+    t.boolean  "newsletter"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "registrations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "event_id"
+    t.integer  "participant_id"
+    t.text     "notes",          limit: 65535
+    t.boolean  "shuttle"
+    t.boolean  "extra_night"
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.index ["event_id"], name: "index_registrations_on_event_id", using: :btree
+    t.index ["participant_id"], name: "index_registrations_on_participant_id", using: :btree
+  end
+
+  add_foreign_key "registrations", "events"
+  add_foreign_key "registrations", "participants"
 end
