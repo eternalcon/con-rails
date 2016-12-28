@@ -49,6 +49,8 @@ group :development, :test do
 end
 # Use simple_forms for forms templates
 gem 'simple_form'
+# use country_select with simple_forms
+gem 'country_select'
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
