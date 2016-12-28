@@ -1,5 +1,30 @@
-<%= simple_form_for(@registration ) do |r| %>
-  <div>
+<%= form_for(@participant, remote: true) do |r| %>
+    <table cellspacing="0" cellpadding="0" border="0" width="100%;">
+  				<tbody>
+  				  <tr>
+    					  <td class="formlabel"><%= label_tag(:first_name, Participant.human_attribute_name("first_name")) %></td>
+      					<td class="forminp" colspan="1"><%= text_field :participant, :first_name %></td>
+      					<td class="formlabel"><%= label_tag(:last_name, Participant.human_attribute_name("last_name"))%></td>
+      					<td class="forminp" colspan="1"><%= text_field :participant, :last_name %></td>
+    				</tr>
+            <tr>
+          	  <td class="formlabel"><%= label_tag(:email, Participant.human_attribute_name("email")) %></td>
+    					<td class="forminp" colspan="1"><%= text_field :participant, :email %></td>
+    					<td class="formlabel"><%= label_tag(:country, Participant.human_attribute_name("country")) %></td>
+    					<td colspan="1"class="forminp"><%= country_select('participant','country', priority_countries: ['DE','GB','FR','US','IT']) -%><br></td>
+            </tr>
+            <tr>
+              <td class="formlabel"><%= label_tag(:email, Participant.human_attribute_name("nickname")) %></td>
+              <td class="forminp" colspan="1"><%= text_field :participant, :nickname %></td>
+            </tr>
+            
+            <tr>
+              <td>
+                <%= recaptcha_tags %>
+              </td>
+            </tr>
+        </tbody>
+    </table>
   <p><%= @registration.participant.first_name %></p>
   <p><%= @registration.participant.last_name %></p>
   <p><%= @registration.participant.nickname %></p>
@@ -9,15 +34,6 @@
   <p><%= @participant.city %></p>
   <p><%= @registration.participant.country %></p>
   <p><%= @registration.participant.birthdate %></p>
-  </div>
-  <%= r.error_notification %>
-  <div class="form-inputs">
-    <%= r.association :event, as: :hidden %>
-    <%= r.association :participant, as: :hidden %>
-    <%= r.input :notes %>
-    <%= r.input :shuttle %>
-    <%= r.input :extra_night %>
-    <%= recaptcha_tags %>
   </div>
   <div class="form-actions">
     <%= r.button :submit %>

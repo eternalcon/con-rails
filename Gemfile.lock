@@ -9,7 +9,7 @@ GIT
       responders
 
 GEM
-  remote: https://rubygems.org/
+  remote: http://rubygems.org/
   remote: https://rails-assets.org/
   specs:
     actioncable (5.0.1)
@@ -437,4 +437,4 @@ DEPENDENCIES
   zeus
 
 BUNDLED WITH
-   1.13.6
+   1.13.7
