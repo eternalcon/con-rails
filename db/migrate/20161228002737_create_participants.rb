@@ -10,7 +10,7 @@ class CreateParticipants < ActiveRecord::Migration[5.0]
       t.string :country
 #      t.string :notes
       t.date :birthdate
-      t.string :newsletter
+      t.boolean :newsletter
 
       t.timestamps
     end
