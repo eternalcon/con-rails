@@ -9,6 +9,7 @@ class CreateParticipants < ActiveRecord::Migration[5.0]
       t.string :city
       t.string :country
 #      t.string :notes
+      t.date :birthdate
       t.string :newsletter
 
       t.timestamps
