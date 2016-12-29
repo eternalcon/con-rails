@@ -1,27 +1,36 @@
-<%= form_for(@participant, remote: true) do |r| %>
+<%= simple_form_for(@registration.participant) do |r| %>
+  <%= simple_form_for(@participant) do |p| %>
     <table cellspacing="0" cellpadding="0" border="0" width="100%;">
   				<tbody>
   				  <tr>
-    					  <td class="formlabel"><%= label_tag(:first_name, Participant.human_attribute_name("first_name")) %></td>
-      					<td class="forminp" colspan="1"><%= text_field :participant, :first_name %></td>
-      					<td class="formlabel"><%= label_tag(:last_name, Participant.human_attribute_name("last_name"))%></td>
-      					<td class="forminp" colspan="1"><%= text_field :participant, :last_name %></td>
+      					<td class="forminp" colspan="1"><%= p.input :first_name %></td>
+      					<td class="forminp" colspan="1"><%= p.input :last_name %></td>
+      					<td class="forminp" colspan="1"><%= p.input :nickname %></td>
     				</tr>
             <tr>
-          	  <td class="formlabel"><%= label_tag(:email, Participant.human_attribute_name("email")) %></td>
-    					<td class="forminp" colspan="1"><%= text_field :participant, :email %></td>
-    					<td class="formlabel"><%= label_tag(:country, Participant.human_attribute_name("country")) %></td>
-    					<td colspan="1" class="forminp"><%= country_select('participant','country', priority_countries: ['DE','GB','FR','US','IT']) -%><br></td>
+    					<td class="forminp" colspan="1"><%= p.input :email %></td>
             </tr>
             <tr>
-              <td class="formlabel"><%= label_tag(:nickname, Participant.human_attribute_name("nickname")) %></td>
-              <td class="forminp" colspan="1"><%= text_field :participant, :nickname %></td>
-            </tr>
-            
-            <tr>
-              <td>
-                <%= recaptcha_tags %>
+              <td class="forminp" colspan="1"><%= p.input  :street  %></td>
+              <td class="forminp" colspan="1"><%= p.input  :postcode %></td>
+              <td class="forminp" colspan="1"><%= p.input  :city %></td>
+              </tr>
+              <tr>
+              <td colspan="1" class="forminp"><%= p.input :country, priority: ['Germany', 'United Kingdom', 'France', 'United States', 'Italy'] %><br></td>
+              <td colspan="1" class="forminp"><%= p.input :birthdate %></td>
+              <td colspan="1" class="forminp"><%= p.input :newsletter %></td>
+              </tr>
+              <% end %>
+              <tr>
+              <td colspan="1" class="forminp"><%= r.association :event, :hidden %></td>
+              <td colspan="1" class="forminp"><%= r.association :participant, :hidden %></td>
+              <td colspan="1" class="forminp"><%= r.input :notes %> %></td>
+              <td colspan="1" class="forminp"><%= r.input  :shuttle %></td>
+              <td colspan="1" class="forminp"><%= r.input :extra_night %></td>
               </td>
+            </tr>
+            <tr>
+              <td>  <%= recaptcha_tags %> </td>
             </tr>
         </tbody>
     </table>
