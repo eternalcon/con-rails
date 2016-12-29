@@ -11,10 +11,10 @@
           	  <td class="formlabel"><%= label_tag(:email, Participant.human_attribute_name("email")) %></td>
     					<td class="forminp" colspan="1"><%= text_field :participant, :email %></td>
     					<td class="formlabel"><%= label_tag(:country, Participant.human_attribute_name("country")) %></td>
-    					<td colspan="1"class="forminp"><%= country_select('participant','country', priority_countries: ['DE','GB','FR','US','IT']) -%><br></td>
+    					<td colspan="1" class="forminp"><%= country_select('participant','country', priority_countries: ['DE','GB','FR','US','IT']) -%><br></td>
             </tr>
             <tr>
-              <td class="formlabel"><%= label_tag(:email, Participant.human_attribute_name("nickname")) %></td>
+              <td class="formlabel"><%= label_tag(:nickname, Participant.human_attribute_name("nickname")) %></td>
               <td class="forminp" colspan="1"><%= text_field :participant, :nickname %></td>
             </tr>
             
