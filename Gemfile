@@ -32,7 +32,7 @@ gem 'jbuilder', '~> 2.5'
 # Use high voltage for static pages with rails
 gem 'high_voltage', '~> 3.0.0'
 # Use Bootstrap 4 for layout
-gem 'bootstrap', '~> 4.0.0.alpha5'
+gem 'bootstrap-sass', '~> 3.3.6'
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
 end

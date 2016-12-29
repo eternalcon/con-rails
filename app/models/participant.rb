@@ -5,11 +5,5 @@ class Participant < ActiveRecord::Base
   validates_presence_of :last_name
   validates_presence_of :first_name
   validates_presence_of :email
-  #validates_uniqueness_of :email
-  
-  #belongs_to :user
-  #validates_associated :events
-  #validate_presence_of :street, :postcode, :country
-
-
+  validates :email, uniqueness: true
 end

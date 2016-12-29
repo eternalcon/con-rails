@@ -92,7 +92,7 @@ ActiveRecord::Schema.define(version: 20161228180656) do
     t.text     "notes",          limit: 65535
     t.boolean  "shuttle"
     t.boolean  "extra_night"
-    t.string   "room_type"
+    t.integer  "room_type"
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
     t.index ["event_id"], name: "index_registrations_on_event_id", using: :btree

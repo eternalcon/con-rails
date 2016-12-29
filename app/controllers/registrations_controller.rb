@@ -10,7 +10,7 @@ class RegistrationsController < ApplicationController
 
     #@participant = Participant.find(params[:participant])
     @participant = Participant.new
-    @registration = Registration.new
+    @registration = Registration.new(room_type: Registration::RoomType::DEFAULT)
     #@registration.errors.add :base, "Word verification response is incorrect, please try again." if !params[:error].blank? && params[:error] == "true"
     @registration.event = active_event
     @registration.participant = @participant
@@ -33,61 +33,50 @@ class RegistrationsController < ApplicationController
     @lang = params[:lang] || "en"
     I18n.locale = @lang
 
-    is_create = false
-  #  @participant = Participant.new(params[:participant])
-    @registration = Registration.new(registration_params)
+    @is_create = false
+    @participant = Participant.new participant_params
 
-    if verify_recaptcha(:model => @registration)
-    #we try to find if the person have already registered for a early event
-#    participant = Participant.find(:first, :conditions => ['first_name=? AND last_name=?', @participant.first_name, @participant.last_name])
+    @registration = Registration.new registration_params
+    @registration.event = Event.active_event
 
-#    if participant
-#      @registration.participant = participant
-#    else
-#      @registration.participant = @participant
-#    end
-      #respond_to do |format|
+    old_participant = Participant.where(email: @participant.email).first
+
+    if !old_participant.blank?
+      @participant = old_participant
+    end
+
+    @registration.participant = @participant
+
+    if @participant.valid? && @registration.valid? 
+      if verify_recaptcha(:model => @registration)
         if @registration.save
-          is_create = true
-          flash[:notice] = t(:fn_registration_success)
-          # Tell the RegistrationMailer to send welcome email after save
-          RegistrationMailer.Welcome_Email(@registration).deliver_now #.deliver_later
-          #RegistrationMailer.Team_Email(@registration).deliver_now #.deliver_later
-          unless is_create
-            render :action => "new"
-          end
-#          format.js{
-#            render :update do |page|
-#          #page.replace_html "flash_messages", :partial => "/shared/flash_messages"
-#              unless is_create
-#                page.replace_html "registerFormDiv", :partial => "form" 
-#                page.replace_html "recaptcha_div", :partial => "recaptcha"
-#              end
-#         
-#          #page.redirect_to new_registration_path(:error => true) unless is_create
-#              page.replace_html "registerFormDiv", :partial => "after_registration" if is_create
-#          end
-#          }
+          @is_create = true
+          RegistrationMailer.welcome_email(@registration).deliver_now
+          #RegistrationMailer.team_email(registration).deliver_now
         else
           flash[:error] = t(:fe_registration_error) 
         end
-      render
-      #end
+      else
+        @recaptcha_error = true 
+        is_create = false
+        flash[:error] = t(:fe_captcha_controller)
+      end
     else
-      @recaptcha_error = true 
-      @registration.valid? 
-      render :action => "new"
-      is_create = false
-      flash[:error] = t(:fe_captcha_controller)
+      flash[:error] = t(:fe_registration_error)
     end
-  end   
-  
+
+    logger.debug @registration.errors.inspect
+    logger.debug @participant.errors.inspect
+  end
+
+
   private
-    # Using a private method to encapsulate the permissible parameters
-    # is just a good pattern since you'll be able to reuse the same
-    # permit list between create and update. Also, you can specialize
-    # this method with per-user checking of permissible attributes.
-    def registration_params
-      params.fetch(:registration, {}).permit(:event_id, :participant_id, :notes, :shuttle, :extra_night)
-    end
+
+  def registration_params
+    params.fetch(:registration, {}).permit(:event_id, :participant_id, :notes, :room_type)
+  end
+
+  def participant_params
+    params.fetch(:participant, {}).permit(:first_name, :last_name, :email, :nickname, :country)
+  end
 end

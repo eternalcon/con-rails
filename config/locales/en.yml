@@ -166,6 +166,12 @@ en:
         less_than_or_equal_to: "must be less than or equal to %{count}"
         odd: "must be odd"
         even: "must be even"
+      models:
+        registration:
+          attributes:
+            participant_id:
+              unique: 'The participant has been already registered'
+              taken: 'A participant with this E-Mail hasa been already registered'
 
   activerecord:
     models:
@@ -173,36 +179,32 @@ en:
       participant: "participant"
     attributes:
       participant:
-        first_name: "FirstName"
-        last_name:  "LastName"
-        email: "E-Mail"
+        first_name: "First Name"
+        last_name:  "Last Name"
+        email: "E-Mail Adress"
         country: "Nationality"
       registration:
-        nickname: "NickName"
+        nickname: "Nick Name"
         year_of_birth: "YearOfBirth"
         notes: "Notes"
-        room_i_dont_care: "Room: Just give me a bed, I don´t care"
-        room_family_room: "Room: Hey, I would stay in a room for families"
-        room_party_room: "Room: I´am with the party people"
-        room_pay_smaller_room: "Room: I am willing to pay extra for a smaller room"
         shuttle_from_hahn: "I need a shuttle from / to Hahn Airport"
         accomodation_for_thursday: "I need an accomodation for Thursday to Friday in the Rittersaal"
         freeform_language_skill: "Which Freefom-Language-Skill do you prefer"
         freeform_skill_value: 'Please choose an option'
-    errors:
-      models:
-        registration:
-          attributes:
-            freeorm_skill_value: 
-              blank: Please choose one option
 
 
-  fn_registration_success: "Thank you for your registration for Eternal Con 2015"
+  fn_registration_success: "Registration completed. An email to %{email} has been send. Thank you for your registration for Eternal Con 2017"
   fe_registration_error: "There have been an error: Please fill out all necessary fields"
-  fe_captcha_controller: "There have been an error: Please re-enter the words from the captcha below"
+  fe_captcha_controller: "There have been an error: Please check the captcha below"
 
   fe_captcha_error: "Please write the correct words"
   headline_registration: "Registration for the - <i>%{event_title}</i>"
+  btn_registration: 'Register'
+
+  room_i_dont_care: "Just give me a bed, I don´t care"
+  room_family_room: "Hey, I would stay in a room for families"
+  room_party_room: "I´am with the party people"
+  room_pay_smaller_room: "I am willing to pay extra for a smaller room"
 
   registration_notice_value: "If you bring kids please here names and ages, -Special Information (prefered room mates etc)"
 

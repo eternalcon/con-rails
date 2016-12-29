@@ -3,12 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 // Custom bootstrap variables must be set or imported before bootstrap itself.
 @import  "jquery.ui.all";
-@import "eternal-styles";
 $enable-flex: true;
 @import "bootstrap";
-
-
-#registerFormDiv{
-  background: white;
-  padding-top: 15px;
-}
+@import "eternal-styles";
+@import "registrations";
