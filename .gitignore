@@ -19,3 +19,6 @@
 # Ignore secret data
 config/secrets.yml
 config/database.yml
+
+.idea/
+.idea/*/**
