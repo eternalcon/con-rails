@@ -1,13 +1,11 @@
 FactoryGirl.define do
   factory :participant do
-    first_name "MyString"
+    first_name "MyName"
     last_name "MyString"
-    email "MyString"
+    email "email@email.de"
     street "MyString"
     postcode "MyString"
     city "MyString"
     country "MyString"
-    notes "MyString"
-    newsletter "MyString"
   end
 end

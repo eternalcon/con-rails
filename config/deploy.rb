@@ -2,10 +2,10 @@
 #lock '3.6.0'
 
 set :application, 'con-rails'
-set :repo_url, 'git@github.com:onkeld/con-rails.git'
+set :repo_url, 'git@github.com:eternalcon/con-rails.git'
 
 # Default branch is :master
-# ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
+set :branch, `git rev-parse --abbrev-ref master`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
 # set :deploy_to, '/var/www/my_app_name'
