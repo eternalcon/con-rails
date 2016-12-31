@@ -83,4 +83,14 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  ActionMailer::Base.smtp_settings = {
+    :port => 25,
+    :address => "eternal-con.de",
+    :domain => "eternal-con.de",
+    :user_name => "info@eternal-con.de",
+    :password => "eternal2016",
+    :authentication => :cram_md5
+ }
+ ActionMailer::Base.raise_delivery_errors = true
 end
