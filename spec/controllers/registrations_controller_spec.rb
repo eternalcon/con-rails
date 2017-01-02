@@ -38,7 +38,7 @@ RSpec.describe RegistrationsController, type: :controller do
 
       expect{ 
         post :create, params: { participant: participant.attributes, registration: registration_params }, xhr: true
-      }.to change(Registration, :count).by 0
+      }.to change(Participant, :count).by 0
     end
   end
 

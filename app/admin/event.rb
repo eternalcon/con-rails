@@ -9,8 +9,8 @@ ActiveAdmin.register Event do
     column :subtitle
     column :startdate
     column :enddate
-    column(:participants) {|u|
-      link_to("Participants #{u.participants.size}", admin_event_participants_path(u), class: 'member_link view_link')
+    column(:registrations) {|u|
+      link_to("Registrations #{u.participants.size}", admin_event_registrations_path(u), class: 'member_link view_link')
     }
     column(:prices) {|u|
       link_to("Prices", admin_event_prices_path(u), class: 'member_link view_link')
