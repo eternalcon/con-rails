@@ -90,7 +90,7 @@ Rails.application.configure do
     :domain => Rails.application.secrets[:smtp][:domain],
     :user_name => Rails.application.secrets[:smtp][:username],
     :password => Rails.application.secrets[:smtp][:password],
-    :authentication => :plain
+    :authentication => :login
   }
  ActionMailer::Base.raise_delivery_errors = true
 end
