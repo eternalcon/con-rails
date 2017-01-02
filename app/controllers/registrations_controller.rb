@@ -51,8 +51,8 @@ class RegistrationsController < ApplicationController
       if verify_recaptcha(:model => @registration)
         if @registration.save
           @is_create = true
-          RegistrationMailer.welcome_email(@registration).deliver_now
-          RegistrationMailer.team_email(@registration).deliver_now
+          RegistrationMailer.welcome_email(@registration).deliver_later
+          RegistrationMailer.team_email(@registration).deliver_later
         else
           flash[:error] = t(:fe_registration_error) 
         end
