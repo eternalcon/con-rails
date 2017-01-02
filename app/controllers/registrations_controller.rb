@@ -52,7 +52,7 @@ class RegistrationsController < ApplicationController
         if @registration.save
           @is_create = true
           RegistrationMailer.welcome_email(@registration).deliver_now
-          #RegistrationMailer.team_email(registration).deliver_now
+          RegistrationMailer.team_email(@registration).deliver_now
         else
           flash[:error] = t(:fe_registration_error) 
         end

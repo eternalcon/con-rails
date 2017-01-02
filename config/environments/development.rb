@@ -54,11 +54,11 @@ Rails.application.configure do
 
   ActionMailer::Base.smtp_settings = {
     :port => 25,
-    :address => "eternal-con.de",
-    :domain => "eternal-con.de",
-    :user_name => "info@eternal-con.de",
-    :password => "eternal",
-    :authentication => :cram_md5
- }
- ActionMailer::Base.raise_delivery_errors = true
+    :address => Rails.application.secrets[:smtp][:address],
+    :domain => Rails.application.secrets[:smtp][:domain],
+    :user_name => Rails.application.secrets[:smtp][:username],
+    :password => Rails.application.secrets[:smtp][:password],
+    :authentication => :login
+  }
+  ActionMailer::Base.raise_delivery_errors = true
 end
