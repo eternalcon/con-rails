@@ -41,19 +41,23 @@ gem 'activeadmin', '~> 1.0.0.pre4'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'devise'
 
-group :development, :test do
-# Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platform: :mri
-  gem "rspec-rails"
-  gem "factory_girl_rails", "~> 4.0"
-end
 # Use simple_forms for forms templates
 gem 'simple_form'
 # use country_select with simple_forms
 gem 'country_select'
 # Use Googles ReCaptcha for spam prevention
 gem "recaptcha", require: "recaptcha/rails"
+# Use Delayed_Job for Active Job asynchronous queue with retries (e.g. mailers)
+gem 'delayed_job_active_record'
+# Use daemons to keep job runners daemonized
+gem "daemons"
 
+group :development, :test do
+# Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug', platform: :mri
+  gem "rspec-rails"
+  gem "factory_girl_rails", "~> 4.0"
+end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
