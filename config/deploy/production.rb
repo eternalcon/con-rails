@@ -30,7 +30,10 @@
 # For available Capistrano configuration variables see the documentation page.
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customise your setup.
+set :branch, `git rev-parse --abbrev-ref master`.chomp
 
+# Default deploy_to directory is /var/www/my_app_name
+ set :deploy_to, '/var/www/con-rails'
 
 
 # Custom SSH Options

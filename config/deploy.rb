@@ -1,11 +1,13 @@
 # config valid only for current version of Capistrano
 #lock '3.6.0'
-
+require 'capistrano/ext/multistage'
+set :stages, ["staging", "production"]
+set :default_stage, "staging"
 set :application, 'con-rails'
 set :repo_url, 'git@github.com:eternalcon/con-rails.git'
 
 # Default branch is :master
-set :branch, `git rev-parse --abbrev-ref master`.chomp
+#set :branch, `git rev-parse --abbrev-ref master`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
 # set :deploy_to, '/var/www/my_app_name'
@@ -40,3 +42,14 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 
 set :rvm_ruby_version, '2.3.0'
 
+namespace :deploy do
+
+  after :restart, :clear_cache do
+    on roles(:web), in: :groups, limit: 3, wait: 10 do
+      # Here we can do anything such as:
+      within release_path do
+        execute :rake, 'cache:clear'
+      end
+    end
+  end
+end

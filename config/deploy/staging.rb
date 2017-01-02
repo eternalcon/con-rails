@@ -20,7 +20,9 @@
 # role :app, %w{deploy@example.com}, my_property: :my_value
 # role :web, %w{user1@primary.com user2@additional.com}, other_property: :other_value
 # role :db,  %w{deploy@example.com}
-
+ role :app, %w{conrails_staging@eternal-con.de} #, my_property: :my_value
+ role :web, %w{conrails_staging@eternal-con.de} #, other_property: :other_value
+ role :db,  %w{conrails_staging@eternal-con.de}
 
 
 # Configuration
@@ -30,7 +32,10 @@
 # For available Capistrano configuration variables see the documentation page.
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customise your setup.
+set :branch, `git rev-parse --abbrev-ref staging`.chomp
 
+# Default deploy_to directory is /var/www/my_app_name
+ set :deploy_to, '/var/www/conrails_staging'
 
 
 # Custom SSH Options
@@ -41,10 +46,10 @@
 #
 # Global options
 # --------------
-#  set :ssh_options, {
+  set :ssh_options, {
 #    keys: %w(/home/rlisowski/.ssh/id_rsa),
 #    forward_agent: false,
-#    auth_methods: %w(password)
+     auth_methods: %w(publickey)
 #  }
 #
 # The server-based syntax can be used to override options:
