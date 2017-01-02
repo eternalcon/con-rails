@@ -1,11 +1,10 @@
 # config valid only for current version of Capistrano
 #lock '3.6.0'
-require 'capistrano/ext/multistage'
-set :stages, ["staging", "production"]
-set :default_stage, "staging"
-set :application, 'con-rails'
-set :repo_url, 'git@github.com:eternalcon/con-rails.git'
 
+require "capistrano/scm/git"
+install_plugin Capistrano::SCM::Git
+set :repo_url, 'git@github.com:eternalcon/con-rails.git'
+set :migration_role, :app
 # Default branch is :master
 #set :branch, `git rev-parse --abbrev-ref master`.chomp
 

@@ -32,6 +32,7 @@
 # For available Capistrano configuration variables see the documentation page.
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customise your setup.
+set :application, 'conrails_staging'
 set :branch, `git rev-parse --abbrev-ref staging`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
@@ -50,7 +51,7 @@ set :branch, `git rev-parse --abbrev-ref staging`.chomp
 #    keys: %w(/home/rlisowski/.ssh/id_rsa),
 #    forward_agent: false,
      auth_methods: %w(publickey)
-#  }
+  }
 #
 # The server-based syntax can be used to override options:
 # ------------------------------------
