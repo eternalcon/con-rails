@@ -88,6 +88,8 @@ group :development do
   gem 'capistrano-rails'
   # Remove the following if your server does not use RVM
   gem 'capistrano-rvm'
+  # integrate delayed_jobs into capistrano to restart job runner on deploy
+  gem 'capistrano3-delayed-job', '>= 1.0'
 end
 
 group :test do

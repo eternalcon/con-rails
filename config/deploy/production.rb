@@ -36,8 +36,12 @@ set :deploy_via, :remote_cache
 
 # Default deploy_to directory is /var/www/my_app_name
  set :deploy_to, '/var/www/con-rails'
-
-
+ set :rvm_ruby_version, '2.3.0@con-rails'
+ 
+ # Set up delayed_job to be restarted properly
+ set :delayed_job_workers, 2
+ set :delayed_job_queues, ['team_mailer','user_mailer']
+ set :delayed_job_pid_dir, '/tmp/pids'
 # Custom SSH Options
 # ==================
 # You may pass any option but keep in mind that net/ssh understands a
