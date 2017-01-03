@@ -41,6 +41,7 @@ set :branch, `git rev-parse --abbrev-ref staging`.chomp
 # set :delayed_job_workers, 2
 # set :delayed_job_queues, ['team_mailer','user_mailer']
  set :delayed_job_pid_dir, '/tmp/pids'
+ set :whenever_environment 'staging'
  
 # Custom SSH Options
 # ==================
