@@ -38,7 +38,7 @@ set :branch, `git rev-parse --abbrev-ref staging`.chomp
 # Default deploy_to directory is /var/www/my_app_name
  set :deploy_to, '/var/www/conrails_staging'
  set :rvm_ruby_version, '2.3.0@conrails_staging'
- set :delayed_job_workers, 2
+# set :delayed_job_workers, 2
 # set :delayed_job_queues, ['team_mailer','user_mailer']
  set :delayed_job_pid_dir, '/tmp/pids'
  

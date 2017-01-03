@@ -39,7 +39,7 @@ set :deploy_via, :remote_cache
  set :rvm_ruby_version, '2.3.0@con-rails'
  
  # Set up delayed_job to be restarted properly
- set :delayed_job_workers, 2
+ # set :delayed_job_workers, 2
  # set :delayed_job_queues, ['team_mailer','user_mailer']
  set :delayed_job_pid_dir, '/tmp/pids'
 # Custom SSH Options
