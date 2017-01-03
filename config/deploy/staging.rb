@@ -65,3 +65,8 @@ set :branch, `git rev-parse --abbrev-ref staging`.chomp
 #     auth_methods: %w(publickey password)
 #     # password: 'please use keys'
 #   }
+
+namespace :deploy do
+  
+
+end
