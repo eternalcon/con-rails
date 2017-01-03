@@ -66,10 +66,10 @@ set :branch, `git rev-parse --abbrev-ref staging`.chomp
 #     # password: 'please use keys'
 #   }
 
-after 'deploy:update_code', 'rvm:create_ruby_version'
+#after 'deploy', 'rvm:create_ruby_version'
 
-namespace :rvm do
-  task :create_ruby_gemset do
-    run "cd #{latest_release} && rvm --ruby-version use #{rvm_ruby_version}@#{rvm_ruby_string}"
-  end
-end
+#namespace :rvm do
+#  task :create_ruby_gemset do
+#    run "cd #{latest_release} && rvm --ruby-version use #{rvm_ruby_version}@#{rvm_ruby_string}"
+#  end
+#end
