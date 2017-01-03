@@ -51,6 +51,8 @@ gem "recaptcha", require: "recaptcha/rails"
 gem 'delayed_job_active_record'
 # Use daemons to keep job runners daemonized
 gem "daemons"
+# Use whenever to set up cronjobs in the rails app e.g. for fetching production data to staging
+gem 'whenever', :require => false
 
 group :development, :test do
 # Call 'byebug' anywhere in the code to stop execution and get a debugger console
