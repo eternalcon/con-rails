@@ -37,3 +37,7 @@ set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
 
 #set :rvm_ruby_version, '2.3.0'
+
+after 'deploy:published', 'delayed_job:restart' do
+    invoke 'delayed_job:restart'
+end
