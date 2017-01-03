@@ -39,5 +39,8 @@ set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', '
 #set :rvm_ruby_version, '2.3.0'
 
 after 'deploy:published', 'delayed_job:restart' do
+    # restart delayed_job workers
     invoke 'delayed_job:restart'
+    # update crontab when needed
+    invoke 'update_crontab'
 end
