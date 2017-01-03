@@ -83,15 +83,37 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  # Email configuration
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+  address: Rails.application.secrets[:smtp][:address],
+  domain: Rails.application.secrets[:smtp][:domain],
+  port: 587,
+  authentication: :login,
+  enable_starttls_auto: true,
+  user_name: Rails.application.secrets[:smtp][:username],
+  password: Rails.application.secrets[:smtp][:password]
+}
 
-  ActionMailer::Base.smtp_settings = {
-    :port => 587,
-    :address => Rails.application.secrets[:smtp][:address],
-    :domain => Rails.application.secrets[:smtp][:domain],
-    :user_name => Rails.application.secrets[:smtp][:username],
-    :password => Rails.application.secrets[:smtp][:password],
-    :enable_starttls_auto => true,
-    :authentication => :login
-  }
+STAGING_EMAIL = "staging@eternal-con.de"
+SanitizeEmail::Config.configure do |config|
+  config[:sanitized_to] = STAGING_EMAIL.gsub("@", "+to@")
+  config[:sanitized_cc] = STAGING_EMAIL.gsub("@", "+cc@")
+  config[:sanitized_bcc] = STAGING_EMAIL.gsub("@", "+bcc@")
+  config[:use_actual_email_prepended_to_subject] = true
+  config[:use_actual_environment_prepended_to_subject] = true
+  config[:use_actual_email_as_sanitized_user_name] = true
+  config[:activation_proc] = Proc.new { Rails.env.staging? }
+end
+
+#  ActionMailer::Base.smtp_settings = {
+#    :port => 587,
+#    :address => Rails.application.secrets[:smtp][:address],
+#    :domain => 
+#    :user_name => ,
+#    :password => ,
+#    :enable_starttls_auto => true,
+#    :authentication => :login
+#  }
  ActionMailer::Base.raise_delivery_errors = true
 end
