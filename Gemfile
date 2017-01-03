@@ -53,6 +53,8 @@ gem 'delayed_job_active_record'
 gem "daemons"
 # Use whenever to set up cronjobs in the rails app e.g. for fetching production data to staging
 gem 'whenever', :require => false
+# Use sanitize_email to send mails to a specific account in staging
+gem 'sanitize_email'
 
 group :development, :test do
 # Call 'byebug' anywhere in the code to stop execution and get a debugger console
