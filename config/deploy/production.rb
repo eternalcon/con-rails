@@ -41,7 +41,7 @@ set :deploy_via, :remote_cache
  # Set up delayed_job to be restarted properly
  # set :delayed_job_workers, 2
  # set :delayed_job_queues, ['team_mailer','user_mailer']
- set :delayed_job_pid_dir, '/tmp/pids'
+ set :delayed_job_pid_dir, 'tmp/pids'
  set :whenever_environment, 'production'
 # Custom SSH Options
 # ==================
