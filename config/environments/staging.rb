@@ -97,9 +97,9 @@ Rails.application.configure do
 
 STAGING_EMAIL = "staging@eternal-con.de"
 SanitizeEmail::Config.configure do |config|
-  config[:sanitized_to] = STAGING_EMAIL.gsub("@", "+to@")
-  config[:sanitized_cc] = STAGING_EMAIL.gsub("@", "+cc@")
-  config[:sanitized_bcc] = STAGING_EMAIL.gsub("@", "+bcc@")
+  config[:sanitized_to] = STAGING_EMAIL+.gsub("@", "+to@")
+  config[:sanitized_cc] = STAGING_EMAIL+.gsub("@", "+cc@")
+  config[:sanitized_bcc] = STAGING_EMAIL+.gsub("@", "+bcc@")
   config[:use_actual_email_prepended_to_subject] = true
   config[:use_actual_environment_prepended_to_subject] = true
   config[:use_actual_email_as_sanitized_user_name] = true
