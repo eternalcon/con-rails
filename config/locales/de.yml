@@ -317,10 +317,10 @@ de:
   headline_registration: "Registrierung für - <i>%{event_title}</i>"
   btn_registration: 'Anmelden'
 
-  room_i_dont_care: "Einfach ein Bett der Rest ist egal"
-  room_family_room: "Familienzimmer bevorzugt"
-  room_party_room: "Ich will in ein Partyzimmer"
-  room_pay_smaller_room: "Zimmer: Ich bin bereit für einen kleineres Zimmer extra zu bezahlen"
+  room_10: "Einfach ein Bett der Rest ist egal"
+  room_20: "Familienzimmer bevorzugt"
+  room_30: "Ich will in ein Partyzimmer"
+  room_40: "Zimmer: Ich bin bereit für einen kleineres Zimmer extra zu bezahlen"
 
   registration_notice_value: "Spezielle Informationen, bevorzugtes Zimmer... Wenn Ihr Kinder mitbringt gebt bitte das Alter an"
 

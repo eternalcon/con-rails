@@ -201,10 +201,10 @@ en:
   headline_registration: "Registration for the - <i>%{event_title}</i>"
   btn_registration: 'Register'
 
-  room_i_dont_care: "Just give me a bed, I don´t care"
-  room_family_room: "Hey, I would stay in a room for families"
-  room_party_room: "I´am with the party people"
-  room_pay_smaller_room: "I am willing to pay extra for a smaller room"
+  room_10: "Just give me a bed, I don´t care"
+  room_20: "Hey, I would stay in a room for families"
+  room_30: "I´am with the party people"
+  room_40: "I am willing to pay extra for a smaller room"
 
   registration_notice_value: "If you bring kids please here names and ages, -Special Information (prefered room mates etc)"
 
