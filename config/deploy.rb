@@ -35,7 +35,8 @@ set :migration_role, :app
 set :whenever_identifier, ->{ "#{fetch(:application)}" }
 set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
-
+set :passenger_rvm_ruby_version->{ "#{fetch(:rvm_ruby_version)}" }
+set :passenger_restart_with_sudo, true
 #set :rvm_ruby_version, '2.3.0'
 
 #after 'deploy:published', 'delayed_job:restart' do
