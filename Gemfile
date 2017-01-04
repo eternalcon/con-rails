@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '>= 5.0.0.rc2', '< 5.1'
 # Use mysql as the database for Active Record
@@ -32,7 +32,7 @@ gem 'jbuilder', '~> 2.5'
 # Use high voltage for static pages with rails
 gem 'high_voltage', '~> 3.0.0'
 # Use Bootstrap 4 for layout
-gem 'bootstrap', '~> 4.0.0.alpha5'
+gem 'bootstrap-sass', '~> 3.3.6'
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.1.0'
 end
@@ -40,6 +40,21 @@ end
 gem 'activeadmin', '~> 1.0.0.pre4'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 gem 'devise'
+
+# Use simple_forms for forms templates
+gem 'simple_form'
+# use country_select with simple_forms
+gem 'country_select'
+# Use Googles ReCaptcha for spam prevention
+gem "recaptcha", require: "recaptcha/rails"
+# Use Delayed_Job for Active Job asynchronous queue with retries (e.g. mailers)
+gem 'delayed_job_active_record'
+# Use daemons to keep job runners daemonized
+gem "daemons"
+# Use whenever to set up cronjobs in the rails app e.g. for fetching production data to staging
+gem 'whenever', :require => false
+# Use sanitize_email to send mails to a specific account in staging
+gem 'sanitize_email'
 
 group :development, :test do
 # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -73,6 +88,8 @@ group :development do
   gem 'capistrano-rails'
   # Remove the following if your server does not use RVM
   gem 'capistrano-rvm'
+  # integrate delayed_jobs into capistrano to restart job runner on deploy
+  gem 'capistrano3-delayed-job', '>= 1.0'
 end
 
 group :test do

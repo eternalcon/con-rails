@@ -1,0 +1,10 @@
+<% if @is_create -%>
+  $('#registerFormDiv').html("<%= j render(partial: 'create_success') %>")
+  $('#messageDiv').hide()
+  $('#alertDangerContent').html("")
+<% else %>
+  $('#registerFormDiv').html("<%= j render(partial: 'form') %>")
+  $('#alertDangerContent').html("<%= flash[:error] -%>")
+  $('#messageDiv').show()
+  <% end -%>
+

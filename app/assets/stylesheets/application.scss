@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 // Custom bootstrap variables must be set or imported before bootstrap itself.
 @import  "jquery.ui.all";
-@import "eternal-styles";
 $enable-flex: true;
 @import "bootstrap";
+@import "eternal-styles";
+@import "registrations";

@@ -18,4 +18,9 @@
 
 # Ignore secret data
 config/secrets.yml
+# database.yml doesn't contain any secrets and does not need to be ignored.
+# secrets are all stored in secrets.yml which is ignored.
+# config/database.yml
 
+.idea/
+.idea/*/**

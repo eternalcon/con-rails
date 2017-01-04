@@ -1,0 +1,83 @@
+<% if @registration.errors.size > 0 -%>
+  <div class="alert alert-danger" role="alert">
+    <% @registration.errors.full_messages.each do |msg| %>
+      <%= msg %>
+      <% end -%>
+    </div>
+<% end %>
+
+
+<%= form_for(@registration, remote: true, html: { class: 'form-horizontal' } ) do |f| %>
+  <div class="form-group">
+    <%= label_tag(:first_name, Participant.human_attribute_name("first_name"), class: 'col-sm-2 control-label') %>
+    <div class="col-sm-9">
+      <%= text_field :participant, :first_name, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= label_tag(:last_name, Participant.human_attribute_name("last_name"), class: 'col-sm-2 control-label') %>
+    <div class="col-sm-9">
+      <%= text_field :participant, :last_name, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= label_tag(:email, Participant.human_attribute_name("email"), class: 'col-sm-2 control-label') %>
+    <div class="col-sm-9">
+      <%= text_field :participant, :email, type: 'email', class: 'form-control' -%>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= label_tag(:country, Participant.human_attribute_name("country"), class: 'col-sm-2 control-label') %>
+    <div class="col-sm-9">
+      <%= country_select('participant','country', { priority_countries: ['DE','GB','FR','US','IT'] }, { class: 'form-control'}) -%>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= label_tag(:nickname, Participant.human_attribute_name("nickname"), class: 'col-sm-2 control-label') %>
+    <div class="col-sm-9">
+      <%= text_field :participant, :nickname, class: 'form-control' -%>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= label_tag(:room_type, Registration.human_attribute_name("room_type"), class: 'col-sm-2 control-label') %>
+    <div class="col-sm-9">
+      <div class="radio">
+        <label>
+          <%= f.radio_button :room_type, Registration::RoomType::I_DONT_CARE -%>
+          <%= t("room_#{Registration::RoomType::I_DONT_CARE}") %>
+        </label>
+    </div>
+    <div class="radio">
+      <label>
+        <%= f.radio_button :room_type, Registration::RoomType::PARTY_ROOM -%>
+        <%= t("room_#{Registration::RoomType::PARTY_ROOM}") %>
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <%= f.radio_button :room_type, Registration::RoomType::FAMILY_ROOM -%>
+        <%= t("room_#{Registration::RoomType::FAMILY_ROOM}") %>
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <%= f.radio_button :room_type, Registration::RoomType::PAY_SMALLER_ROOM-%>
+        <%= t("room_#{Registration::RoomType::PAY_SMALLER_ROOM}") %>
+      </label>
+    </div>
+  </div>
+  <div class="form-group" style="margin-top: 15px;">
+    <%= label_tag(:notes, Registration.human_attribute_name("notes"), class: 'col-sm-2 control-label') %>
+    <div class="col-sm-9">
+      <%= f.text_area :notes, size: '100x10', class: 'form-control' -%>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-3 col-sm-offset-5">
+      <%= recaptcha_tags %>
+    </div>
+  </div>
+  <div class="form-actions">
+    <%= f.submit t(:btn_registration), class: "btn btn-lg btn-default", value: t(:btn_registration) -%>
+  </div>
+<% end %>
