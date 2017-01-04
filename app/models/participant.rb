@@ -6,4 +6,8 @@ class Participant < ActiveRecord::Base
   validates_presence_of :first_name
   validates_presence_of :email
   validates :email, uniqueness: true
+
+  before_destroy do
+    Registration.destroy_all(participant_id: self)
+  end
 end

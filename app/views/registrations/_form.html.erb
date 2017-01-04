@@ -44,25 +44,25 @@
       <div class="radio">
         <label>
           <%= f.radio_button :room_type, Registration::RoomType::I_DONT_CARE -%>
-          <%= t('room_i_dont_care') %>
+          <%= t("room_#{Registration::RoomType::I_DONT_CARE}") %>
         </label>
     </div>
     <div class="radio">
       <label>
         <%= f.radio_button :room_type, Registration::RoomType::PARTY_ROOM -%>
-        <%= t('room_party_room') %>
+        <%= t("room_#{Registration::RoomType::PARTY_ROOM}") %>
       </label>
     </div>
     <div class="radio">
       <label>
         <%= f.radio_button :room_type, Registration::RoomType::FAMILY_ROOM -%>
-        <%= t('room_family_room') %>
+        <%= t("room_#{Registration::RoomType::FAMILY_ROOM}") %>
       </label>
     </div>
     <div class="radio">
       <label>
         <%= f.radio_button :room_type, Registration::RoomType::PAY_SMALLER_ROOM-%>
-        <%= t('room_pay_smaller_room') %>
+        <%= t("room_#{Registration::RoomType::PAY_SMALLER_ROOM}") %>
       </label>
     </div>
   </div>
