@@ -26,8 +26,8 @@ class RegistrationMailer < ApplicationMailer
     @event = @registration.event
 
     mail(
-      # to: ['andreas_pittelkow@web.de', 'info@eternal-con.de', '1812raevsky@gmail.com'],
-      to: 'boris.raeschler@gmx.de',
+      to: ['andreas_pittelkow@web.de', 'info@eternal-con.de', '1812raevsky@gmail.com'],
+      #to: 'boris.raeschler@gmx.de',
       subject: "#{@event.name}: New Incoming Reservation") do |format|
         format.text { render 'team_email_plain' }
     end
