@@ -30,9 +30,19 @@
 # For available Capistrano configuration variables see the documentation page.
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customise your setup.
+set :application, 'con-rails'
+set :branch, `git rev-parse --abbrev-ref master`.chomp
+set :deploy_via, :remote_cache
 
-
-
+# Default deploy_to directory is /var/www/my_app_name
+ set :deploy_to, '/var/www/con-rails'
+ set :rvm_ruby_version, '2.3.0@con-rails'
+ 
+ # Set up delayed_job to be restarted properly
+ # set :delayed_job_workers, 2
+ # set :delayed_job_queues, ['team_mailer','user_mailer']
+ set :delayed_job_pid_dir, 'tmp/pids'
+ set :whenever_environment, 'production'
 # Custom SSH Options
 # ==================
 # You may pass any option but keep in mind that net/ssh understands a

@@ -43,8 +43,8 @@ class RegistrationsController < ApplicationController
       if verify_recaptcha(:model => @registration)
         if @registration.save
           @is_create = true
-          RegistrationMailer.welcome_email(@registration).deliver_now
-          RegistrationMailer.team_email(@registration).deliver_now
+          RegistrationMailer.welcome_email(@registration).deliver_later
+          RegistrationMailer.team_email(@registration).deliver_later
         else
           flash[:error] = t(:fe_registration_error)
         end
@@ -59,9 +59,6 @@ class RegistrationsController < ApplicationController
 
     logger.debug @registration.errors.inspect
     logger.debug @participant.errors.inspect
-  end
-
-  def not_available
   end
 
   private

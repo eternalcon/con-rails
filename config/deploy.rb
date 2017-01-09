@@ -1,11 +1,9 @@
 # config valid only for current version of Capistrano
 #lock '3.6.0'
-
-set :application, 'con-rails'
 set :repo_url, 'git@github.com:eternalcon/con-rails.git'
-
+set :migration_role, :app
 # Default branch is :master
-set :branch, `git rev-parse --abbrev-ref master`.chomp
+#set :branch, `git rev-parse --abbrev-ref master`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
 # set :deploy_to, '/var/www/my_app_name'
@@ -34,9 +32,16 @@ set :branch, `git rev-parse --abbrev-ref master`.chomp
 
 # Default value for keep_releases is 5
 # set :keep_releases, 5
-
+set :whenever_identifier, ->{ "#{fetch(:application)}" }
 set :linked_files, fetch(:linked_files, []).push('config/database.yml', 'config/secrets.yml')
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
+set :passenger_rvm_ruby_version, ->{ "#{fetch(:rvm_ruby_version)}" }
+set :passenger_restart_with_sudo, true
+#set :rvm_ruby_version, '2.3.0'
 
-set :rvm_ruby_version, '2.3.0'
-
+#after 'deploy:published', 'delayed_job:restart' do
+    # restart delayed_job workers
+#    invoke 'delayed_job:restart'
+    # update crontab when needed
+#    invoke 'update_crontab'
+#end

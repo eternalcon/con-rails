@@ -20,7 +20,9 @@
 # role :app, %w{deploy@example.com}, my_property: :my_value
 # role :web, %w{user1@primary.com user2@additional.com}, other_property: :other_value
 # role :db,  %w{deploy@example.com}
-
+ role :app, %w{conrails_staging@eternal-con.de} #, my_property: :my_value
+ role :web, %w{conrails_staging@eternal-con.de} #, other_property: :other_value
+ role :db,  %w{conrails_staging@eternal-con.de}
 
 
 # Configuration
@@ -30,9 +32,17 @@
 # For available Capistrano configuration variables see the documentation page.
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customise your setup.
+set :application, 'conrails_staging'
+set :branch, `git rev-parse --abbrev-ref staging`.chomp
 
-
-
+# Default deploy_to directory is /var/www/my_app_name
+ set :deploy_to, '/var/www/conrails_staging'
+ set :rvm_ruby_version, '2.3.0@conrails_staging'
+# set :delayed_job_workers, 2
+# set :delayed_job_queues, ['team_mailer','user_mailer']
+ set :delayed_job_pid_dir, 'tmp/pids'
+ set :whenever_environment, 'staging'
+ 
 # Custom SSH Options
 # ==================
 # You may pass any option but keep in mind that net/ssh understands a
@@ -41,11 +51,11 @@
 #
 # Global options
 # --------------
-#  set :ssh_options, {
+  set :ssh_options, {
 #    keys: %w(/home/rlisowski/.ssh/id_rsa),
 #    forward_agent: false,
-#    auth_methods: %w(password)
-#  }
+     auth_methods: %w(publickey)
+  }
 #
 # The server-based syntax can be used to override options:
 # ------------------------------------
@@ -59,3 +69,11 @@
 #     auth_methods: %w(publickey password)
 #     # password: 'please use keys'
 #   }
+
+#after 'deploy', 'rvm:create_ruby_version'
+
+#namespace :rvm do
+#  task :create_ruby_gemset do
+#    run "cd #{latest_release} && rvm --ruby-version use #{rvm_ruby_version}@#{rvm_ruby_string}"
+#  end
+#end
