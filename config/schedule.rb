@@ -20,7 +20,7 @@ end
 if environment == "staging"
   # Import daily dump
   every :day, at: "12:30am" do
-    command "cd #{path} && #{environment_variable}=#{environment} FILE=#{staging_dump_file} bin/rake dump:retrieve dump:barrier maintenance:enable db:drop db:create dump:import db:migrate maintenance:restart maintenance:disable"
+    command "cd #{path} && #{environment_variable}=#{environment} FILE=#{staging_dump_file} bin/rake dump:barrier maintenance:enable db:drop db:create dump:import db:migrate maintenance:restart maintenance:disable"
   end
 end
 

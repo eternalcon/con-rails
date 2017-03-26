@@ -20,6 +20,7 @@ namespace :maintenance do
     end
   end
 
+# TODO: Restart of Passenger with nginx integration does not work via touching file - set up proper restart here.
   desc "Restart the application"
   task :restart => :environment do
     FileUtils.touch(RESTART_FILE)
