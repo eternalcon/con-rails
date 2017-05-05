@@ -167,13 +167,16 @@ en:
         odd: "must be odd"
         even: "must be even"
       models:
+        freeform_registration:
+          attributes:
+            email:
+              unique: 'address has been already taken for registration'
         registration:
           attributes:
             participant_id:
               unique: 'The participant has been already registered'
               taken: 'A participant with this E-Mail hasa been already registered'
 
-  activerecord:
     models:
       registration: "registration"
       participant: "participant"
@@ -196,6 +199,8 @@ en:
   fn_registration_success: "Registration completed. An email to %{email} has been send. Thank you for your registration for Eternal Con 2017"
   fe_registration_error: "There have been an error: Please fill out all necessary fields"
   fe_captcha_controller: "There have been an error: Please check the captcha below"
+  fn_registration_freeform_success: "Registration for '%{freeform_title} completed. An email to %{email} has been send. Thank you for your registration"
+  registration_freeform_title: "Registration for '%{freeform_title}'"
 
   fe_captcha_error: "Please write the correct words"
   headline_registration: "Registration for the - <i>%{event_title}</i>"
