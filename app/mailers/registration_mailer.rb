@@ -33,4 +33,27 @@ class RegistrationMailer < ApplicationMailer
     end
   end
 
+
+  def freeform_welcome_email registration, freeform
+    @registration = registration
+    @freeform = freeform
+
+    mail(
+      to: registration.email,
+      subject: "#{@freeform.event.name}: Registration for freeform #{@freeform.title}") do |format|
+        format.text { render 'freeform_welcome_plain' }
+      end
+  end
+
+  def freeform_author_email registration, freeform
+    @registration = registration
+    @freeform = freeform
+    @authors = freeform.freeform_authors
+
+    mail(
+      to: @authors.map(&:email),
+      subject: "#{@freeform.event.name}: Registration for freeform #{@freeform.title}") do |format|
+        format.text { render 'freeform_author_plain' }
+      end
+  end
 end
