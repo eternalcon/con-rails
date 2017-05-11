@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col-xs-12" class="content_small">
+    <div class="pricebox">
+      <p class="subheader"><%= "Register a new board game for - #{@event.name}" -%></p> 
+    </div>
+  </div>
+</div>
+<div id="registerFormDiv" class="registerFreeformDiv">
+  <% if @board_game.errors.size > 0 -%>
+    <div class="alert alert-danger" role="alert">
+      <% @board_game.errors.full_messages.each do |msg| %>
+        <%= msg %>
+        <% end -%>
+      </div>
+  <% end %>
+
+  <%= form_for(:board_game, url: board_games_path, remote: false, html: { class: 'form-horizontal' } ) do |f| %>
+
+    <div class="form-group">
+      <%= label_tag(:title, 'Title', class: 'col-sm-2 control-label') %>
+      <div class="col-sm-9">
+        <%= text_field :board_game, :title, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="form-group">
+      <%= label_tag(:author_name, 'Name of author', class: 'col-sm-2 control-label') %>
+      <div class="col-sm-9">
+        <%= text_field :board_game, :author_name, class: 'form-control' -%>
+      </div>
+    </div>
+    <div class="form-group" style="margin-top: 15px;">
+      <%= label_tag(:notes, Registration.human_attribute_name("notes"), class: 'col-sm-2 control-label') %>
+      <div class="col-sm-9">
+        <%= f.text_area :description, size: '100x10', class: 'form-control' -%>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-3 col-sm-offset-5">
+        <%= recaptcha_tags %>
+      </div>
+    </div>
+    <div class="form-actions">
+      <%= f.submit t(:btn_registration_board_game), class: "btn btn-lg btn-default", value: t(:btn_registration) -%>
+    </div>
+  <% end %>
+</div>
