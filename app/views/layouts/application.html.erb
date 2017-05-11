@@ -43,11 +43,16 @@
                   <%= link_to 'Registration', new_registration_path, class: 'nav-link' -%>
                 <% end -%>
               </li>
-              <li class="nav-item">
-                <% unless Event.active_event.blank? -%>
-                  <%= link_to 'Freeforms', freeforms_path, class: 'nav-link' -%>
-                <% end -%>
-              </li>
+            <li class="nav-item">
+              <% unless Event.active_event.blank? -%>
+                <%= link_to 'Freeforms', freeforms_path, class: 'nav-link' -%>
+              <% end -%>
+            </li>
+            <li class="nav-item">
+              <% unless Event.active_event.blank? -%>
+                <%= link_to 'Boardgames', board_games_path, class: 'nav-link' -%>
+              <% end -%>
+            </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li class="nav-item">
