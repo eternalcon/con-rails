@@ -1,5 +1,5 @@
 <% @boardgame_list.each do |boardgame| -%>
-  <div class="row">
+  <div class="row" style="margin-top: 10px;">
     <div class="col-xs-12" class="content_small">
       <div class="pricebox">
         <p class="subheader"> <%= boardgame.title -%> - <%= boardgame.author_name %></p>
@@ -11,9 +11,9 @@
       <div class="pricebox">
         <p class="copy"><%= simple_format(boardgame.description) %></p>
       </div>
-      <div>
     </div>
   </div>
+  <br/>
 <% end -%>
 
 <% if @boardgame_list.size == 0 %>
