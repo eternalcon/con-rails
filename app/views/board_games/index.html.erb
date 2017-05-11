@@ -1,0 +1,37 @@
+<% @boardgame_list.each do |boardgame| -%>
+  <div class="row" style="margin-top: 10px;">
+    <div class="col-xs-12" class="content_small">
+      <div class="pricebox">
+        <p class="subheader"> <%= boardgame.title -%> - <%= boardgame.author_name %></p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12" class="content_small">
+      <div class="pricebox">
+        <p class="copy"><%= simple_format(boardgame.description) %></p>
+      </div>
+    </div>
+  </div>
+  <br/>
+<% end -%>
+
+<% if @boardgame_list.size == 0 %>
+  <div class="row">
+    <div class="col-xs-12" class="content_small">
+      <div class="pricebox">
+        <div class="alert alert-notice">
+          Sorry, until now there are no entries for boardgames
+        </div>
+      </div>
+    </div>
+  </div>
+<% end -%>
+
+<div class="row">
+  <div class="col-xs-12" class="content_small">
+    <div class="pull-right">
+      <%= link_to 'Submit new Boardgame', new_board_game_path, class: 'btn btn-primary' -%>
+    </div>
+  </div>
+</div>

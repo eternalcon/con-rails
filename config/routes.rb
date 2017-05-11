@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+
   resources :registrations, only: [:new, :create]
   resources :freeforms, only: [:index]
   resources :freeform_registrations, only: [:new, :create]
+  resources :board_games, only: [:index, :new, :create]
 
   namespace :admin do
     resources :events do
