@@ -10,7 +10,8 @@ class BoardGamesController < ApplicationController
   end
 
   def create
-    @board_game = BoardGame.new(boardgame_params.merge({event_id: @event}))
+    @board_game = BoardGame.new(boardgame_params)
+    @board_game.event_id = @event.id
 
     if @board_game.save
       redirect_to board_games_path(notice: t('fn_registration_board_game_success'))
