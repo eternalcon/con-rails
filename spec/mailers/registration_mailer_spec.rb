@@ -1,8 +1,8 @@
 require "rails_helper"
 
-RSpec.describe RegistrationMailerMailer, type: :mailer do
+RSpec.describe RegistrationMailer, type: :mailer do
   describe "Registration" do
-    let(:mail) { RegistrationMailerMailer.Registration }
+    let(:mail) { RegistrationMailer.Registration }
 
     it "renders the headers" do
       expect(mail.subject).to eq("Registration")
@@ -16,7 +16,7 @@ RSpec.describe RegistrationMailerMailer, type: :mailer do
   end
 
   describe "Registration_Team" do
-    let(:mail) { RegistrationMailerMailer.Registration_Team }
+    let(:mail) { RegistrationMailer.Registration_Team }
 
     it "renders the headers" do
       expect(mail.subject).to eq("Registration team")

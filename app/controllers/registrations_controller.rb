@@ -7,6 +7,7 @@ class RegistrationsController < ApplicationController
   def new
     active_event = Event.active_event
     redirect_to "/" if active_event.blank?
+    redirect_to registration_not_available_path if active_event.status_value == Event::StatusValue::NOT_AVAILABLE
 
     @participant = Participant.new
     @registration = Registration.new(room_type: Registration::RoomType::DEFAULT)
@@ -38,17 +39,17 @@ class RegistrationsController < ApplicationController
 
     @registration.participant = @participant
 
-    if @participant.valid? && @registration.valid? 
+    if @participant.valid? && @registration.valid?
       if verify_recaptcha(:model => @registration)
         if @registration.save
           @is_create = true
           RegistrationMailer.welcome_email(@registration).deliver_later
           RegistrationMailer.team_email(@registration).deliver_later
         else
-          flash[:error] = t(:fe_registration_error) 
+          flash[:error] = t(:fe_registration_error)
         end
       else
-        @recaptcha_error = true 
+        @recaptcha_error = true
         is_create = false
         flash[:error] = t(:fe_captcha_controller)
       end
@@ -59,7 +60,6 @@ class RegistrationsController < ApplicationController
     logger.debug @registration.errors.inspect
     logger.debug @participant.errors.inspect
   end
-
 
   private
 

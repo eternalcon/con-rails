@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
-  resources :participants
-  resources :registrations
-  #get 'participants/new'
 
-  #get 'participants/create'
-
-  #get 'participants/show'
+  resources :registrations, only: [:new, :create]
+  resources :freeforms, only: [:index]
+  resources :freeform_registrations, only: [:new, :create]
+  resources :board_games, only: [:index, :new, :create]
 
   namespace :admin do
     resources :events do
@@ -15,6 +13,7 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/registrations/no_available', to: 'registrations#not_available', as: :registration_not_available
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)

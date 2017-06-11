@@ -43,6 +43,16 @@
                   <%= link_to 'Registration', new_registration_path, class: 'nav-link' -%>
                 <% end -%>
               </li>
+            <li class="nav-item">
+              <% unless Event.active_event.blank? -%>
+                <%= link_to 'Freeforms', freeforms_path, class: 'nav-link' -%>
+              <% end -%>
+            </li>
+            <li class="nav-item">
+              <% unless Event.active_event.blank? -%>
+                <%= link_to 'Boardgames', board_games_path, class: 'nav-link' -%>
+              <% end -%>
+            </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li class="nav-item">
@@ -57,7 +67,13 @@
           </nav>
       <div class="row" id="messageDiv" style="display: none;">
         <div class="col-xs-12">
-          <div class="alert alert-danger" id="alertDangerContent">
+          <div class="alert alert-danger" id="alertDangerContent" style="display: none">
+            <%= flash[:errror] %>
+          </div>
+        </div>
+        <div class="col-xs-12">
+          <div class="alert alert-success" id="alertSuccessContent" style="display: none">
+            <%= flash[:notice] %>
           </div>
         </div>
       </div>

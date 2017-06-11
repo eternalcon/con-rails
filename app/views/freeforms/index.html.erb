@@ -1,0 +1,22 @@
+<% @freeforms.each do |freeform| -%>
+
+  <div class="row">
+    <div class="col-xs-12" class="content_small">
+      <div class="pricebox">
+        <p class="subheader"> <%= freeform.title %></p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12" class="content_small">
+      <div class="pricebox">
+        <p class="copy"><%= simple_format(freeform.desc_long) %></p>
+      </div>
+      <div>
+        <div class="pull-right">
+          <%= link_to 'Register', new_freeform_registration_path(freeform_id: freeform), class: 'btn btn-primary' -%>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end -%>
