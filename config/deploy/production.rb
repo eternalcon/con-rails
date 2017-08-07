@@ -36,7 +36,7 @@ set :deploy_via, :remote_cache
 
 # Default deploy_to directory is /var/www/my_app_name
  set :deploy_to, '/var/www/con-rails'
- set :rvm_ruby_version, '2.3.0@con-rails'
+ set :rvm_ruby_version, '2.4.0@con-rails'
  
  # Set up delayed_job to be restarted properly
  # set :delayed_job_workers, 2
