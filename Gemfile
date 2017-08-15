@@ -40,6 +40,8 @@ group :development, :test do
   gem 'cucumber-rails', :require => false
   # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
+  # use factory_girl as replacement for fixtures
+  gem 'factory_girl_rails'
 end
 
 group :development do
@@ -55,6 +57,9 @@ group :development do
   gem 'guard-cucumber', require: false
 end
 
+group :test do
+  gem 'faker'
+end
 # Since we're not using Windows, we won't need tzinfo-data...
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 #gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
