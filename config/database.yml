@@ -20,9 +20,9 @@ default: &default
   socket: <%= Rails.application.secrets[:database][:socket] %>
 
 development: *default
-test: &test
+test: *default
 production: *default
 staging: *default
 
-cucumber:
-  <<: *test
+#cucumber:
+#  <<: *default
