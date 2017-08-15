@@ -48,7 +48,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'guard'
   gem 'guard-bundler', require: false
-#  gem 'guard-rspec', require: false
+  gem 'guard-rspec', require: false
 #  gem 'guard-cucumber', require: false
 end
 
