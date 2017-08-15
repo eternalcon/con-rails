@@ -105,3 +105,11 @@ guard "cucumber", cucumber_options do
     Dir[File.join("**/#{m[1]}.feature")][0] || "features"
   end
 end
+
+passenger_options= {
+  ping: true
+}
+guard 'passenger' do
+  watch(/^lib\/.*\.rb$/)
+  watch(/^config\/.*\.rb$/)
+end

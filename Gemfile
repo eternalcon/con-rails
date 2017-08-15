@@ -58,6 +58,7 @@ group :development do
   gem 'guard-bundler', require: false
   gem 'guard-rspec', require: false
   gem 'guard-cucumber', require: false
+  gem 'guard-passenger', require:false
 end
 
 group :test do

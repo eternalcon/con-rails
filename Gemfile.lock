@@ -117,6 +117,9 @@ GEM
       cucumber (~> 2.0)
       guard-compat (~> 1.0)
       nenv (~> 0.1)
+    guard-passenger (0.6.2)
+      guard (>= 1.1.0)
+      guard-compat (~> 1.1)
     guard-rspec (4.7.3)
       guard (~> 2.1)
       guard-compat (~> 1.1)
@@ -276,6 +279,7 @@ DEPENDENCIES
   guard
   guard-bundler
   guard-cucumber
+  guard-passenger
   guard-rspec
   jbuilder (~> 2.5)
   jquery-rails
