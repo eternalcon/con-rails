@@ -52,7 +52,7 @@ group :development do
   gem 'guard'
   gem 'guard-bundler', require: false
   gem 'guard-rspec', require: false
-#  gem 'guard-cucumber', require: false
+  gem 'guard-cucumber', require: false
 end
 
 # Since we're not using Windows, we won't need tzinfo-data...
