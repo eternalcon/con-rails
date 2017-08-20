@@ -5,6 +5,6 @@ require 'rails_helper'
 # is set up properly.
 RSpec.describe AdminUser, type: :model do
   it "has a valid factory" do
-    build(:admin_user).should be_valid
+    expect(build(:admin_user)).to be_valid
   end
 end
