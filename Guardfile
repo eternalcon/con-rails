@@ -79,12 +79,18 @@ guard :rspec, cmd: "bin/rspec" do
   watch(%r{^spec/acceptance/steps/(.+)_steps\.rb$}) do |m|
     Dir[File.join("**/#{m[1]}.feature")][0] || "spec/acceptance"
   end
+  # run cucumber after rspec passes
+  callback(:run_all_end) do
+    unless Guard.guards(:rspec).last_failed
+      Guard.run_all({ :guard => Guard.guards(:cucumber) })
+    end
+  end
 end
 
 cucumber_options = {
   # Below are examples overriding defaults
 
-  # cmd: 'bin/cucumber',
+  cmd: 'bin/cucumber',
   # cmd_additional_args: '--profile guard',
 
   # all_after_pass: false,
