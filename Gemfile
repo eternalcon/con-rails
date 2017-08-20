@@ -33,6 +33,10 @@ gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails'
 gem 'bootstrap', '>= 4.0.0.beta'
 
+# Use activeadmin for administration backend
+gem 'activeadmin'
+gem 'devise'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
