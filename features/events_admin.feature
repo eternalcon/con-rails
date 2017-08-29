@@ -9,3 +9,9 @@ Feature: Events Admin
     Then I should be presented with a login screen
     When I try to access the events admin panel as regular user directly
     Then I should be redirected to the login screen
+  
+  Scenario: Admin Users can access the admin panel and sub-panels
+    Given I am logged in as admin user
+    When I access the admin panel
+    Then I should have access to the active admin dashboard
+    And I should have access to the Events admin panel
