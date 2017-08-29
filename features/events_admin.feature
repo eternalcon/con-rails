@@ -3,12 +3,9 @@ Feature: Events Admin
   When I visit the Administration Panel,
   I want to be able to administrate events.
   
-  Scenario: Only Administrators will have access to the events admin panel
-    When I access the admin panel as administrator
+  Scenario: Regular users should not have access to the admin panel or sub-panels
     Given I am not logged in as admin user
+    When I access the admin panel as regular user
     Then I should be presented with a login screen
-    And not have access to the events admin panel
-    Given I am logged in as admin user
-    Then I will have access to the events admin panel
-    
-    
+    When I try to access the events admin panel as regular user directly
+    Then I should be redirected to the login screen
