@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/activeadmin/inherited_resources.git
+  remote: https://github.com/activeadmin/inherited_resources.git
   revision: 5d18499877852437f2c058747f07bc80e46557fc
   specs:
     inherited_resources (1.7.2)
@@ -472,4 +472,4 @@ DEPENDENCIES
   zeus
 
 BUNDLED WITH
-   1.15.0
+   1.15.4
