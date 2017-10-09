@@ -47,6 +47,10 @@ gem 'simple_form'
 gem 'country_select'
 # Use Googles ReCaptcha for spam prevention
 gem "recaptcha", require: "recaptcha/rails"
+
+# Use react for new rails js views
+gem "react-rails"
+
 # Use Delayed_Job for Active Job asynchronous queue with retries (e.g. mailers)
 gem 'delayed_job_active_record'
 # Use daemons to keep job runners daemonized
