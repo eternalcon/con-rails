@@ -18,7 +18,8 @@ ActiveSupport.to_time_preserves_timezone = true
 Rails.application.config.active_record.belongs_to_required_by_default = true
 
 # Do not halt callback chains when a callback returns false. Previous versions had true.
-ActiveSupport.halt_callback_chains_on_return_false = false
+#ActiveSupport.halt_callback_chains_on_return_false = false
+# This is deprecated from rails 5.2. s.a. http://blog.bigbinary.com/2016/02/13/rails-5-does-not-halt-callback-chain-when-false-is-returned.html
 
 # Configure SSL options to enable HSTS with subdomains. Previous versions had false.
 Rails.application.config.ssl_options = { hsts: { subdomains: true } }
