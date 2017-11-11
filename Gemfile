@@ -47,8 +47,8 @@ group :development, :test do
   gem 'cucumber-rails', :require => false
   # database_cleaner is not required, but highly recommended
   gem 'database_cleaner'
-  # use factory_girl as replacement for fixtures
-  gem 'factory_girl_rails'
+  # use factory_bot as replacement for fixtures
+  gem 'factory_bot_rails'
 end
 
 group :development do
