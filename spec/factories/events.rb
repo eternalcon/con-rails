@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :event do
     name { Faker::StarWars.wookiee_sentence }
     start_date { Faker::Time.forward(360, :morning) }
