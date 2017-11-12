@@ -6,6 +6,7 @@
 
 require 'cucumber/rails'
 require 'rspec/expectations'
+require 'capybara/rails'
 require 'capybara/cucumber'
 World(FactoryBot::Syntax::Methods)
 
