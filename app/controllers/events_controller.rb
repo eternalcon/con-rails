@@ -7,6 +7,6 @@ class EventsController < ApplicationController
     # Additionally, if there is an active event, the main content of the page
     # should be information about the upcoming event.
     
-    @event = Event.first
+    @event = Event.first # needs to be changed for multiple events in database, so only the "active" event will be found instead of the first one.
   end
 end
