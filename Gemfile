@@ -29,6 +29,9 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# Use rails-i18n to add locales
+
+gem 'rails-i18n', '~> 5.0.0' # For 5.0.x and 5.1.x
 # Use Bootstrap 4 for style - requiring Jquery
 gem 'jquery-rails'
 gem 'bootstrap', '>= 4.0.0.beta2.1'
