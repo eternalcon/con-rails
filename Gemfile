@@ -31,7 +31,7 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Bootstrap 4 for style - requiring Jquery
 gem 'jquery-rails'
-gem 'bootstrap', '>= 4.0.0.beta'
+gem 'bootstrap', '>= 4.0.0.beta2.1'
 
 # Use activeadmin for administration backend
 gem 'activeadmin'
