@@ -6,9 +6,10 @@ Rails.application.routes.draw do
   
   scope "(:locale)", locale: /en|de/ do
     root to: "events#index"
-    devise_for :users
+    
     resources :events, only: [ :index ]
-    resources :registrations
+    resources :event_registrations
+    devise_for :users
   end
   ActiveAdmin.routes(self)
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
