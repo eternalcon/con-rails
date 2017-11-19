@@ -1,4 +1,5 @@
 class Event < ApplicationRecord
+  has_many :event_registrations
   has_many :participants, through: :event_registrations
   validates :name, :start_date, :end_date, presence: true
   validate :end_date_must_be_after_start_date
