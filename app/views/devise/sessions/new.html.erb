@@ -1,15 +1,18 @@
-<h2><%= t(".sign_in") %></h2>
+<div class="container">
+  <p>
+    If you already are a registered User on the Eternal Convention website, please sign in here. If not, please register a User Account first in order to continue.
+  </p>
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "form-signin"}) do |f| %>
+    <div class="form-inputs">
+      <%= f.input :email, placeholder: 'Email address', required: true, autofocus: true, input_html: {id: 'inputEmail' }, label_html: { class: 'sr-only' }  %>
+      <%= f.input :password, placeholder: 'Password', required: true, input_html: {id: 'inputPassword' }, label_html: { class: 'sr-only' } %>
+      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+    </div>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email, required: false, autofocus: true %>
-    <%= f.input :password, required: false %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-  </div>
+    <div class="form-actions">
+      <%= f.button :submit, t(".sign_in") %>
+    </div>
+  <% end %>
 
-  <div class="form-actions">
-    <%= f.button :submit, t(".sign_in") %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+  <%= render "devise/shared/links" %>
+</div>
