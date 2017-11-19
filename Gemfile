@@ -43,6 +43,8 @@ gem 'devise-i18n' # for internationalization/localization of devise
 
 # use simple_forms for simplifying form building
 gem 'simple_form'
+# country_select for simple_form
+gem 'country_select'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
