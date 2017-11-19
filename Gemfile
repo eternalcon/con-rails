@@ -39,6 +39,7 @@ gem 'bootstrap', '>= 4.0.0.beta2.1'
 # Use activeadmin for administration backend
 gem 'activeadmin'
 gem 'devise'
+gem 'devise-i18n' # for internationalization/localization of devise
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

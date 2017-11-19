@@ -26,8 +26,8 @@ module ConRails
     # -- all .rb files in that directory are automatically loaded.
 
     # Don't generate system test files.
-    config.i18n.available_locales = ['en-US', 'de-DE']
-    config.i18n.default_locale = 'en-US'
+    config.i18n.available_locales = [ :en, 'en-US', 'de-DE' ]
+    config.i18n.default_locale = :en
     config.generators.system_tests = nil
     config.generators do |g|
       g.test_framework :rspec,
