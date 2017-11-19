@@ -1,4 +1,4 @@
-class CreateRegistrations < ActiveRecord::Migration[5.1]
+class CreateEventRegistrations < ActiveRecord::Migration[5.1]
   def change
     create_table :registrations do |t|
       t.references :event, foreign_key: true
