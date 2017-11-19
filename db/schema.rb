@@ -43,6 +43,17 @@ ActiveRecord::Schema.define(version: 20171119150423) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "event_registrations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "event_id"
+    t.bigint "user_id"
+    t.bigint "participant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_event_registrations_on_event_id"
+    t.index ["participant_id"], name: "index_event_registrations_on_participant_id"
+    t.index ["user_id"], name: "index_event_registrations_on_user_id"
+  end
+
   create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.date "start_date"
@@ -64,17 +75,6 @@ ActiveRecord::Schema.define(version: 20171119150423) do
     t.date "birthdate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "registrations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.bigint "event_id"
-    t.bigint "user_id"
-    t.bigint "participant_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["event_id"], name: "index_registrations_on_event_id"
-    t.index ["participant_id"], name: "index_registrations_on_participant_id"
-    t.index ["user_id"], name: "index_registrations_on_user_id"
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -99,7 +99,7 @@ ActiveRecord::Schema.define(version: 20171119150423) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "registrations", "events"
-  add_foreign_key "registrations", "participants"
-  add_foreign_key "registrations", "users"
+  add_foreign_key "event_registrations", "events"
+  add_foreign_key "event_registrations", "participants"
+  add_foreign_key "event_registrations", "users"
 end
