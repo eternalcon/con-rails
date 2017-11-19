@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171119145359) do
+ActiveRecord::Schema.define(version: 20171119150423) do
 
   create_table "active_admin_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "namespace"
@@ -66,6 +66,17 @@ ActiveRecord::Schema.define(version: 20171119145359) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "registrations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "event_id"
+    t.bigint "user_id"
+    t.bigint "participant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_registrations_on_event_id"
+    t.index ["participant_id"], name: "index_registrations_on_participant_id"
+    t.index ["user_id"], name: "index_registrations_on_user_id"
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -88,4 +99,7 @@ ActiveRecord::Schema.define(version: 20171119145359) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "registrations", "events"
+  add_foreign_key "registrations", "participants"
+  add_foreign_key "registrations", "users"
 end
