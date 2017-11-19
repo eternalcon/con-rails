@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :users
+  
   root to: "events#index"
   devise_for :admin_users, ActiveAdmin::Devise.config
   
   
-  scope "(:locale)", locale: /en-US|de-DE/ do
+  scope "(:locale)", locale: /en|de/ do
+    devise_for :users
     resources :events, only: [ :index ]
     resources :registrations
   end
