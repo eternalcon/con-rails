@@ -41,6 +41,9 @@ gem 'activeadmin'
 gem 'devise'
 gem 'devise-i18n' # for internationalization/localization of devise
 
+# use simple_forms for simplifying form building
+gem 'simple_form'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
