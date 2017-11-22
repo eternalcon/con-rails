@@ -5,11 +5,14 @@ Rails.application.routes.draw do
     root to: "events#index"
     devise_for :users
     resources :events, only: [ :index ]
-#    resources :event_registrations
     resources :participants do
       resources :events
     end
     resources :events do
+      resources :participants
+    end
+    resources :event_registrations do
+      resources :events
       resources :participants
     end
   end
