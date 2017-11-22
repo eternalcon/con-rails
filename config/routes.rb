@@ -1,16 +1,18 @@
 Rails.application.routes.draw do
-  
-  
-  devise_for :admin_users, ActiveAdmin::Devise.config
-  
-  
   scope "(:locale)", locale: /en|de/ do
-    root to: "events#index"
-    
-    resources :events, only: [ :index ]
-    resources :event_registrations
-    devise_for :users
-  end
   ActiveAdmin.routes(self)
+  devise_for :admin_users, ActiveAdmin::Devise.config
+    root to: "events#index"
+    devise_for :users
+    resources :events, only: [ :index ]
+#    resources :event_registrations
+    resources :participants do
+      resources :events
+    end
+    resources :events do
+      resources :participants
+    end
+  end
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
