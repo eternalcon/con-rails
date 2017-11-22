@@ -1,5 +1,13 @@
-require 'rails_helper'
+require_relative '../rails_helper'
 
 RSpec.describe Participant, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+end
+
+RSpec.describe '#create' do
+  it "should save a valid model" do
+    participant = build(:participant)
+
+    expect(participant.save).to be_truthy
+  end
 end

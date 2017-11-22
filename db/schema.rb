@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(version: 20171119150423) do
     t.string "name"
     t.date "start_date"
     t.date "end_date"
+    t.boolean "active", default: false
+    t.integer "status_value", default: 10
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "full_price", precision: 10
