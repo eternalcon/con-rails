@@ -2,9 +2,12 @@
       <div class="jumbotron">
         <div class="container">
           <h1 class="display-3"> <%= @event.name %> from <%= l @event.start_date, format: :long %> to <%= l @event.end_date, format: :long %></h1>
-          <% if Date.today.year < @event.start_date.year %>
+          <% if Time.now.utc.to_date.year < @event.start_date.year %>
             <p>Save the date! Registration for <%= @event.name %> will start on the first of January, <%= @event.start_date.year %></p>
             <p><a class="btn btn-primary btn-lg disabled" href="<%= new_event_registration_path %>" role="button" aria-disabled="true" >Register on January 1st! &raquo;</a></p>
+          <% elsif Time.now.utc.to_date >= @event.start_date %>
+            <p>As <%= @event.name %> is too close to process online registrations, the registration has been disabled. If you still wish to attend, please  
+            <a class="btn btn-primary btn-lg" href="mailto:pittel@eternal-con.de" role="button" >contact Pittel!</a></p>
           <% else %>
             <p>You're lucky! Registration for <%= @event.name %> is open and there are still places left!</p>
             <p><a class="btn btn-primary btn-lg" href="<%= new_event_registration_path %>" role="button">Register Now! &raquo;</a></p>
