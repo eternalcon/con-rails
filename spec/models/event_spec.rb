@@ -20,8 +20,9 @@ RSpec.describe Event, type: :model do
   
   # Test for event status switch based on date
   it "is pending if it happens in a future year" do
-    event = create(:event, start_date: Time.now + 2.years, end_date: Time.now + 2.years + 3.days)
-    expect(event.status).to eq "pending"
+    create(:event, start_date: Time.now + 2.years, end_date: Time.now + 2.years + 3.days)
+    
+    expect(@event.status).to eq "pending"
   end
   
   it "is active if it happens this year and far enough in the future" do
