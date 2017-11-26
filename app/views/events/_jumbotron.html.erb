@@ -1,7 +1,7 @@
 <!-- Main jumbotron for a primary marketing message or call to action -->
       <div class="jumbotron">
         <div class="container">
-          <h1 class="display-3"> <%= @event.name %> from <%= l @event.start_date, format: :long %> to <%= l @event.end_date, format: :long %></h1>
+          <h1 class="display-3"> Welcome to <%= @event.name %> taking place from <%= l @event.start_date, format: :long %> to <%= l @event.end_date, format: :long %> at Youth Hostel Castle Stahleck in Bacharach!</h1>
           <% if Time.now.utc.to_date.year < @event.start_date.year %>
             <p>Save the date! Registration for <%= @event.name %> will start on the first of January, <%= @event.start_date.year %></p>
             <p><a class="btn btn-primary btn-lg disabled" href="<%= new_event_registration_path %>" role="button" aria-disabled="true" >Register on January 1st! &raquo;</a></p>
