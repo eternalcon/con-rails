@@ -2,7 +2,14 @@
       <div class="jumbotron">
         <div class="container">
           <h1 class="display-3"> <%= @event.name %> from <%= l @event.start_date, format: :long %> to <%= l @event.end_date, format: :long %></h1>
-          <p>We need to add some infos here...</p>
-          <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+          <% if Date.today.year < @event.start_date.year %>
+            <p>Save the date! Registration for <%= @event.name %> will start on the first of January, <%= @event.start_date.year %></p>
+            <p><a class="btn btn-primary btn-lg disabled" href="<%= new_event_registration_path %>" role="button" aria-disabled="true" >Register on January 1st! &raquo;</a></p>
+          <% else %>
+            <p>You're lucky! Registration for <%= @event.name %> is open and there are still places left!</p>
+            <p><a class="btn btn-primary btn-lg" href="<%= new_event_registration_path %>" role="button">Register Now! &raquo;</a></p>
+          <% end %>
+          
         </div>
       </div>
+      
