@@ -4,7 +4,7 @@
           <h1 class="display-3">Herzlich willkommen zu <%= @event.name %> vom <%= l @event.start_date, format: :long %> bis zum <%= l @event.end_date, format: :long %> auf der <a href=§https://www.diejugendherbergen.de/jugendherbergen/bacharach/portrait/">Jugendherberge Burg Stahleck</a> in <a href="http://www.bacharach.de/startseite/">Bacharach am Rhein!</a></h1>
           <% if @event.status == "pending" %>
             <p>Merke dir das Datum, die Anmeldung für <%= @event.name %> öffnet am 1. Januar <%= @event.start_date.year %></p>
-            <p><a class="btn btn-primary btn-lg disabled" href="<%= new_event_registration_path %>" role="button" aria-disabled="true" >Register on January 1st! &raquo;</a></p>
+            <p><a class="btn btn-primary btn-lg disabled" href="<%= new_event_registration_path %>" role="button" aria-disabled="true" >Anmelden ab 1. Januar! &raquo;</a></p>
           <% elsif @event.status == "waiting" %>
             <p>Der Termin für <%= @event.name %> ist mittlerweile zu nah, um Online-Anmeldungen noch zu verarbeiten. Wenn du trotzdem noch einen der verfügbaren Plätze ergattern willst, melde dich <a class="btn btn-primary btn-lg" href="mailto:pittel@eternal-con.de" role="button" >direkt bei Pittel!</a></p>
           <% elsif @event.status == "active" %>
