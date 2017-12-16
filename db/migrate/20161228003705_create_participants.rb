@@ -1,6 +1,7 @@
 class CreateParticipants < ActiveRecord::Migration[5.0]
   def change
     create_table :participants do |t|
+      t.references :registration, foreign_key: true
       t.string :first_name
       t.string :last_name
       t.string :nickname

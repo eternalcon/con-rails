@@ -4,9 +4,7 @@ gem 'rails', '>= 5.1', '< 5.2'
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.3.18', '< 0.5'
 # Use Puma as the app server
-#gem 'puma', '~> 3.0'
-# use passenger as web server
-gem "passenger", ">= 5.0.25", require: "phusion_passenger/rack_handler"
+gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0.6'
 # Use LESS for stylesheets
@@ -48,9 +46,6 @@ gem 'country_select'
 # Use Googles ReCaptcha for spam prevention
 gem "recaptcha", require: "recaptcha/rails"
 
-# Use react for new rails js views
-gem "react-rails"
-
 # Use Delayed_Job for Active Job asynchronous queue with retries (e.g. mailers)
 gem 'delayed_job_active_record'
 # Use daemons to keep job runners daemonized
@@ -60,11 +55,19 @@ gem 'whenever', :require => false
 # Use sanitize_email to send mails to a specific account in staging
 gem 'sanitize_email'
 
+# For using fancy javascript libraries
+gem 'webpacker', git: 'https://github.com/rails/webpacker.git'
+
 group :development, :test do
 # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   gem "rspec-rails"
   gem "factory_girl_rails", "~> 4.0"
+end
+
+group :production do
+  # use passenger as web server
+  gem "passenger", ">= 5.0.25", require: "phusion_passenger/rack_handler"
 end
 
 group :development do
