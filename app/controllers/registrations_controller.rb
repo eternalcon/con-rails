@@ -9,7 +9,10 @@ class RegistrationsController < ApplicationController
     redirect_to "/" if active_event.blank?
     redirect_to registration_not_available_path if active_event.status_value == Event::StatusValue::NOT_AVAILABLE
 
-    @participant = Participant.new
+    @participants = [
+        Participant.new(first_name: 'Boris', last_name: 'Raeschler', email: 'boris.raeschler@gmail.com'),
+        Participant.new(first_name: 'Daniel', last_name: 'Zaumsegel', email: 'daniel.zaumsegel@gmail.com'),
+        Participant.new]
     @registration = Registration.new(room_type: Registration::RoomType::DEFAULT)
     @registration.event = active_event
     # @registration.participant = @participant
@@ -20,8 +23,28 @@ class RegistrationsController < ApplicationController
 
   end
 
-
   def create
+    @participants = fill_participants_array
+  end
+
+  def fill_participants_array
+    val_ar = []
+
+    (0..length_of_params).each do |i|
+      val_ar << Participant.new(first_name: params[:part_first_name][i], last_name: params[:part_last_name][i], email: params[:part_email][i], age: params[:part_age][i])
+    end
+    val_ar
+  end
+
+  def length_of_params
+    length = params[:part_first_name].length
+    length = params[:part_last_name].length if params[:part_last_name].length > length
+    length = params[:part_email].length if params[:part_email].length > length
+
+    length
+  end
+
+  def create_old
     @lang = params[:lang] || "en"
     I18n.locale = @lang
 

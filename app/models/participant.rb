@@ -1,4 +1,6 @@
 class Participant < ActiveRecord::Base
+  attr_accessor :age
+
   has_many :registrations
   has_many :events, :through => :registrations
   
