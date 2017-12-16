@@ -12,7 +12,7 @@ class RegistrationsController < ApplicationController
     @participant = Participant.new
     @registration = Registration.new(room_type: Registration::RoomType::DEFAULT)
     @registration.event = active_event
-    @registration.participant = @participant
+    # @registration.participant = @participant
 
     #@lang = params[:lang].gsub("'","") unless params[:lang].blank?
     @lang =  "en" if @lang.blank?
