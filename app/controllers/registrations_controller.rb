@@ -11,8 +11,7 @@ class RegistrationsController < ApplicationController
 
     @participants = [
         Participant.new(first_name: 'Boris', last_name: 'Raeschler', email: 'boris.raeschler@gmail.com'),
-        Participant.new(first_name: 'Daniel', last_name: 'Zaumsegel', email: 'daniel.zaumsegel@gmail.com'),
-        Participant.new]
+        ]
     @registration = Registration.new(room_type: Registration::RoomType::DEFAULT)
     @registration.event = active_event
     # @registration.participant = @participant

@@ -7,18 +7,22 @@
 <% end %>
 
 <div class="hidden">
-  <div class="form-group", id="hiddenFormGroup">
-    <label class="col-sm-1">First Name</label>
+  <div class="form-group participant-form-row", id="hiddenFormGroup">
+    <label class="col-sm-1">Name</label>
     <div class="col-sm-2">
-      <input type="text" name="part_first_name[]" id="part_first_name_" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Optional">        </div>
-    <div class="col-sm-2">
+      <input type="text" name="part_first_name[]" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Optional">
     </div>
-    <label class="col-sm-1">Last Name</label>
     <div class="col-sm-2">
-      <input type="text" name="part_last_name[]" id="part_last_name_" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Optional">        </div>
+      <input type="text" name="part_last_name[]" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Optional">
+    </div>
+    <label class="col-sm-1">Age</label>
+    <div class="col-sm-1">
+      <select name="part_age[]"><option value="0">0-7</option><option value="8">8-14</option><option value="15">>14</option></select>
+    </div>
     <label class="col-sm-1">E-Mail</label>
     <div class="col-sm-2">
-      <input type="email" name="part_email[]" id="part_email_" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Optional">        </div>
+      <input type="email" name="part_email[]" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Optional">
+    </div>
   </div>
 </div>
 
@@ -26,8 +30,8 @@
     <div class="form-group">
         <label class="col-sm-1 control-label">Auswahl Anzahl</label>
         <div class="col-sm-2">
-          <select class="form-control" id="registrationSelect">
-            <% (1..5).each do |i| -%>
+          <select class="form-control" id="registrationSelect" >
+            <% (1..10).each do |i| -%>
               <option value=<%= i -%>><%= i %> Teilnehmer</option>
             <% end %>
           </select>
@@ -38,7 +42,7 @@
       </fieldset>
     </div>
     <% @participants.each do |participant| %>
-      <div class="form-group">
+      <div class="form-group participant-form-row">
         <label class="col-sm-1">Name</label>
         <div class="col-sm-2">
           <%= text_field_tag("part_first_name[]", participant.first_name, {class: "form-control mb-2 mr-sm-2 mb-sm-0", placeholder: "Optional"}) -%>
@@ -48,7 +52,7 @@
         </div>
         <label class="col-sm-1">Age</label>
         <div class="col-sm-1">
-          <%= text_field_tag("part_age[]", "", {class: "form-control mb-2 mr-sm-2 mb-sm-0", placeholder: "Optional"}) -%>
+          <select name="part_age[]"><option value="0">0-7</option><option value="8">8-14</option><option value="15">>14</option></select>
         </div>
         <label class="col-sm-1">E-Mail</label>
         <div class="col-sm-2">
