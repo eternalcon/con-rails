@@ -46,7 +46,8 @@ gem 'devise-i18n' # for internationalization/localization of devise
 gem 'simple_form'
 # country_select for simple_form
 gem 'country_select'
-
+# cocoon for nested form goodness
+gem "cocoon"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
