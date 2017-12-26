@@ -1,10 +1,11 @@
-<%= simple_form_for(@event_registration) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
+<%= simple_form_for :event_registration, remote: true  do |f| %>
+  <div class="row participant-form" id="participant-form">
+    <%= render partial: 'participant_row' %>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="row add-participant-row">
+    <%= link_to "Add another participant", action: "new", remote: true %>   
   </div>
-<% end %>
+<div class="form-actions">
+  <%= f.submit t(:btn_registration), class: "btn btn-lg btn-default", value: t(:btn_registration) -%>
+</div>
+<% end -%>

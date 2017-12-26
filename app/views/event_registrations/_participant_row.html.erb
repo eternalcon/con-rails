@@ -1,0 +1,27 @@
+<% @event_registration.participants.each do %>
+  <%= simple_fields_for :participant, remote:true do |p| %>
+    <div class="row align-items-end participant-form-row">
+      <div class="col-sm">
+        <%= p.input :first_name, placeholder: 'First Name' %> 
+      </div>
+      <div class="col-sm">
+        <%= p.input :last_name, placeholder: 'Surname' %> 
+      </div>
+      <div class="col-sm">
+        <%= p.input :birthdate, as: :date, start_year: Date.today.year - 100, end_year: Date.today.year, use_short_month: true %>
+      </div>
+      <div class="col-sm">
+        <%= p.input :nickname, placeholder: 'Nickname for Badge', required: false %> 
+      </div>
+      <div class="col-sm">
+        <%= p.input :email, placeholder: 'user@example.com', required: false %> 
+      </div>
+      <div class="col-sm">
+        <%= p.input :country, priority: ["DE", "GB", "FR"] %>
+      </div>
+      <div class="col-sm">
+        <%= p.input :postcode, required: false %>
+      </div>
+    </div>    
+  <% end -%>
+<% end -%>    

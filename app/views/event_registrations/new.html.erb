@@ -1,5 +1,14 @@
-<h1>New Event Registration</h1>
+<% content_for :title do %>
+  <title> Registration for <%= @event_registration.event.name %> </title>
+<% end %>
+<div class="container-fluid">
+  <h1>Registration for <%= @event_registration.event.name %></h1>
+  <p> User responsible for this registration: <%= @event_registration.user.email %> </p>
+  <%= render 'form', event_registration: @event_registration %>
 
-<%= render 'form', event_registration: @event_registration %>
+  <%= link_to 'Back', root_path %>
+</div>
 
-<%= link_to 'Back', event_registrations_path %>
+
+
+

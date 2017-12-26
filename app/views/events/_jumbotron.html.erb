@@ -4,7 +4,7 @@
           <h1 class="display-3"> <%= puts @event.status %> Welcome to <%= @event.name %> taking place from <%= l @event.start_date, format: :long %> to <%= l @event.end_date, format: :long %> at <a href="https://www.diejugendherbergen.de/jugendherbergen/bacharach/portrait/">Youth Hostel Castle Stahleck</a> in <a href="http://www.bacharach.de/startseite/">Bacharach!</a></h1>
           <% if @event.status == "pending" %>
             <p>Save the date! Registration for <%= @event.name %> will start on the first of January, <%= @event.start_date.year %></p>
-            <p><a class="btn btn-primary btn-lg disabled" href="<%= new_event_registration_path %>" role="button" aria-disabled="true" >Register on January 1st! &raquo;</a></p>
+            <p><a class="btn btn-primary btn-lg disabled" href="<%= new_event_event_registration_path(@event) %>" role="button" aria-disabled="true" >Register on January 1st! &raquo;</a></p>
           <% elsif @event.status == "waiting" %>
             <p>As <%= @event.name %> is too close to process online registrations, the registration has been disabled. If you still wish to attend, please  
             <a class="btn btn-primary btn-lg" href="mailto:pittel@eternal-con.de" role="button" >contact Pittel!</a></p>
