@@ -4,7 +4,7 @@
 <div class="container-fluid">
   <h1>Registration for <%= @event_registration.event.name %></h1>
   <p> User responsible for this registration: <%= @event_registration.user.email %> </p>
-    <%= simple_form_for @event_registration, :url => { :action => :preview } do |f| %>
+    <%= simple_form_for @event_registration do |f| %>
       <%= render 'form', event_registration: @event_registration, f: f %>
     <% end -%>
 </div>

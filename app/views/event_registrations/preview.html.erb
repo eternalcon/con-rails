@@ -58,7 +58,7 @@
       </div>
     <% end %>
     <div class="row">
-      <%= button_to :submit, params: @event_registration.as_json(root: true, include: :participants) %>
+      <%= button_to(:submit, { :action => :create }, params: @event_registration.as_json(root: true, include: :participants)) %>
     </div>
 </div>
 

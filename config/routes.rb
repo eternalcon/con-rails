@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       resources :event_registrations
     end
     resources :event_registrations do
-      post 'preview', on: :collection
+      #post 'preview', on: :collection
       resources :events, :participants, :users
     end
   end
