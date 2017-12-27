@@ -9,7 +9,7 @@
     <% end -%>
   </div>
   <div class="row add-participant-row">
-    <%= link_to_add_association 'Add Participant', f, :participants %>   
+    <%= link_to_add_association 'Add Participant', f, :participants, html_options: 'data-turbolinks="false"' %>   
   </div>
 <div class="form-actions">
   <%= f.submit t(:btn_registration), class: "btn btn-lg btn-default", value: t(:btn_registration) -%>

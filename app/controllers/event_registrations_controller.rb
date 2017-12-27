@@ -5,12 +5,7 @@ class EventRegistrationsController < InheritedResources::Base
     @event_registration = EventRegistration.new do |r|
       r.event_id = Event.find_by(status: 'active').id
       r.user_id = current_user.id
-    end
-    @event_registration.participants.build
-    
-    respond_to do |format|
-      format.html
-      format.js
+      r.participants.build
     end
   end
   
