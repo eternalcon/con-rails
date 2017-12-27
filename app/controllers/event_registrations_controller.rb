@@ -9,10 +9,13 @@ class EventRegistrationsController < InheritedResources::Base
     end
   end
   
+  def preview
+    @event_registration = EventRegistration.new(event_registration_params)
+  end
+  
   private
 
     def event_registration_params
-      params.require(:event_registration).permit()
+      params.require(:event_registration).permit(:event_id, :user_id, participants_attributes: [:first_name, :last_name, :birthdate, :nickname, :email, :country, :postcode, :_destroy ])
     end
 end
-

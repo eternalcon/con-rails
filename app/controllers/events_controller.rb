@@ -9,9 +9,7 @@ class EventsController < ApplicationController
     #@events = Event.all   
     @event = Event.find_by( status: 'active')
     #@event = Event.first # needs to be changed for multiple events in database, so only the "active" event will be found instead of the first one.
-    # TODO: Problem: The status of an event is currently only set after_find with a callback and not persisted in the database.
-    # How are we supposed to find an event based on the status, if the status is only set once the event is
-  
+    # TODO: Sort out what to display when there is no event currently active - i.e. after this years event and before registration for next years event starts...
   end    
   
   private
