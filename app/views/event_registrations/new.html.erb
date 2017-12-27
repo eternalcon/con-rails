@@ -4,8 +4,9 @@
 <div class="container-fluid">
   <h1>Registration for <%= @event_registration.event.name %></h1>
   <p> User responsible for this registration: <%= @event_registration.user.email %> </p>
-  <%= render 'form', event_registration: @event_registration %>
-
+    <%= simple_form_for @event_registration, :url => { :action => :preview } do |f| %>
+      <%= render 'form', event_registration: @event_registration, f: f %>
+    <% end -%>
   <%= link_to 'Back', root_path %>
 </div>
 
