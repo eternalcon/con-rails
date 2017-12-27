@@ -8,7 +8,6 @@ class CreateParticipants < ActiveRecord::Migration[5.1]
       t.string :country
       t.string :postcode
       t.date :birthdate
-
       t.timestamps
     end
   end

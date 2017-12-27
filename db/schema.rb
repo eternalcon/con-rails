@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171224122758) do
+ActiveRecord::Schema.define(version: 20171227174517) do
 
   create_table "active_admin_comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "namespace"
@@ -46,24 +46,27 @@ ActiveRecord::Schema.define(version: 20171224122758) do
   create_table "event_registrations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "event_id"
     t.bigint "user_id"
-    t.bigint "participant_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_event_registrations_on_event_id"
-    t.index ["participant_id"], name: "index_event_registrations_on_participant_id"
     t.index ["user_id"], name: "index_event_registrations_on_user_id"
+  end
+
+  create_table "event_registrations_participants", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "event_registration_id", null: false
+    t.bigint "participant_id", null: false
   end
 
   create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.date "start_date"
     t.date "end_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.decimal "full_price", precision: 10
     t.decimal "day_guest", precision: 10
     t.decimal "child", precision: 10
     t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "participants", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -101,6 +104,5 @@ ActiveRecord::Schema.define(version: 20171224122758) do
   end
 
   add_foreign_key "event_registrations", "events"
-  add_foreign_key "event_registrations", "participants"
   add_foreign_key "event_registrations", "users"
 end
