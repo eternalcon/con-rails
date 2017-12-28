@@ -15,7 +15,7 @@
     <%= f.input :country, priority: ["DE", "GB", "FR"] %>
   </div>
   <div class="col-sm">
-    <%= f.input :postcode, required: false %>
+    <%= f.input :postcode, required: false, placeholder: 'Only German Residents' %>
   </div>
   <div class="col-sm">
     <%= link_to_remove_association "remove participant", f, html_options: '"data-turbolinks="false"' %>
