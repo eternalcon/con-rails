@@ -1,0 +1,65 @@
+<p>Welcome to <%= @event_registration.event.name %>!</p>
+
+<p>Apparently, you have been quick enough to catch <%= @event_registration.participants.size %> of the valuable spaces on offer!</p>
+
+<table>
+  <caption>You have successfully registered the following participants:</caption>
+  <thead>
+    <tr>
+      <th>First Name</th> <th>Surname</th><th>Date of Birth</th><th>Nickname for Badge</th><th>Country of Residence</th><th>Postcode, if from Germany</th><th>Participant Fee based on age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @event_registration.participants.each do |participant| %>
+      <tr>
+        <td> <%= participant.first_name %> </td> <td> <%= participant.last_name %> </td><td> <%= participant.birthdate %></td><td> <%= participant.nickname %> </td><td> <%= participant.country %></td><td> <%= participant.postcode %> </td><td> <%= number_to_currency(@event_registration.participant_price?(participant), :unit => "€") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan=6>Your total Convention Fee for all registered participants is:</td><td><b><strong><%= number_to_currency(@event_registration.price_total?, :unit => "€") %></strong></b></td>
+    </tr>
+  </tfoot>
+</table>
+</br>
+The Convention starts at <%= @event_registration.event.start_date %> at 17 h and ends at <%= @event_registration.event.end_date -%> at 10 h.</br>
+Check-in is open Friday from 2 – 10 pm, please send us an email in case you intend to arrive at another time. </br>
+Location is the JH Castle Stahleck in Bacharach, Germany.</br>
+Your registration is valid as soon as we receive your payment</br>
+
+The price includes 3 x Accomodation and sheets, in addition breakfast, lunch, dinner and the Convention-Fee.</br>
+</br>
+
+<em>Please send the money to<em></br>
+</br>
+<p>
+<strong>
+    Eternal Con e.V. </br>
+    Deutsche Skatbank Altenburg</br>
+    Account Nr: 4526465</br>
+    BLZ 830 654 10</br>
+    </br>
+    For International Bank Transfers:</br>
+    IBAN:   DE91 8306 5408 0004 5264 65</br>
+    BIC:    GENODEF1SLR</br></br>
+
+  Or via Paypal to Pittel@eternal-con.de</br>
+</strong>
+</p>
+
+  <p>
+  Other fees like freeforms (10,00 Euro per freeform) have to be payed in cash at the Con.
+  </p>
+
+  <p>
+    Please don’t forget to bring towels!
+  </p>
+  
+  <p>
+  The Eternal-Crew is looking forward to meet you and we wish you a great time and good gaming.</br>
+  </p>
+
+  <p>
+PS.: for more information visit <a href="http://eternal-con.de">EternalCon.de</a> or <a href="http://www.facebook.com/EternalConvention">Facebook</a>
+</p>
