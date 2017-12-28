@@ -39,5 +39,6 @@ module ConRails
         :request_specs => true
       g.fixture_replacement :factory_bot, :dir => "spec/factories"
     end
+    config.active_job.queue_adapter = :delayed_job
   end
 end
