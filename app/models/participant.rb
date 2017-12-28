@@ -6,4 +6,5 @@ class Participant < ApplicationRecord
    # OPTIMIZE: Validation fails if trying to enter the same participant twice in the same event_registration form resulting in hard mysql error due to unique constraint.
    # OPTIMIZE: Should usually be no problem, but if this can be improved, we should do so.
   validates :first_name, uniqueness: { scope: [ :last_name, :birthdate ], message: "Participant already exists." }
+  belongs_to :user
 end
