@@ -8,4 +8,13 @@ class Participant < ApplicationRecord
   validates :first_name, uniqueness: { scope: [ :last_name, :birthdate ], message: "Participant already exists." }
   # Specifying the belongs_to relationship breaks functionality as appare
   # belongs_to :user, :inverse_of => :participant
+  has_many :events, through: :event_registrations
+  
+# Method to determine age based on date of birth
+  def self.age(reference_date)
+    reference_date = reference_date
+    age = reference_date.year - self.birthdate.year - ((.month > self.birthdate.month || (reference_date.month == self.birthdate.month && reference_date.day >= self.birthdate.day)) ? 0 : 1)
+    return age
+  end
+
 end
