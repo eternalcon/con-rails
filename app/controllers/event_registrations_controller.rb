@@ -1,11 +1,22 @@
 class EventRegistrationsController <  ApplicationController
   before_action :authenticate_user!
+  # TODO: We need to handle existing participants in the whole thing for future events.
+  # TODO: The first registered participant needs to be assigned to the user if it is not there already (or any other way of having the current_user.participant be set properly.
+  # TODO: We need to at least "recycle" existing participants when a record matching the entered data already exists in the database - i.e. only create the link between event_registration and participant
+  # TODO: Better would be updating the existing participant if changed info is entered on the non-unique fields.
+  # TODO: Maybe make the form autocomplete with AJAX when typing or something like that.
+  # TODO: Not quite related to this controller, but it would be cool to add an option for users to claim "their" participant - i.e. if somebody else registered my name last year and now I want to do it myself,
+  # TODO: have the existing participant linked to my user.
   
   def new
     @event_registration = EventRegistration.new do |r|
       r.event_id = Event.find_by(status: 'active').id
       r.user_id = current_user.id
-      r.participants.build(current_user.participant.serializable_hash)
+      if current_user.participant.nil?
+        r.participants.build
+      else
+        r.participants.build(current_user.participant.serializable_hash)
+      end
     end
   end
   
@@ -14,10 +25,15 @@ class EventRegistrationsController <  ApplicationController
     @event_registration.save
     #@event_registration.participants.create
     if @event_registration.save
-    redirect_to root_path # need proper redirect after save
+    redirect_to event_registration_path(@event_registration)
     else
       render 'new'
     end
+  end
+  
+  def show
+    @event_registration = EventRegistration.find(params[:id])
+    
   end
   
   #def create
