@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 20171227174517) do
     t.date "birthdate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["first_name", "last_name", "birthdate"], name: "index_participants_on_first_name_and_last_name_and_birthdate", unique: true
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

@@ -12,7 +12,12 @@ class EventRegistrationsController <  ApplicationController
   def create
     @event_registration = EventRegistration.new(event_registration_params)
     @event_registration.save
-    @event_registration.participants.create
+    #@event_registration.participants.create
+    if @event_registration.save
+    redirect_to root_path # need proper redirect after save
+    else
+      render 'new'
+    end
   end
   
   #def create
