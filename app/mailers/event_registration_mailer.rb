@@ -1,0 +1,2 @@
+class EventRegistrationMailer < ApplicationMailer
+end
