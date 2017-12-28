@@ -9,55 +9,77 @@
         <p>Payment information and all further updates regarding this registration will be sent to <%= @event_registration.user.email -%>
     </div>
   </div>
-    <div class="row align-items-end participant-header">
+  <div class="row align-items-end participant-header">
+    <div class="col-sm">
+      First Name 
+    </div>
+    <div class="col-sm">
+      Surname
+    </div>
+    <div class="col-sm">
+      Date of Birth
+    </div>
+    <div class="col-sm">
+      Nickname for Badge 
+    </div>
+    <div class="col-sm">
+      Country of Residence
+    </div>
+    <div class="col-sm">
+      Postcode, if from Germany
+    </div>
+    <div class="col-sm">
+      Participant Fee based on age
+    </div>
+  </div>
+  <% @event_registration.participants.each do |participant| %>
+    <div class="row align-items-end participant-row">
       <div class="col-sm">
-        First Name 
+        <%= participant.first_name %> 
       </div>
       <div class="col-sm">
-        Surname
+        <%= participant.last_name %> 
       </div>
       <div class="col-sm">
-        Date of Birth
+        <%= participant.birthdate %>
       </div>
       <div class="col-sm">
-        Nickname for Badge 
+        <%= participant.nickname %> 
       </div>
       <div class="col-sm">
-        Country of Residence
+        <%= participant.country %>
       </div>
       <div class="col-sm">
-        Postcode, if from Germany
+        <%= participant.postcode %>
       </div>
       <div class="col-sm">
-        Participant Fee based on age
+        <%= number_to_currency(@event_registration.participant_price?(participant), :unit => "€") %>
       </div>
     </div>
-    <% @event_registration.participants.each do |participant| %>
-      <div class="row align-items-end participant-row">
-        <div class="col-sm">
-          <%= participant.first_name %> 
-        </div>
-        <div class="col-sm">
-          <%= participant.last_name %> 
-        </div>
-        <div class="col-sm">
-          <%= participant.birthdate %>
-        </div>
-        <div class="col-sm">
-          <%= participant.nickname %> 
-        </div>
-        <div class="col-sm">
-          <%= participant.country %>
-        </div>
-        <div class="col-sm">
-          <%= participant.postcode %>
-        </div>
-        <div class="col-sm">
-          <%= number_to_currency(@event_registration.participant_price?(participant), :unit => "€") %>
-        </div>
-      </div>
-    <% end %>
-    
+  <% end %>
+  <div class="row price_total justify-content-end">
+    <div class="col-sm">
+  
+    </div>
+    <div class="col-sm">
+      
+    </div>
+    <div class="col-sm">
+     
+    </div>
+    <div class="col-sm">
+      
+    </div>
+    <div class="col-sm">
+      
+    </div>
+    <div class="col-sm">
+      <b>Your total Convention Fee for all registered participants is:</b> 
+    </div>
+    <div class="col-sm">
+      <b><%= number_to_currency(@event_registration.price_total?, :unit => "€") %></b>
+    </div>
+  </div>
 </div>
 
 
