@@ -9,6 +9,7 @@ class CreateParticipants < ActiveRecord::Migration[5.1]
       t.string :postcode
       t.date :birthdate
       t.timestamps
+      t.index [ :first_name, :last_name, :birthdate], :unique => true
     end
   end
 end
