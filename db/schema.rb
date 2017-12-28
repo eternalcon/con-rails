@@ -76,8 +76,9 @@ ActiveRecord::Schema.define(version: 20171228082524) do
     t.string "name"
     t.date "start_date"
     t.date "end_date"
+    t.integer "max_participants"
     t.decimal "full_price", precision: 10
-    t.decimal "day_guest", precision: 10
+    t.decimal "youth", precision: 10
     t.decimal "child", precision: 10
     t.string "status"
     t.datetime "created_at", null: false
@@ -88,12 +89,14 @@ ActiveRecord::Schema.define(version: 20171228082524) do
     t.string "first_name"
     t.string "last_name"
     t.string "nickname"
-    t.string "email"
     t.string "country"
     t.string "postcode"
     t.date "birthdate"
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["first_name", "last_name", "birthdate"], name: "index_participants_on_first_name_and_last_name_and_birthdate", unique: true
+    t.index ["user_id"], name: "index_participants_on_user_id", unique: true
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -120,4 +123,5 @@ ActiveRecord::Schema.define(version: 20171228082524) do
 
   add_foreign_key "event_registrations", "events"
   add_foreign_key "event_registrations", "users"
+  add_foreign_key "participants", "users"
 end
