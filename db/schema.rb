@@ -61,8 +61,9 @@ ActiveRecord::Schema.define(version: 20171227174517) do
     t.string "name"
     t.date "start_date"
     t.date "end_date"
+    t.integer "max_participants"
     t.decimal "full_price", precision: 10
-    t.decimal "day_guest", precision: 10
+    t.decimal "youth", precision: 10
     t.decimal "child", precision: 10
     t.string "status"
     t.datetime "created_at", null: false
