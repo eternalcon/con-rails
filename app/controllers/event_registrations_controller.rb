@@ -33,7 +33,6 @@ class EventRegistrationsController <  ApplicationController
   
   def show
     @event_registration = EventRegistration.find(params[:id])
-    
   end
   
   #def create

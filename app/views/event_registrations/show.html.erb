@@ -28,6 +28,9 @@
       <div class="col-sm">
         Postcode, if from Germany
       </div>
+      <div class="col-sm">
+        Participant Fee based on age
+      </div>
     </div>
     <% @event_registration.participants.each do |participant| %>
       <div class="row align-items-end participant-row">
@@ -48,6 +51,15 @@
         </div>
         <div class="col-sm">
           <%= participant.postcode %>
+        </div>
+        <div class="col-sm">
+          <% if (participant.age(@event_registration.event.start_date) < 7 ) %>
+            Free!
+          <% elsif (participant.age(@event_registration.event.start_date).between?(7, 14)) %>
+            <%= @event_registration.event.child %>
+          <% else %>
+            <%= @event_registration.event.full_price %>
+          <%end %>
         </div>
       </div>
     <% end %>
