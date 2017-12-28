@@ -5,7 +5,7 @@ class EventRegistrationsController <  ApplicationController
     @event_registration = EventRegistration.new do |r|
       r.event_id = Event.find_by(status: 'active').id
       r.user_id = current_user.id
-      r.participants.build
+      r.participants.build(current_user.participant.serializable_hash)
     end
   end
   
