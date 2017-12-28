@@ -53,13 +53,7 @@
           <%= participant.postcode %>
         </div>
         <div class="col-sm">
-          <% if (participant.age(@event_registration.event.start_date) < 7 ) %>
-            Free!
-          <% elsif (participant.age(@event_registration.event.start_date).between?(7, 14)) %>
-            <%= @event_registration.event.child %>
-          <% else %>
-            <%= @event_registration.event.full_price %>
-          <%end %>
+          <%= number_to_currency(@event_registration.participant_price?(participant), :unit => "€") %>
         </div>
       </div>
     <% end %>
