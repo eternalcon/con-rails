@@ -30,3 +30,6 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 de:
+   btn_registration: "Anmelden!"
+   add_participant: 'Weiterer Teilnehmer'
+   remove_participant: 'Teilnehmer entfernen'
