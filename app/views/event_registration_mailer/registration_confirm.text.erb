@@ -5,48 +5,44 @@ You have successfully registered the following participants:
 
 
   <% @event_registration.participants.each do |participant| %>
-<%= participant.first_name %>  
-      </div>
-      <div class="col-sm">
-        <%= participant.last_name %> 
-      </div>
-      <div class="col-sm">
-        <%= participant.birthdate %>
-      </div>
-      <div class="col-sm">
-        <%= participant.nickname %> 
-      </div>
-      <div class="col-sm">
-        <%= participant.country %>
-      </div>
-      <div class="col-sm">
-        <%= participant.postcode %>
-      </div>
-      <div class="col-sm">
-        <%= number_to_currency(@event_registration.participant_price?(participant), :unit => "€") %>
-      </div>
-    </div>
+    <%= participant.first_name %> <%= participant.last_name %>, born on <%= participant.birthdate %>, Nickname (for the badge): <%= participant.nickname %>, from <%= participant.country %>
+provided Postcode: <%= participant.postcode %>, Convention Fee based on age: <%= number_to_currency(@event_registration.participant_price?(participant), :unit => "€") %>
   <% end %>
-  <div class="row price_total justify-content-end">
-    <div class="col-sm">
   
-    </div>
-    <div class="col-sm">
-      
-    </div>
-    <div class="col-sm">
-     
-    </div>
-    <div class="col-sm">
-      
-    </div>
-    <div class="col-sm">
-      
-    </div>
-    <div class="col-sm">
-      <b>Your total Convention Fee for all registered participants is:</b> 
-    </div>
-    <div class="col-sm">
-      <b><%= number_to_currency(@event_registration.price_total?, :unit => "€") %></b>
-    </div>
-  </div>
+  
+Your total Convention Fee for all registered participants is 
+
+
+
+<%= number_to_currency(@event_registration.price_total?, :unit => "€") %>
+
+
+The Convention starts at <%= @event_registration.event.start_date %> at 17 h and ends at <%= @event_registration.event.end_date -%> at 10 h.
+Check-in is open Friday from 2 – 10 pm, please send us an email in case you intend to arrive at another time.
+Location is the JH Castle Stahleck in Bacharach, Germany.
+Your registration is valid as soon as we receive your payment
+
+
+The price includes 3 x Accomodation and sheets, in addition breakfast, lunch, dinner and the Convention-Fee.
+
+
+    Please send the money to
+
+            Eternal Con e.V.
+            Deutsche Skatbank Altenburg
+            IBAN:   DE91 8306 5408 0004 5264 65
+            BIC:    GENODEF1SLR
+
+    Or via Paypal to Pittel@eternal-con.de
+
+
+
+  Other fees like freeforms (10,00 Euro per freeform) have to be payed in cash at the Con.
+  
+Please don’t forget to bring towels!
+ 
+ 
+  The Eternal-Crew is looking forward to meet you and we wish you a great time and good gaming.
+
+PS.: for more information visit http://eternal-con.de or http://www.facebook.com/EternalConvention 
+
