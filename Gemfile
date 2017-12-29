@@ -69,6 +69,17 @@ group :development do
   gem 'guard-rspec', require: false
   gem 'guard-cucumber', require: false
   gem 'guard-passenger', require:false
+  gem 'capistrano3-delayed-job', '>= 1.0'
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-passenger', '>= 0.1.1'
+  gem 'capistrano-rails-db'
+
+  # Remove the following if your app does not use Rails
+  gem 'capistrano-rails'
+
+  # Remove the following if your server does not use RVM
+  gem 'capistrano-rvm'
 end
 
 group :test do
