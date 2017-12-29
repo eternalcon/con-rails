@@ -36,9 +36,9 @@ set :repo_url, "git@github.com:eternalcon/con-rails.git"
 ask :branch, `git rev-parse --abbrev-ref master`.chomp
 set :rvm_ruby_version, '2.4.1@con-rails'
 
-set :delayed_job_queues, ['mailer']
+set :delayed_job_queues, ['mailers']
 set :delayed_job_pools, {
-    :mailer => 1,    # 1 worker looking only at the 'mailer' queue
+    :mailers => 1,    # 1 worker looking only at the 'mailer' queue
 #     :tracking => 1,  # 1 worker exclusively for the 'tracking' queue
 #     :* => 2          # 2 on any queue (including 'mailer' and 'tracking')
 set :delayed_job_monitor, true}
