@@ -62,7 +62,7 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "con_rails_#{Rails.env}"
   
   ########## Action Mailer Configuration for Production ##########
-  config.action_mailer.default_url_options = { host: 'eternal-con.de' } # needed for devise
+  config.action_mailer.default_url_options = { host: 'staging.eternal-con.de' } # needed for devise
   config.action_mailer.perform_caching = false
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
