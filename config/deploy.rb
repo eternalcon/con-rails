@@ -1,7 +1,5 @@
 # config valid for current version and patch releases of Capistrano
-set :application, "con-rails"
 
-set :repo_url, "git@github.com:eternalcon/con-rails.git"
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
@@ -35,5 +33,3 @@ set :repo_url, "git@github.com:eternalcon/con-rails.git"
 
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
-
-set :rvm_ruby_version, '2.4.1'

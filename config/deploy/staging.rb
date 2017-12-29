@@ -17,9 +17,9 @@
 # property set. Specify the username and a domain or IP for the server.
 # Don't use `:all`, it's a meta role.
 
-# role :app, %w{deploy@example.com}, my_property: :my_value
-# role :web, %w{user1@primary.com user2@additional.com}, other_property: :other_value
-# role :db,  %w{deploy@example.com}
+role :app, %w{con-rails@eternal-con.de}#, my_property: :my_value
+role :web, %w{con-rails@eternal-con.de}#, other_property: :other_value
+role :db,  %w{con-rails@eternal-con.de}
 
 
 
@@ -31,6 +31,18 @@
 # http://capistranorb.com/documentation/getting-started/configuration/
 # Feel free to add new variables to customise your setup.
 
+set :application, "conrails_staging"
+
+set :repo_url, "git@github.com:eternalcon/con-rails.git"
+ask :branch, `git rev-parse --abbrev-ref staging`.chomp
+set :rvm_ruby_version, '2.4.1@conrails_staging'
+#set :delayed_job_pid_dir, 'tmp/pids'
+set :delayed_job_queues, ['mailer']
+set :delayed_job_pools, {
+    :mailer => 1,    # 1 worker looking only at the 'mailer' queue
+#     :tracking => 1,  # 1 worker exclusively for the 'tracking' queue
+#     :* => 2          # 2 on any queue (including 'mailer' and 'tracking')
+set :delayed_job_monitor, true}
 
 
 # Custom SSH Options
@@ -41,11 +53,11 @@
 #
 # Global options
 # --------------
-#  set :ssh_options, {
+set :ssh_options, {
 #    keys: %w(/home/rlisowski/.ssh/id_rsa),
 #    forward_agent: false,
-#    auth_methods: %w(password)
-#  }
+  auth_methods: %w(publickey)
+}
 #
 # The server-based syntax can be used to override options:
 # ------------------------------------
