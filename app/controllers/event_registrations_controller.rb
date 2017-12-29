@@ -26,6 +26,7 @@ class EventRegistrationsController <  ApplicationController
     #@event_registration.participants.create
     if @event_registration.save
     redirect_to event_registration_path(@event_registration)
+    EventRegistrationMailer.registration_confirm(@event_registration).deliver_later
     else
       render 'new'
     end
