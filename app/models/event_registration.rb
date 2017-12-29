@@ -9,9 +9,9 @@ class EventRegistration < ApplicationRecord
   
   # TODO For usability outside our very specific use case, this has to be changed to something more sophisticated.
   def participant_price?(participant)
-    if participant.age(self.event.start_date) <= 3 # Children under 3 are free
+    if participant.age(self.event.start_date) < 3 # Children under 3 are free
       price = 0
-    elsif participant.age(self.event.start_date).between?(4, 10) # Children between 3 and 11 pay Child fee
+    elsif participant.age(self.event.start_date).between?(3, 10) # Children between 3 and 11 pay Child fee
       price = self.event.child
     elsif participant.age(self.event.start_date).between?(11, 14) # Children between 11 and 14 pay Youth fee
       price = self.event.youth
