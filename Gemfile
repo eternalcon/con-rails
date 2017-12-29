@@ -69,6 +69,7 @@ group :development do
   gem 'guard-rspec', require: false
   gem 'guard-cucumber', require: false
   gem 'guard-passenger', require:false
+  gem 'capistrano3-delayed-job', '>= 1.0'
   gem 'capistrano'
   gem 'capistrano-bundler'
   gem 'capistrano-passenger', '>= 0.1.1'
