@@ -17,9 +17,9 @@
 # property set. Specify the username and a domain or IP for the server.
 # Don't use `:all`, it's a meta role.
 
-role :app, %w{con-rails@eternal-con.de}#, my_property: :my_value
-role :web, %w{con-rails@eternal-con.de}#, other_property: :other_value
-role :db,  %w{con-rails@eternal-con.de}
+role :app, %w{conrails_staging@eternal-con.de}#, my_property: :my_value
+role :web, %w{conrails_staging@eternal-con.de}#, other_property: :other_value
+role :db,  %w{conrails_staging@eternal-con.de}
 
 
 
