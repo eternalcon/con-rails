@@ -1,0 +1,18 @@
+<div class="container">
+   <p>
+    Wenn du bereits ein registrierter Benutzer der Eternal Convention Webseite bist, logge dich bitte ein. Falls nicht, registriere dich bitte bevor du weitermachst.
+  </p>
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "form-signin"}) do |f| %>
+    <div class="form-inputs">
+      <%= f.input :email, placeholder: 'Email-Adresse', required: true, autofocus: true, input_html: {id: 'inputEmail' }, label_html: { class: 'sr-only' }  %>
+      <%= f.input :password, placeholder: 'Passwort', required: true, input_html: {id: 'inputPassword' }, label_html: { class: 'sr-only' } %>
+      <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, t(".sign_in"), class: "btn btn-lg btn-primary btn-block" %>
+    </div>
+  <% end %>
+
+  <%= render "devise/shared/links" %>
+</div>

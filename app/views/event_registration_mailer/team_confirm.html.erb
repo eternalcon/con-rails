@@ -1,0 +1,30 @@
+<p>Moin, Team!</p>
+
+<p>Wir haben eine neue Anmeldung für <%= @event_registration.event.name %>!</p>
+
+<table>
+  <caption>Über die E-Mail-Adresse <b><%=@event_registration.user.email -%> wurden die folgenden Personen angemeldet:</caption>
+  <thead>
+    <tr>
+      <th>Vorname</th> <th>Nachname</th><th>Geburtsdatum</th><th>Spitzname für das Badge</th><th>Herkunftsland</th><th>Postleitzahl (hoffentlich nur bei Deutschen...</th><th>Con-Beitrag basierend auf Alter</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @event_registration.participants.each do |participant| %>
+      <tr>
+        <td> <%= participant.first_name %> </td> <td> <%= participant.last_name %> </td><td> <%= participant.birthdate %></td><td> <%= participant.nickname %> </td><td> <%= participant.country %></td><td> <%= participant.postcode %> </td><td> <%= number_to_currency(@event_registration.participant_price?(participant), :unit => "€") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan=6>Der Gesamtpreis für die Anmeldung beträgt:</td><td><b><strong><%= number_to_currency(@event_registration.price_total?, :unit => "€") %></strong></b></td>
+    </tr>
+  </tfoot>
+</table>
+</br>
+<p> Nach dieser Anmeldung sind bereits <%=@event_registration.event.participants.size -%> der <%= @event_registration.event.max_participants -%> Plätze ausgebucht.</p>
+
+Ich mache dann hier mal weiter...</br>
+
+Euer freundliches ConRails Anmeldesystem
