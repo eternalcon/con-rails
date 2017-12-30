@@ -37,3 +37,7 @@ de:
    event_registration_mailer:
     registration_confirm:
       subject: "[The Eternal Convention] - Herzlichen Glückwunsch, du bist ein Teil von %{event}"
+  errors:
+      models:
+        participant:
+        blank: "Teilnehmer existiert bereits!"
