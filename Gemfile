@@ -48,6 +48,8 @@ gem 'delayed_job_active_record'
 gem "daemons"
 # Use sanitize_email to send mails to a specific account in staging
 gem 'sanitize_email'
+# Static Pages with high_voltage
+gem 'high_voltage', '~> 3.0.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
