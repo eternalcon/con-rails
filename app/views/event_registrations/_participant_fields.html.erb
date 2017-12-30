@@ -1,24 +1,24 @@
 <div class="row align-items-end nested-fields">
   <div class="col-sm">
-    <%= f.input :first_name, placeholder: 'First Name' %> 
+    <%= f.input :first_name %> 
   </div>
   <div class="col-sm">
-    <%= f.input :last_name, placeholder: 'Surname' %> 
+    <%= f.input :last_name %> 
   </div>
   <div class="col-sm">
     <%= f.input :birthdate, as: :date, start_year: Date.today.year - 100, end_year: Date.today.year, use_short_month: true %>
   </div>
   <div class="col-sm">
-    <%= f.input :nickname, placeholder: 'Nickname for Badge', required: false %> 
+    <%= f.input :nickname, required: false %> 
   </div>
   <div class="col-sm">
     <%= f.input :country, priority: ["DE", "GB", "FR"] %>
   </div>
   <div class="col-sm">
-    <%= f.input :postcode, required: false, placeholder: 'Only German Residents' %>
+    <%= f.input :postcode %>
   </div>
   <div class="col-sm">
-    <%= link_to_remove_association "remove participant", f, html_options: '"data-turbolinks="false"' %>
+    <%= link_to_remove_association t(:remove_participant), f, html_options: '"data-turbolinks="false"' %>
   </div>
 
 </div>

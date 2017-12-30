@@ -4,7 +4,7 @@ class EventRegistrationMailer < ApplicationMailer
   
   def registration_confirm(event_registration)
     @event_registration = event_registration
-    mail(to: @event_registration.user.email, subject: '[The Eternal Convention] - Congratulations! You are part of ' + @event_registration.event.name)
+    mail(to: @event_registration.user.email, subject: default_i18n_subject(event: @event_registration.event.name))
   end
   
   def team_confirm(event_registration)

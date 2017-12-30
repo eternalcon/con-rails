@@ -1,35 +1,35 @@
 <% content_for :title do %>
-  <title> Registration for <%= @event_registration.event.name %> </title>
+  <title> Anmeldung für <%= @event_registration.event.name %> </title>
 <% end %>
 <div class="container-fluid">
   <div class="row" >
     <div class="col-12" >
       <h1>
-        You have successfully registered the following People for <%= @event_registration.event.name -%>.</h1>
-        <p>Payment information and all further updates regarding this registration will be sent to <%= @event_registration.user.email -%>. </p>
+        Du hast die folgenden Teilnehmer erfolgreich für  <%= @event_registration.event.name -%> angemeldet.</h1>
+        <p>Informationen zur Zahlung des Con-Beitrags und alle weiteren Details erhältst du wie gehabt per E-Mail an <%= @event_registration.user.email -%> </p>
     </div>
   </div>
   <div class="row align-items-end participant-header">
     <div class="col-sm">
-      First Name 
+      Vorname
     </div>
     <div class="col-sm">
-      Surname
+      Nachname
     </div>
     <div class="col-sm">
-      Date of Birth
+      Geburtsdatum
     </div>
     <div class="col-sm">
-      Nickname for Badge 
+      Spitzname für Badge 
     </div>
     <div class="col-sm">
-      Country of Residence
+      Herkunftsland
     </div>
     <div class="col-sm">
-      Postcode, if from Germany
+      Für Deutsche: Postleitzahl
     </div>
     <div class="col-sm">
-      Participant Fee based on age
+      Teilnahmebeitrag nach Alter
     </div>
   </div>
   <% @event_registration.participants.each do |participant| %>
@@ -74,7 +74,7 @@
       
     </div>
     <div class="col-sm">
-      <b>Your total Convention Fee for all registered participants is:</b> 
+      <b>Dein Teilnahmebeitrag für alle angemeldeten Teilnehmer beträgt:</b> 
     </div>
     <div class="col-sm">
       <b><%= number_to_currency(@event_registration.price_total?, :unit => "€") %></b>

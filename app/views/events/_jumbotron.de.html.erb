@@ -1,5 +1,5 @@
 <!-- Main jumbotron for a primary marketing message or call to action -->
-      <div class="jumbotron">
+      <div class="jumbotron jumbotron-fluid">
         <div class="container">
           <h1 class="display-3">Herzlich willkommen zu <%= @event.name %> vom <%= l @event.start_date, format: :long %> bis zum <%= l @event.end_date, format: :long %> auf der <a href=§https://www.diejugendherbergen.de/jugendherbergen/bacharach/portrait/">Jugendherberge Burg Stahleck</a> in <a href="http://www.bacharach.de/startseite/">Bacharach am Rhein!</a></h1>
           <% if @event.status == "pending" %>
