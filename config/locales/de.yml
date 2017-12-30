@@ -33,6 +33,7 @@ de:
    btn_registration: "Anmelden!"
    add_participant: 'Weiterer Teilnehmer'
    remove_participant: 'Teilnehmer entfernen'
+   participant_exists: "Teilnehmer existiert bereits"
    event_registration_mailer:
     registration_confirm:
       subject: "[The Eternal Convention] - Herzlichen Glückwunsch, du bist ein Teil von %{event}"
