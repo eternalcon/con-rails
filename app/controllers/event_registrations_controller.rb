@@ -35,6 +35,9 @@ class EventRegistrationsController <  ApplicationController
   
   def show
     @event_registration = EventRegistration.find(params[:id])
+    unless @event_registration.user == current_user
+      redirect_to root_path
+    end
   end
   
   #def create
