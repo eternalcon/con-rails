@@ -1,13 +1,7 @@
 Herzlich Willkommen auf <%= @event_registration.event.name %>!
 
+Anscheinend ist es dir gelungen, <% if @event_registration.participants.size = 1 %> einen der <% else %><%= @event_registration.participants.size %> der <% end %>begehrten Plätze zu ergattern!
 
-Anscheinend ist es dir gelungen, 
-<% if @event_registration.participants.size == 1 %>
-einen der 
-<% else %>
-<%= @event_registration.participants.size %> der 
-<% end %>
-begehrten Plätze zu ergattern!
 
 Du hast die folgenden Teilnehmer erfolgreich angemeldet:
 <% @event_registration.participants.each do |participant| %>
