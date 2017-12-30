@@ -38,5 +38,5 @@ en:
       subject: "[The Eternal Convention] - Congratulations! You are part of %{event}"
   errors:
       models:
-        participant
-        blank: "Participant already exists!"
+        participant:
+          blank: "Participant already exists!"

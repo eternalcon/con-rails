@@ -40,4 +40,5 @@ de:
   errors:
       models:
         participant:
+        first_name:
         blank: "Teilnehmer existiert bereits!"
