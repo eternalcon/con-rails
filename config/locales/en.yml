@@ -33,3 +33,6 @@ en:
   btn_registration: "Register!"
   add_participant: 'Add Participant'
   remove_participant: 'Remove Participant'
+  event_registration_mailer:
+    registration_confirm:
+      subject: "[The Eternal Convention] - Congratulations! You are part of %{event}"
