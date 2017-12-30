@@ -6,7 +6,7 @@
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">         <!--TODO: proper id if necessary -->
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
-        <a class="nav-link" href="<%= root_path %>">Home <span class="sr-only">(current)</span></a>
+         <%= link_to "Home", root_path, class: "nav-link" %>
       </li>
       <li class="nav-item active">
         <%= link_to "About", page_path(id: "about"), class: "nav-link" %>
@@ -22,6 +22,15 @@
       <li class="nav-item active">
         <%= link_to (image_tag "flag_de.jpg", alt: "Deutsch"), url_for( :locale => 'de' ), class: "nav-link" -%>
       </li>
+      <% if user_signed_in? %>
+        <li class="nav-item active">
+          <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "nav-link" %>        
+        </li>
+      <% else %>
+        <li class="nav-item active">
+          <%= link_to 'Login', new_user_session_path, class: "nav-link"  %>  
+        </li>
+      <% end %>
     </ul>
   </div>
 </nav>
