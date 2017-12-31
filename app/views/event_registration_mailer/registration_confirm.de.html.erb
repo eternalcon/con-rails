@@ -1,0 +1,66 @@
+<p>Herzlich Willkommen auf <%= @event_registration.event.name %>!</p>
+
+<p>Anscheinend ist es dir gelungen, 
+<% if @event_registration.participants.size == 1 %>
+einen der 
+<% else %>
+<%= @event_registration.participants.size %> der 
+<% end %>
+begehrten Plätze zu ergattern!</p>
+
+<table>
+  <caption>Du hast die folgenden Teilnehmer erfolgreich angemeldet:</caption>
+  <thead>
+    <tr>
+      <th>Vorname</th> <th>Nachname</th><th>Geburtsdatum</th><th>Spitzname für das Badge</th><th>Herkunftsland</th><th>Für Deutsche: Postleitzahl</th><th>Teilnahmebeitrag nach Alter</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @event_registration.participants.each do |participant| %>
+      <tr>
+        <td> <%= participant.first_name %> </td> <td> <%= participant.last_name %> </td><td> <%= participant.birthdate %></td><td> <%= participant.nickname %> </td><td> <%= participant.country %></td><td> <%= participant.postcode %> </td><td> <%= number_to_currency(@event_registration.participant_price?(participant), :unit => "€") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan=6>Der Gesamtbeitrag für die Anmeldung beträgt:</td><td><b><strong><%= number_to_currency(@event_registration.price_total?, :unit => "€") %></strong></b></td>
+    </tr>
+  </tfoot>
+</table>
+</br>
+<p>Die Convention beginnt am <%= @event_registration.event.start_date %> um 17 Uhr und endet am <%= @event_registration.event.end_date -%> um 10 Uhr.</br>
+Check-in ist am Freitag zwischen 14 und 22 Uhr möglich. Bitte gib Bescheid, falls du außerhalb dieser Zeiten anreisen willst. </br>
+Das Ganze findet wie immer auf der Jugendherberge Burg Stahleck in 55422 Bacharach, Deutschland, statt.</br>
+Deine Anmeldung ist rechtsgültig, sobald der Teilnahmebeitrag bei uns eingegangen ist.</br>
+
+Der Preis beinhaltet 3 Übernachtungen inclusive Bettwäsche, Frühstück, Mittagessen und Abendessen bis Montag früh und den Beitrag für die Convention.</br>
+</br>
+</p>
+<em>Bitte überweise das Geld auf folgendes Konto</em></br>
+</br>
+
+<strong>
+    Eternal Con e.V. </br>
+    Deutsche Skatbank Altenburg</br>
+    IBAN:   DE91 8306 5408 0004 5264 65</br>
+    BIC:    GENODEF1SLR</br></br>
+
+  oder per Paypal an Pittel@eternal-con.de</br>
+</strong>
+
+  <p>
+  Weitere Gebühren wie z.B. Freeforms (10,00 Euro pro Freeform) bezahlst du bitte vor Ort in Bar.
+  </p>
+
+  <p>
+    Bitte vergiss deine Handtücher nicht!
+  </p>
+  
+  <p>
+  Die Eternal Crew freut sich auf dich und wünscht die tolle Spiele und eine schöne Zeit.</br>
+  </p>
+
+  <p>
+PS: Weitere Informationen bei <a href="http://eternal-con.de">EternalCon.de</a> oder <a href="http://www.facebook.com/EternalConvention">Facebook</a>
+</p>

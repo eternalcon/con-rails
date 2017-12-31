@@ -1,9 +1,7 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :registration do
     event nil
+    user nil
     participant nil
-    notes "MyText"
-    shuttle false
-    extra_night false
   end
 end

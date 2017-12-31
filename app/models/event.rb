@@ -1,27 +1,39 @@
 class Event < ApplicationRecord
-  module StatusValue
-    OPEN = 10
-    NOT_AVAILABLE = 20
-    FULL = 30
-
-    DEFAULT = OPEN
+  has_many :event_registrations
+  has_many :participants, through: :event_registrations
+  validates :name, :start_date, :end_date, presence: true
+  validate :end_date_must_be_after_start_date
+  after_find do |event|
+    set_status  
   end
-  has_many :registrations
-  has_many :participants, :through => :registrations
-#  has_many :game_blocks, :order => "order_value ASC"
-#  has_many :games, :order => "game_title ASC"
+   
+    def set_status
+      return unless errors.blank? # if we already hit an error when checking for the presence of all required attributes, we don't need to check the correct order of dates...
 
-  has_and_belongs_to_many :prices
-  validates_presence_of :name, :startdate, :enddate
-
-  REGISTRATION_IS_AVAILABLE = 10
-
-
-  def self.active_event
-  # Works only if there is just one active event in the database.
-  # TODO: make work with multiple events in database
-  # either by selecting most recent active event or by automatically inactivating events
-  # when finished
-    Event.find_by active: true
-  end
+      if (Time.now.utc.to_date.year < start_date.year) # The event happens in a future year - active event but registration disabled
+        self.update(status: 'pending')
+      end
+      if (Time.now.utc.to_date.year == start_date.year) && (Time.now.utc.to_date < start_date) # The event happens this year, but hasn't happened yet - Registration open
+        self.update(status: 'active')
+      end
+      #elsif Time.now.utc.to_date >= :start_date # We're in the same year as the event, but the event is too close to allow online registrations 
+      #  # TODO: figure out how close to the event is too close - one or two weeks in advance sounds reasonable. Will most likely not bee needed anyways since we book out too fast.
+      #  self.status = 'waiting'
+      if Time.now.utc.to_date > end_date # The event is in the past
+        self.update(status: 'past')
+      end
+      if self.participants.size > self.max_participants
+        self.status = 'full'
+      end
+      if Time.now.utc.to_date > start_date && Time.now.utc.to_date < end_date # Today is between start and end date - the event is currently on.
+        self.update(status: 'running')
+      end
+    end
+    
+    def end_date_must_be_after_start_date
+      return unless errors.blank? # if we already hit an error when checking for the presence of all required attributes, we don't need to check the correct order of dates...
+      if end_date.present? && end_date <= start_date
+        errors.add(:end_date, "can't be the same or earlier than start date")
+      end
+    end
 end

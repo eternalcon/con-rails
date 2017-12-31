@@ -1,0 +1,39 @@
+Herzlich Willkommen auf <%= @event_registration.event.name %>!
+
+Anscheinend ist es dir gelungen, <% if @event_registration.participants.size == 1 %> einen der <% else %><%= @event_registration.participants.size %> der <% end %>begehrten Plätze zu ergattern!
+
+
+Du hast die folgenden Teilnehmer erfolgreich angemeldet:
+<% @event_registration.participants.each do |participant| %>
+    <%= participant.first_name %> <%= participant.last_name %>, geboren am <%= participant.birthdate %>, Spitzname (für das Badge): <%= participant.nickname %>, aus <%= participant.country %>
+Postleitzahl in Deutschland: <%= participant.postcode %>, Teilnahmebeitrag nach Alter: <%= number_to_currency(@event_registration.participant_price?(participant), :unit => "€") %>
+  <% end %>
+
+
+Der Gesamtbeitrag für die Anmeldung beträgt: <%= number_to_currency(@event_registration.price_total?, :unit => "€") %>
+
+
+Die Convention beginnt am <%= @event_registration.event.start_date %> um 17 Uhr und endet am <%= @event_registration.event.end_date -%> um 10 Uhr.
+Check-in ist am Freitag zwischen 14 und 22 Uhr möglich. Bitte gib Bescheid, falls du außerhalb dieser Zeiten anreisen willst.
+Das Ganze findet wie immer auf der Jugendherberge Burg Stahleck in 55422 Bacharach, Deutschland, statt.
+Deine Anmeldung ist rechtsgültig, sobald der Teilnahmebeitrag bei uns eingegangen ist.
+
+Der Preis beinhaltet 3 Übernachtungen inclusive Bettwäsche, Frühstück, Mittagessen und Abendessen bis Montag früh und den Beitrag für die Convention.
+
+
+Bitte überweise das Geld auf folgendes Konto
+    Eternal Con e.V.
+    Deutsche Skatbank Altenburg
+    IBAN:   DE91 8306 5408 0004 5264 65
+    BIC:    GENODEF1SLR
+    
+    oder per Paypal an Pittel@eternal-con.de
+
+Weitere Gebühren wie z.B. Freeforms (10,00 Euro pro Freeform) bezahlst du bitte vor Ort in Bar.
+
+Bitte vergiss deine Handtücher nicht!
+
+
+  Die Eternal Crew freut sich auf dich und wünscht die tolle Spiele und eine schöne Zeit.
+PS: Weitere Informationen auf https://eternal-con.de" oder bei http://www.facebook.com/EternalConvention"
+

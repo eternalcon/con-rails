@@ -5,7 +5,5 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-AdminUser.create!(email: 'boris@eternal-con.de', password: 'eternal_admin_123!', password_confirmation: 'eternal_admin_123!')
-AdminUser.create!(email: 'daniel@eternal-con.de', password: 'eternal_admin_123!', password_confirmation: 'eternal_admin_123!')
-
-Event.create(name: 'Eternal Convention 2017', subtitle: 'Eternal Convention 2017', startdate: Date.parse('2017-06-02'), enddate: Date.parse('2017-06-05'), active: true)
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+AdminUser.create!(email: Rails.application.secrets[:activeadmin][:admin_email], password: Rails.application.secrets[:activeadmin][:admin_password], password_confirmation: Rails.application.secrets[:activeadmin][:admin_confirm]) if Rails.env.staging? || Rails.env.production?
