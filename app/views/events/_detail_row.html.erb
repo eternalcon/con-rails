@@ -1,11 +1,21 @@
+
 <div class="row">
-  <div class="col-10">
+  <div class="col-md-6">
+    <h2>Convention Fees</h2>
+    <p>Participants of the convention will have to pay the following fee:</p>
+    <ul>
+      <li>0-3  years <b>FREE!!!</b></li>
+      <li>4-10 years<b><%= number_to_currency(@event.child, :unit => "€") %></b></li>
+      <li>11-14 years<b><%= number_to_currency(@event.youth, :unit => "€") %></b></li>
+      <li>regular con fee<b><%= number_to_currency(@event.full_price, :unit => "€") %></b></li>
+    </ul>
+    <p class="copy">
+      The price includes 3 x Accomodation and sheets, in addition breakfast, lunch, dinner and the Convention-Fee.
+    </p>
+  </div>
+  <div class="col-md-6">
     <h2>Freeforms</h2>
-  </div>
-  <div class="col-10">
     <p>Currently, the following Freeforms are announced:</p>
-  </div>
-  <div class="col-10">
     <h3>Norinevras Heimkehr</h3>
     <h4>Freeform for 5 to 15 Teenagers aged 12 to 17 years</h4>
     <strong>Language: German</strong>
@@ -16,3 +26,5 @@
     </p>
   </div>
 </div>
+
+
