@@ -18,10 +18,12 @@
 
   <body>
     <%= render "shared/flash" %>
-    <%= render "shared/navbar" %>    
-    <main role="main">
-      <%= yield %>
-    </main>
+    <%= render "shared/navbar" %>
+    <div class="container">
+      <main role="main">
+        <%= yield %>
+      </main>
+    </div>
 
     <footer class="container">
       <p>&copy; The Eternal Convention e.V. 2017</p>

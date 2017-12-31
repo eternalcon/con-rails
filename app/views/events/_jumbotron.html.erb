@@ -2,16 +2,16 @@
       <div class="jumbotron jumbotron-fluid">
         <div class="container">
           <h1 class="display-3">Welcome to <%= @event.name %>!</h1>
-           taking place from <%= l @event.start_date, format: :long %> to <%= l @event.end_date, format: :long %> at <a href="https://www.diejugendherbergen.de/jugendherbergen/bacharach/portrait/">Youth Hostel Castle Stahleck</a> in <a href="http://www.bacharach.de/startseite/">Bacharach!</a>
+           <p><%= @event.name %> will take place from <%= l @event.start_date, format: :long %> to <%= l @event.end_date, format: :long %> at <a href="https://www.diejugendherbergen.de/jugendherbergen/bacharach/portrait/">Youth Hostel Castle Stahleck</a> in <a href="http://www.bacharach.de/startseite/">Bacharach!</a></p>
           <% if @event.status == "pending" %>
             <p>Save the date! Registration for <%= @event.name %> will start on the first of January, <%= @event.start_date.year %></p>
-            <p><a class="btn btn-primary btn-lg disabled" href="<%= new_event_event_registration_path(@event) %>" role="button" aria-disabled="true" >Register on January 1st! &raquo;</a></p>
+            <p><%= link_to "Register on January 1st!", new_event_event_registration_path(@event), class: "btn btn-primary btn-lg disabled", role: "button" %></p>
           <% elsif @event.status == "full" %>
             <p>Online Registration for <%= @event.name %> is closed right now due to the number of registered participants. But don't worry! As we are not selling all available places online to have some options for the annual room and bed Tetris game, chances are quite good that you will still be able to attend! Best get in contact with Pittel at 
-            <a class="btn btn-primary btn-lg" href="mailto:pittel@eternal-con.de" role="button" >pittel@eternal-con.de</a> as quickly as you can to catch one of the last available spaces!</p>
+            <a  href="mailto:pittel@eternal-con.de" role="button" >pittel@eternal-con.de</a> as quickly as you can to catch one of the last available spaces!</p>
           <% elsif @event.status == "active" %>
             <p>You're lucky! Registration for <%= @event.name %> is open and there are still places left!</p>
-            <p><a class="btn btn-primary btn-lg" href="<%= new_event_registration_path %>" role="button">Register Now! &raquo;</a></p>
+            <p><%= link_to "Register Now!", new_event_event_registration_path(@event), class: "btn btn-primary btn-lg", role: "button" %></p>
           <% end %>
         </div>
       </div>

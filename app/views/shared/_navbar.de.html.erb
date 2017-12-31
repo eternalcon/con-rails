@@ -9,7 +9,7 @@
          <%= link_to "Home", root_path, class: "nav-link" %>
       </li>
       <li class="nav-item active">
-        <%= link_to "About Us", page_path(id: "about"), class: "nav-link" %>
+        <%= link_to "Über uns", page_path(id: "about"), class: "nav-link" %>
       </li>
     </ul>
     <ul class="navbar-nav mr-auto">
@@ -24,14 +24,17 @@
           <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "nav-link" -%>        
         </li>
         <li class="nav-item active">
-          <%= link_to 'Change Password', edit_user_registration_path, class: "nav-link" -%>
+          <%= link_to 'Passwort ändern', edit_user_registration_path, class: "nav-link" -%>
         </li>
       <% else %>
         <li class="nav-item active">
           <%= link_to 'Login', new_user_session_path, class: "nav-link"  -%>  
         </li>
         <li class="nav-item active">
-          <%= link_to 'User Signup', new_user_registration_path, class: "nav-link"  -%>
+          <%= link_to 'Benutzer anmelden', new_user_registration_path, class: "nav-link"  -%>
+        </li>
+        <li class="nav-item active">
+          <%= link_to 'Impressum', page_path(id: "legal"), class: "nav-link"  -%>
         </li>
       <% end %>
     </ul>

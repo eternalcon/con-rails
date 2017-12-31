@@ -7,8 +7,8 @@ class EventsController < ApplicationController
     # Additionally, if there is an active event, the main content of the page
     # should be information about the upcoming event.
     #@events = Event.all   
-    @event = Event.find_by( status: 'active')
-    #@event = Event.first # needs to be changed for multiple events in database, so only the "active" event will be found instead of the first one.
+    #@event = Event.find_by( status: 'active' )# breaks when there is no active Event (Pending, Full etc. Need something more generic while still maintaining functionality
+    @event = Event.first # Works for this year, needs to be changed for multiple events in database, so only the "active" event will be found instead of the first one.
     # TODO: Sort out what to display when there is no event currently active - i.e. after this years event and before registration for next years event starts...
   end    
   
