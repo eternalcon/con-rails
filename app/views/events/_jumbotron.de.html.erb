@@ -1,0 +1,17 @@
+<!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-3">Herzlich willkommen zu <%= @event.name %></h1>
+          <p> <%= @event.name %> wird vom <%= l @event.start_date, format: :long %> bis zum <%= l @event.end_date, format: :long %> auf der <a href=https://www.diejugendherbergen.de/jugendherbergen/bacharach/portrait/">Jugendherberge Burg Stahleck</a> in <a href="http://www.bacharach.de/startseite/">Bacharach am Rhein stattfinden.</a></p>
+          <% if @event.status == "pending" %>
+            <p>Merke dir das Datum, die Anmeldung für <%= @event.name %> öffnet am 1. Januar <%= @event.start_date.year %></p>
+            <p><%= link_to "Anmelden ab 1. Januar!", new_event_event_registration_path(@event), class: "btn btn-primary btn-lg disabled", role: "button" %></p>
+          <% elsif @event.status == "full" %>
+            <p>Die Online-Anmeldung für <%= @event.name %> ist aufgrund der großen Zahl an Anmeldungen aktuell geschlossen. Es gibt aber keinen Grund zu verzweifeln! Da wir nicht alle Betten online vergeben, um uns Optionen für das jährliche "Zimmer-und-Teilnehmer-Tetris" offen zu halten, gibt es gute Chancen, noch einen Platz zu ergattern. Am Besten meldest du dich schnellstmöglich bei Pittel über <a  href="mailto:pittel@eternal-con.de" role="button" >pittel@eternal-con.de</a> um einen der letzten verfügbaren Plätze abzugreifen!</p>
+          <% elsif @event.status == "active" %>
+            <p>Du hast Glück! Die Anmeldung für <%= @event.name %> ist geöffnet und es gibt noch freie Plätze!</p>
+            <p><a class="btn btn-primary btn-lg" href="<%= new_event_registration_path %>" role="button">Jetzt anmelden! &raquo;</a></p>
+          <% end %>    
+        </div>
+      </div>
+      

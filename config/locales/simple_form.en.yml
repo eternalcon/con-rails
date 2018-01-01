@@ -11,8 +11,23 @@ en:
     error_notification:
       default_message: "Please review the problems below:"
     # Examples
-    # labels:
-    #   defaults:
+    labels:
+      defaults:
+        #first_name: 'Vorname' 
+        #last_name: 'Nachname'
+        #birthdate: 'Geburtsdatum'
+        nickname: 'Nickname for Badge'
+        country: 'Country of Residence'
+        postcode: 'German residents only - Postcode'
+    placeholders:
+      defaults:
+        #first_name: 'Vorname' 
+        #last_name: 'Nachname'
+        #birthdate: 'Geburtsdatum'
+        nickname: 'Nickname for Badge'
+        country: 'Country of Residence'
+        postcode: 'German residents only - Postcode'
+        
     #     password: 'Password'
     #   user:
     #     new:

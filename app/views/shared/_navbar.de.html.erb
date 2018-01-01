@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark">
+  <a class="navbar-brand" href="#">The Eternal Convention</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">         <!--TODO: proper id if necessary -->
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+         <%= link_to "Home", root_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item active">
+        <%= link_to "Über uns", page_path(id: "about"), class: "nav-link" %>
+      </li>
+    </ul>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <%= link_to (image_tag "flag_en.jpg", alt: "English"), url_for( :locale => 'en' ), class: "nav-link" -%>            
+      </li>
+      <li class="nav-item active">
+        <%= link_to (image_tag "flag_de.jpg", alt: "Deutsch"), url_for( :locale => 'de' ), class: "nav-link" -%>
+      </li>
+      <% if user_signed_in? %>
+        <li class="nav-item active">
+          <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "nav-link" -%>        
+        </li>
+        <li class="nav-item active">
+          <%= link_to 'Passwort ändern', edit_user_registration_path, class: "nav-link" -%>
+        </li>
+      <% else %>
+        <li class="nav-item active">
+          <%= link_to 'Login', new_user_session_path, class: "nav-link"  -%>  
+        </li>
+        <li class="nav-item active">
+          <%= link_to 'Benutzer anmelden', new_user_registration_path, class: "nav-link"  -%>
+        </li>
+        <li class="nav-item active">
+          <%= link_to 'Impressum', page_path(id: "legal"), class: "nav-link"  -%>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>

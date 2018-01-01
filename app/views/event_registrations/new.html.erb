@@ -1,0 +1,16 @@
+<% content_for :title do %>
+  <title> Registration for <%= @event_registration.event.name %> </title>
+<% end %>
+<div class="container-fluid">
+  <h1>Registration for <%= @event_registration.event.name %></h1>
+  <p> 
+    
+  </p>
+    <%= simple_form_for @event_registration do |f| %>
+      <%= render 'form', event_registration: @event_registration, f: f %>
+    <% end -%>
+</div>
+
+
+
+
