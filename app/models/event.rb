@@ -28,6 +28,7 @@ class Event < ApplicationRecord
       if Time.now.utc.to_date > start_date && Time.now.utc.to_date < end_date # Today is between start and end date - the event is currently on.
         self.update(status: 'running')
       end
+      self.save
     end
     
     def end_date_must_be_after_start_date
