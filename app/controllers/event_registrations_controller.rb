@@ -9,15 +9,20 @@ class EventRegistrationsController <  ApplicationController
   # TODO: have the existing participant linked to my user.
   
   def new
-    @event_registration = EventRegistration.new do |r|
-      r.event_id = Event.find_by(status: 'active').id
-      r.user_id = current_user.id
-      if current_user.participant.nil?
-        r.participants.build
-      else
-        r.participants.build(current_user.participant.serializable_hash)
+    if Event.find_by(status: 'active') != nil
+   
+      @event_registration = EventRegistration.new do |r|
+        r.event_id = Event.find_by(status: 'active').id
+        r.user_id = current_user.id
+        if current_user.participant.nil?
+          r.participants.build
+        else
+          r.participants.build(current_user.participant.serializable_hash)
+        end  
       end
-    end
+    else
+      redirect_to root_path
+    end    
   end
   
   def create
