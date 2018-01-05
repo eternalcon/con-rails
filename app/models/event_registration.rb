@@ -2,9 +2,16 @@ class EventRegistration < ApplicationRecord
   belongs_to :event
   belongs_to :user
   has_and_belongs_to_many :participants
+  has_many :payments
   accepts_nested_attributes_for :participants, reject_if: :all_blank, allow_destroy: true # accept participants upon creating a new event_registration
   validates_associated :participants # make sure the accepted participants all are valid participants before committing to database
-  
+
+  PAID_STATUS = {
+      NOT_PAID: 0,
+      PAID_BY_PAYPAL: 10,
+      PAID_BY_BANK: 10
+  }
+  DEFAULT_PAID_STATUS = PAID_STATUS[:NOT_PAID]
   
   
   # TODO For usability outside our very specific use case, this has to be changed to something more sophisticated.

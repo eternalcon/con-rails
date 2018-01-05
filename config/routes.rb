@@ -12,6 +12,10 @@ Rails.application.routes.draw do
       #post 'preview', on: :collection
       resources :events, :participants, :users
     end
+
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  constraints(token: /[A-Z][A-Z][0-9]+/ ) do
+    resources :registration_overview, only: [:index, :update]
+  end
 end

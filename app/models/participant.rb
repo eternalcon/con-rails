@@ -16,5 +16,4 @@ class Participant < ApplicationRecord
     age = reference_date.year - self.birthdate.year - ((reference_date.month > self.birthdate.month || (reference_date.month == self.birthdate.month && reference_date.day >= self.birthdate.day)) ? 0 : 1)
     return age
   end
-
 end

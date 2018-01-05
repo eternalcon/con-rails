@@ -1,5 +1,6 @@
 class EventRegistrationsController <  ApplicationController
   before_action :authenticate_user!
+  before_action :check_for_event_full, only: [:new, :create]
   # TODO: We need to handle existing participants in the whole thing for future events.
   # TODO: The first registered participant needs to be assigned to the user if it is not there already (or any other way of having the current_user.participant be set properly.
   # TODO: We need to at least "recycle" existing participants when a record matching the entered data already exists in the database - i.e. only create the link between event_registration and participant
@@ -9,20 +10,15 @@ class EventRegistrationsController <  ApplicationController
   # TODO: have the existing participant linked to my user.
   
   def new
-    if Event.find_by(status: 'active') != nil
-   
-      @event_registration = EventRegistration.new do |r|
-        r.event_id = Event.find_by(status: 'active').id
-        r.user_id = current_user.id
-        if current_user.participant.nil?
-          r.participants.build
-        else
-          r.participants.build(current_user.participant.serializable_hash)
-        end  
+    @event_registration = EventRegistration.new do |r|
+      r.event_id = Event.find_by(status: 'active').id
+      r.user_id = current_user.id
+      if current_user.participant.nil?
+        r.participants.build
+      else
+        r.participants.build(current_user.participant.serializable_hash)
       end
-    else
-      redirect_to root_path
-    end    
+    end
   end
   
   def create
@@ -44,19 +40,14 @@ class EventRegistrationsController <  ApplicationController
       redirect_to root_path
     end
   end
-  
-  #def create
-  #  @event_registration_ = EventRegistration.new(event_registration_params.from_json(include_root: true))
-    #@event_registration.participants.each do |participant|
-    #  puts participant.name
-    #end
-    # @event_registration.save
-  
-  #end
-  
+
   private
 
     def event_registration_params
       params.require(:event_registration).permit(:event_id, :user_id, :participants, participants_attributes: [:first_name, :last_name, :birthdate, :nickname, :email, :country, :postcode, :_destroy ])
+    end
+
+    def check_for_event_full
+      redirect_to(root_path, notice: 'Sorry, Event is already booked out') if Event.find_by(status: 'active').blank?
     end
 end
