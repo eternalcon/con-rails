@@ -1,12 +1,15 @@
 class Admin::EventRegistrationsController < ApplicationController
   before_action :set_admin_event_registration, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html
+  respond_to :html, :xls
 
   def index
     @event = Event.find(params[:event_id])
     @admin_event_registrations = @event.event_registrations
-    respond_with(@admin_event_registrations)
+    respond_with(@admin_event_registrations) do |format|
+      format.html
+      format.xls # { send_data to_csv(@admin_event_registrations) }
+    end
   end
 
   def show
