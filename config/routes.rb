@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
   scope "(:locale)", locale: /en|de/ do
     get "/pages/:id" => "high_voltage/pages#show", :as => :page, :format => false
-    ActiveAdmin.routes(self)
-    devise_for :admin_users, ActiveAdmin::Devise.config
-    root to: "events#index"
+    devise_for :admin_users
     devise_for :users
-    resources :events, only: [ :index ] do
-      resources :event_registrations
+    root to: "events#index"
+    namespace :admin do
+      resources :events do
+        resources :event_registrations
+      end
     end
+    resources :events, only: [ :index ]
     resources :event_registrations do
       #post 'preview', on: :collection
       resources :events, :participants, :users
