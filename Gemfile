@@ -32,8 +32,12 @@ gem 'rails-i18n', '~> 5.0.0' # For 5.0.x and 5.1.x
 # Use Bootstrap 4 for style - requiring Jquery
 gem 'jquery-rails'
 gem 'bootstrap', '>= 4.0.0.beta2.1'
+
 # Use activeadmin for administration backend
-gem 'activeadmin'
+# ActiveAdmin is not able to handle nested resources after the second level properly
+# Therefore it's kind of useless for us right now - disable and build our own...
+#gem 'activeadmin'
+# Use devise for User authentication and authorization
 gem 'devise'
 gem 'devise-i18n' # for internationalization/localization of devise
 # use simple_forms for simplifying form building
