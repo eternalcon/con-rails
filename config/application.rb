@@ -18,6 +18,9 @@ Bundler.require(*Rails.groups)
 
 module ConRails
   class Application < Rails::Application
+    # Use the responders controller from the responders gem
+    config.app_generators.scaffold_controller :responders_controller
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
 
@@ -30,15 +33,16 @@ module ConRails
     config.i18n.default_locale = :en
     config.generators.system_tests = nil
     config.generators do |g|
-      g.test_framework :rspec,
-        :fixtures => true,
-        :view_specs => true,
-        :helper_specs => true,
-        :routing_specs => true,
-        :controller_specs => true,
-        :request_specs => true
+#      g.test_framework :rspec,
+#        :fixtures => true,
+#        :view_specs => true,
+#        :helper_specs => true,
+#        :routing_specs => true,
+#        :controller_specs => true,
+#        :request_specs => true
       g.fixture_replacement :factory_bot, :dir => "spec/factories"
     end
+    config.app_generators.scaffold_controller :responders_controller
     config.active_job.queue_adapter = :delayed_job
   end
 end
