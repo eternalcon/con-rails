@@ -16,6 +16,7 @@
         <Cell><Data ss:Type="String">Land</Data></Cell>
         <Cell><Data ss:Type="String">Postleitzahl</Data></Cell>
         <Cell><Data ss:Type="String">Geburtsdatum</Data></Cell> 
+        <Cell><Data ss:Type="String">Anmeldedatum</Data></Cell> 
       </Row>
       <% @admin_event_registrations.each do |event_registration| %>
         <% event_registration.participants.each do |participant| %>
@@ -29,6 +30,7 @@
         <Cell><Data ss:Type="String"><%= participant.country %></Data></Cell>
         <Cell><Data ss:Type="String"><%= participant.postcode %></Data></Cell>
         <Cell><Data ss:Type="String"><%= participant.birthdate %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= participant.created_at %></Data></Cell>        
       </Row>
       <% end %>
       <% end %>
