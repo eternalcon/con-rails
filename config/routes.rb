@@ -4,6 +4,9 @@ Rails.application.routes.draw do
     devise_for :admin_users
     devise_for :users
     root to: "events#index"
+    namespace :admin do
+      resources :events
+    end
     resources :events, only: [ :index ]
     resources :event_registrations do
       #post 'preview', on: :collection
