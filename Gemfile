@@ -37,6 +37,8 @@ gem 'bootstrap', '>= 4.0.0.beta2.1'
 # ActiveAdmin is not able to handle nested resources after the second level properly
 # Therefore it's kind of useless for us right now - disable and build our own...
 #gem 'activeadmin'
+# since activeadmin is gone, require responders explicitly as they are no longer pulled in as dependency
+gem "responders"
 # Use devise for User authentication and authorization
 gem 'devise'
 gem 'devise-i18n' # for internationalization/localization of devise
