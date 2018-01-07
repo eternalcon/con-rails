@@ -13,4 +13,9 @@ class ApplicationController < ActionController::Base
   def self.default_url_options
     { locale: I18n.locale }
   end
+  
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:error] = exception.message
+    redirect_to root_url
+  end
 end
