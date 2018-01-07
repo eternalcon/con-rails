@@ -1,16 +1,16 @@
-<h1>Admin Event Registrations</h1>
+<h1>Event Registrations</h1>
 
 <table>
   <thead>
     <tr>
-      <th> Registration No.</th>
+      <th>Registration No.</th>
       <th>Registered by E-Mail</th>
       <th>Participants</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @admin_event_registrations.each do |event_registration| %>
+    <% @event_registrations.each do |event_registration| %>
       <tr>
         <td><%= event_registration.id %></td>
         <td><%= event_registration.user.email %></td>

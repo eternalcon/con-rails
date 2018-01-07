@@ -1,11 +1,40 @@
-<% content_for :title do %>
-  <title> The Eternal Convention</title>
-<% end %>
-<%= render "jumbotron" %>
+<h1>Events</h1>
 
-<div class="container">
-  <%= render "detail_row" %>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>Event Name</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Maximum Participants</th>
+      <th>Full Price</th>
+      <th>Youth Price</th>
+      <th>Child Price</th>
+      <th>Status</th>
+      <th colspan=3></th>
+    </tr>
+  </thead>
 
-<hr>
+  <tbody>
+    <% @events.each do |event| %>
+      <tr>
+        <td><%= event.name %></td>
+        <td><%= event.start_date %></td>
+        <td><%= event.end_date %></td>
+        <td><%= event.max_participants %></td>
+        <td><%= event.full_price %></td>
+        <td><%= event.youth %></td>
+        <td><%= event.child %></td>
+        <td><%= event.status %></td>
+        <td><%= link_to 'Registrations for the Event', event_event_registrations_path(event) %></td>
+        <td><%= link_to 'Edit', edit_event_path(event) %></td>
+        <td><%= link_to 'Destroy', event_path(event), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Event', new_event_path %>
 

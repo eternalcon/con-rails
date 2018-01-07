@@ -53,6 +53,7 @@ GEM
       sass (>= 3.5.2)
     builder (3.2.3)
     byebug (9.1.0)
+    cancancan (2.1.2)
     capistrano (3.10.1)
       airbrussh (>= 1.0.0)
       i18n
@@ -353,6 +354,7 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootstrap (>= 4.0.0.beta2.1)
   byebug
+  cancancan (~> 2.0)
   capistrano
   capistrano-bundler
   capistrano-passenger (>= 0.1.1)
