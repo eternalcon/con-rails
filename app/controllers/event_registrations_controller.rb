@@ -1,5 +1,6 @@
 class EventRegistrationsController <  ApplicationController
   before_action :authenticate_user!
+  load_and_authorize_resource
   # TODO: We need to handle existing participants in the whole thing for future events.
   # TODO: The first registered participant needs to be assigned to the user if it is not there already (or any other way of having the current_user.participant be set properly.
   # TODO: We need to at least "recycle" existing participants when a record matching the entered data already exists in the database - i.e. only create the link between event_registration and participant
@@ -39,21 +40,9 @@ class EventRegistrationsController <  ApplicationController
   end
   
   def show
-    @event_registration = EventRegistration.find(params[:id])
-    unless @event_registration.user == current_user
-      redirect_to root_path
-    end
+
   end
-  
-  #def create
-  #  @event_registration_ = EventRegistration.new(event_registration_params.from_json(include_root: true))
-    #@event_registration.participants.each do |participant|
-    #  puts participant.name
-    #end
-    # @event_registration.save
-  
-  #end
-  
+
   private
 
     def event_registration_params
