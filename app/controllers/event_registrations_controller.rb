@@ -47,7 +47,6 @@ class EventRegistrationsController <  ApplicationController
   def create
     @event_registration = EventRegistration.new(event_registration_params)
     @event_registration.save
-    #@event_registration.participants.create
     if @event_registration.save
       redirect_to event_registration_path(@event_registration)
       EventRegistrationMailer.registration_confirm(@event_registration).deliver_later
@@ -57,7 +56,7 @@ class EventRegistrationsController <  ApplicationController
     end
   end
   
-  
+  # No use yet - not implemented  
   #def update
   #  @event_registration.update(event_registration_params)
   #  respond_with(@event_registration)
@@ -68,6 +67,12 @@ class EventRegistrationsController <  ApplicationController
     respond_with(@event_registration)
   end
 
+  def mark_as_payed
+    @event_registration.update  :payment_status => "payed" 
+    #@event_registration.update
+    respond_with(@event_registration, :location => event_event_registrations_path)
+  end
+  
   private
 
     def event_registration_params
