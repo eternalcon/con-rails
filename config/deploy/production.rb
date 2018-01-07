@@ -41,8 +41,8 @@ set :delayed_job_pools, {
     :mailers => 1,    # 1 worker looking only at the 'mailer' queue
 #     :tracking => 1,  # 1 worker exclusively for the 'tracking' queue
 #     :* => 2          # 2 on any queue (including 'mailer' and 'tracking')
-set :delayed_job_monitor, true}
-
+}
+set :delayed_job_monitor, true
 
 # Custom SSH Options
 # ==================

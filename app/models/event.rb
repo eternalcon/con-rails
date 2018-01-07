@@ -11,23 +11,20 @@ class Event < ApplicationRecord
       return unless errors.blank? # if we already hit an error when checking for the presence of all required attributes, we don't need to check the correct order of dates...
 
       if (Time.now.utc.to_date.year < start_date.year) # The event happens in a future year - active event but registration disabled
-        self.update(status: 'pending')
-      end
-      if (Time.now.utc.to_date.year == start_date.year) && (Time.now.utc.to_date < start_date) # The event happens this year, but hasn't happened yet - Registration open
-        self.update(status: 'active')
-      end
+        self.status =  'pending'
+      elsif (Time.now.utc.to_date.year == start_date.year) && (Time.now.utc.to_date < start_date) # The event happens this year, but hasn't happened yet - Registration open
+        self.status = 'active'
       #elsif Time.now.utc.to_date >= :start_date # We're in the same year as the event, but the event is too close to allow online registrations 
       #  # TODO: figure out how close to the event is too close - one or two weeks in advance sounds reasonable. Will most likely not bee needed anyways since we book out too fast.
       #  self.status = 'waiting'
-      if Time.now.utc.to_date > end_date # The event is in the past
-        self.update(status: 'past')
-      end
-      if self.participants.size > self.max_participants
+      elsif Time.now.utc.to_date > end_date # The event is in the past
+        self.status = 'past'
+      elsif self.participants.size > self.max_participants
         self.status = 'full'
+      elsif Time.now.utc.to_date > start_date && Time.now.utc.to_date < end_date # Today is between start and end date - the event is currently on.
+        self.status = 'running'
       end
-      if Time.now.utc.to_date > start_date && Time.now.utc.to_date < end_date # Today is between start and end date - the event is currently on.
-        self.update(status: 'running')
-      end
+      self.save
     end
     
     def end_date_must_be_after_start_date

@@ -7,4 +7,7 @@ class EventRegistrationMailerPreview < ActionMailer::Preview
   def team_confirm
     EventRegistrationMailer.team_confirm(EventRegistration.first)  
   end
+  def payment_confirm
+    EventRegistrationMailer.payment_confirm(EventRegistration.first)  
+  end
 end
