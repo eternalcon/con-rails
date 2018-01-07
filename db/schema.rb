@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180107085750) do
+ActiveRecord::Schema.define(version: 20180107104849) do
+
+  create_table "Roles_Users", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "User_id", null: false
+    t.bigint "Role_id", null: false
+    t.index ["Role_id"], name: "index_Roles_Users_on_role_id"
+    t.index ["User_id"], name: "index_Roles_Users_on_user_id"
+  end
 
   create_table "delayed_jobs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "priority", default: 0, null: false
@@ -66,6 +73,12 @@ ActiveRecord::Schema.define(version: 20180107085750) do
     t.datetime "updated_at", null: false
     t.index ["first_name", "last_name", "birthdate"], name: "index_participants_on_first_name_and_last_name_and_birthdate", unique: true
     t.index ["user_id"], name: "index_participants_on_user_id", unique: true
+  end
+
+  create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
