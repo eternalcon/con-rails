@@ -69,13 +69,13 @@ class EventRegistrationsController <  ApplicationController
 
   def mark_as_payed
     unless @event_registration.payment_status == "payed"
-      @event_registration.update  :payment_status => "payed" 
+      @event_registration.update  :payment_status => "payed"
+      EventRegistrationMailer.payment_confirm(@event_registration).deliver_later 
       #@event_registration.update
     else
       flash[:alert] = "This event Registration is already marked as payed!"
     end
     if @event_registration.save
-      EventRegistrationMailer.payment_confirm(@event_registration).deliver_later
     else
       render 'index'
     end
@@ -85,6 +85,6 @@ class EventRegistrationsController <  ApplicationController
   private
 
     def event_registration_params
-      params.require(:event_registration).permit(:event_id, :user_id, :participants, participants_attributes: [:first_name, :last_name, :birthdate, :nickname, :email, :country, :postcode, :_destroy ])
+      params.require(:event_registration).permit(:event_id, :user_id, :payment_status, :participants, participants_attributes: [:first_name, :last_name, :birthdate, :nickname, :email, :country, :postcode, :_destroy ])
     end
 end
