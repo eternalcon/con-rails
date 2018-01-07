@@ -10,4 +10,7 @@ class User < ApplicationRecord
   def send_devise_notification(notification, *args)
     devise_mailer.send(notification, self, *args).deliver_later
   end
+  def role?(role)
+    return !!self.roles.find_by_name(role.to_s.camelize)
+  end
 end
