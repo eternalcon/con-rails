@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
     before_action :authenticate_user!, :except => [ :index ]
+    load_and_authorize_resource
 
   def index
     # The Events Controller index action is supposed to be the application root.
