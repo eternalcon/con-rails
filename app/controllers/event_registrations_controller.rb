@@ -47,17 +47,16 @@ class EventRegistrationsController <  ApplicationController
   def create
     @event_registration = EventRegistration.new(event_registration_params)
     @event_registration.save
-    #@event_registration.participants.create
     if @event_registration.save
-      redirect_to event_registration_path(@event_registration)
       EventRegistrationMailer.registration_confirm(@event_registration).deliver_later
       EventRegistrationMailer.team_confirm(@event_registration).deliver_later
     else
       render 'new'
     end
+    respond_with(@event_registration)
   end
   
-  
+  # No use yet - not implemented  
   #def update
   #  @event_registration.update(event_registration_params)
   #  respond_with(@event_registration)
@@ -68,6 +67,21 @@ class EventRegistrationsController <  ApplicationController
     respond_with(@event_registration)
   end
 
+  def mark_as_payed
+    unless @event_registration.payment_status == "payed"
+      @event_registration.update  :payment_status => "payed" 
+      #@event_registration.update
+    else
+      flash[:alert] = "This event Registration is already marked as payed!"
+    end
+    if @event_registration.save
+      EventRegistrationMailer.payment_confirm(@event_registration).deliver_later
+    else
+      render 'index'
+    end
+      respond_with(@event_registration, :location => event_event_registrations_path)
+  end
+  
   private
 
     def event_registration_params

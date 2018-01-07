@@ -12,7 +12,9 @@ Rails.application.routes.draw do
       collection do
         get 'home'
       end  
-      resources :event_registrations
+      resources :event_registrations do
+        post 'mark_as_payed', on: :member
+      end
     end
     resources :event_registrations do
       resources :participants, :users
