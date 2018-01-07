@@ -2,8 +2,10 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
-    user ||= User.new # any user, including guest users
-    can :read, Event  # start by defining rules for all users, also not logged ones
+  # start by defining rules for all users, also not logged ones
+    user ||= User.new # check if we have an user, if not, create a new one (guest users with no user account)
+    #can :manage, Event
+    can :home, Event #allow anybody to access the home method on events controller since that's our root.
     return unless user.present?
     can :create, EventRegistration # logged in users can create event registrations
     can :read, EventRegistration, user_id: user.id # logged in users can read their own event registrations
