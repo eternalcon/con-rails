@@ -2,6 +2,13 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+    user ||= User.new # any user, including guest users
+    can :read, Event  # start by defining rules for all users, also not logged ones
+    return unless user.present?
+    can :create, EventRegistration # logged in users can create event registrations
+    can :read, EventRegistration, user.id: user.id # logged in users can read their own event registrations
+    return unless user.role? :admin
+    can :manage, :all # finally we give all remaining permissions only to the admins
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)
