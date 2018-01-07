@@ -48,12 +48,12 @@ class EventRegistrationsController <  ApplicationController
     @event_registration = EventRegistration.new(event_registration_params)
     @event_registration.save
     if @event_registration.save
-      redirect_to event_registration_path(@event_registration)
       EventRegistrationMailer.registration_confirm(@event_registration).deliver_later
       EventRegistrationMailer.team_confirm(@event_registration).deliver_later
     else
       render 'new'
     end
+    respond_with(@event_registration)
   end
   
   # No use yet - not implemented  
@@ -70,7 +70,12 @@ class EventRegistrationsController <  ApplicationController
   def mark_as_payed
     @event_registration.update  :payment_status => "payed" 
     #@event_registration.update
-    respond_with(@event_registration, :location => event_event_registrations_path)
+    if @event_registration.save
+      EventRegistrationMailer.payment_confirm(@event_registration).deliver_later
+    else
+      render 'index'
+    end
+      respond_with(@event_registration, :location => event_event_registrations_path)
   end
   
   private
