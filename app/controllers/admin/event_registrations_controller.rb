@@ -1,4 +1,5 @@
 class Admin::EventRegistrationsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_admin_event_registration, only: [:show, :edit, :update, :destroy]
 
   respond_to :html, :xls
