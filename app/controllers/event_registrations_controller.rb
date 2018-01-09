@@ -80,7 +80,7 @@ class EventRegistrationsController <  ApplicationController
   def resend_confirmation
     EventRegistrationMailer.registration_confirm(@event_registration).deliver_later
     flash[:notice] = "Confirmation E-Mail has been sent out again."
-    respond_with (@event_registration, :location => event_event_registrations_path
+      respond_with(@event_registration, :location => event_event_registrations_path)
   end
   
   private
