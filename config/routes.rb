@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       end  
       resources :event_registrations do
         post 'mark_as_payed', on: :member
+        post 'resend_confirmation', on: :member
       end
     end
     resources :event_registrations do

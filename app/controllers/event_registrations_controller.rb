@@ -71,14 +71,15 @@ class EventRegistrationsController <  ApplicationController
     unless @event_registration.payment_status == "payed"
       @event_registration.update  :payment_status => "payed"
       EventRegistrationMailer.payment_confirm(@event_registration).deliver_later 
-      #@event_registration.update
     else
       flash[:alert] = "This event Registration is already marked as payed!"
     end
-    if @event_registration.save
-    else
-      render 'index'
-    end
+      respond_with(@event_registration, :location => event_event_registrations_path)
+  end
+  
+  def resend_confirmation
+    EventRegistrationMailer.registration_confirm(@event_registration).deliver_later
+    flash[:notice] = "Confirmation E-Mail has been sent out again."
       respond_with(@event_registration, :location => event_event_registrations_path)
   end
   

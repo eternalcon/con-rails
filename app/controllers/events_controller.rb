@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
     before_action :authenticate_user!, :except => [ :home ]
 #    before_action :set_admin_event, only: [:show, :edit, :update, :destroy]
+    before_action :check_for_event_full, only: [:new, :create]
     load_and_authorize_resource
     respond_to :html
 
@@ -38,7 +39,7 @@ class EventsController < ApplicationController
   end
 
   def update
-    #@admin_event.update(admin_event_params)
+    @event.update(event_params)
     respond_with @event
   end
 
@@ -53,8 +54,9 @@ class EventsController < ApplicationController
     # is just a good pattern since you'll be able to reuse the same
     # permit list between create and update. Also, you can specialize
     # this method with per-user checking of permissible attributes.
+    
     def event_params
-      params.require(:event).permit(:name, :start_date, :end_date, :full_price, :day_guest, :child, :participant_id, :event_registration_id, :status)
+      params.require(:event).permit(:name, :start_date, :end_date, :max_participants, :full_price, :day_guest, :child, :participant_id, :event_registration_id, :status)
     end
     
 end
