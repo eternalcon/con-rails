@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Anmeldung Nr..</Data></Cell>
+        <Cell><Data ss:Type="String">Angemeldet mit E-Mail</Data></Cell>
+        <Cell><Data ss:Type="String"> Teilnehmer Nr.</Data></Cell>
+        <Cell><Data ss:Type="String">Nachname</Data></Cell>
+        <Cell><Data ss:Type="String">Vorname</Data></Cell>
+        <Cell><Data ss:Type="String">Spitzname</Data></Cell>
+        <Cell><Data ss:Type="String">Land</Data></Cell>
+        <Cell><Data ss:Type="String">Postleitzahl</Data></Cell>
+        <Cell><Data ss:Type="String">Geburtsdatum</Data></Cell> 
+        <Cell><Data ss:Type="String">Anmeldedatum</Data></Cell> 
+      </Row>
+      <% @admin_event_registrations.each do |event_registration| %>
+        <% event_registration.participants.each do |participant| %>
+      <Row>
+        <Cell><Data ss:Type="Number"><%= event_registration.id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= event_registration.user.email %></Data></Cell>
+        <Cell><Data ss:Type="Number"><%= participant.id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= participant.last_name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= participant.first_name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= participant.nickname %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= participant.country %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= participant.postcode %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= participant.birthdate %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= participant.created_at %></Data></Cell>        
+      </Row>
+      <% end %>
+      <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>
+

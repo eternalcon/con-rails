@@ -1,0 +1,87 @@
+<div class="row">
+  <div class="col-10">
+    <h4>Payment hinzufügen</h4>
+    <%= simple_form_for(:payment) do |f| -%>
+        <%= f.hidden_field  :participant_id -%>
+      <div class="form-row">
+        <div class="col-3">
+          <input type="text" class="typeahead" id="typeahead-choose-registration" class="form-control" data-provide="typeahead" placeholder="Nachname Teilnehmers">
+        </div>
+        <div class="col-2">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="payment_type" id="payment_type_paypal" value="paypal" checked>
+            <label class="form-check-label" for="payment_type_paypal">
+              First
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="payment_type" id="payment_type_transfer" value="option2">
+            <label class="form-check-label" for="payment_type_transfer">
+              Second radio
+            </label>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<div class="row"><div class="col-10"><hr/></div></div>
+<div class="row">
+  <div class="col-10">
+    <table>
+      <% payment_sum = 0 %>
+      <% @registrations.each do |registration| -%>
+        <tr>
+          <td><%= registration.user.email -%></td>
+          <td>
+            <ul>
+              <% registration.participants.each do |participant| %>
+                <li><%= "#{participant.last_name} #{participant.first_name} (#{participant.age(@event.start_date)})" %></li>
+              <% end %>
+            </ul>
+          </td>
+          <td>
+            <% payment_sum += registration.price_total? %>
+            <b><%= number_to_currency(registration.price_total?, :unit => "€") %></b>
+          </td>
+          <td>
+            <b><%= number_to_currency(registration.price_total?, :unit => "€") %></b>
+          </td>
+        </tr>
+      <% end %>
+      <tr>
+        <td></td>
+        <td><b>Price Summary:</b></td>
+        <td><b><%= number_to_currency(payment_sum, unit: '€') -%></b></td>
+      </tr>
+    </table>
+    
+  </div>
+</div>
+
+
+
+<% content_for :custom_javascript do -%>
+  <script>
+      var $input = $('#typeahead-choose-registration');
+
+      $input.typeahead({
+          source: function (query, process) {
+              map = {};
+              names = [];
+              $.get("registration_overview/participants?name=" + query, function(data){
+                  $.each(data, function (i, participant) {
+                      map[participant.first_name + " " + participant.last_name] = participant;
+                      names.push(participant.first_name + " " + participant.last_name);
+                  });
+                  //return process(data.search_results);
+                  process(names)
+              });
+          },
+          updater: function(participant) {
+              selectedParticipant = map[participant].id;
+              return participant;
+          }
+      });
+  </script>
+<% end %>

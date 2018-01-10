@@ -17,3 +17,8 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require_tree .
+//= require bootstrap3-typeahead.min
+
+
+
+

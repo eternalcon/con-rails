@@ -1,0 +1,44 @@
+<h1>Admin Event Registrations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th> Registration No.</th>
+      <th>Registered by E-Mail</th>
+      <th>Participants</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admin_event_registrations.each do |event_registration| %>
+      <tr>
+        <td><%= event_registration.id %></td>
+        <td><%= event_registration.user.email %></td>
+        <td>
+          <table>
+            <thead>
+              <tr>
+              
+              </tr>
+            </thead>
+            <tbody>
+              <% event_registration.participants.each do |participant| %>
+              <tr>
+                <td><%= participant.first_name %></td>
+                <td><%= participant.last_name %></td>
+                <td><%= participant.nickname %></td>
+                <td><%= participant.country %></td>
+                <td><%= participant.postcode %></td>
+                <td><%= participant.birthdate %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

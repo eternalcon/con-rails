@@ -34,5 +34,4 @@ class EventRegistration < ApplicationRecord
     end
     return @total
   end
-  
 end
