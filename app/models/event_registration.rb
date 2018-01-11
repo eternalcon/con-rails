@@ -29,6 +29,8 @@ class EventRegistration < ApplicationRecord
   end
   
   def self.generate_url_token(token_name)
+    # Instead of getting a token, returning and failing at validation due to unique constraints which would have the user try again to get a unique random token,
+    # we loop here until we get a random token which does not exist in the relevant column of the database yet
     loop do 
       token = SecureRandom.urlsafe_base64
       return token

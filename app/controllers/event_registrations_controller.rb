@@ -83,6 +83,19 @@ class EventRegistrationsController <  ApplicationController
       respond_with(@event_registration, :location => event_event_registrations_path)
   end
   
+  def generate_late_registration
+    # Method to add an event_registration that can be filled out by the participant even after the event is labelled full in the database
+    # Needed since we don't want to sell all available places online automatically.
+    # However, when room assignment is done, we want to be able to allow more people in on an individual basis.
+    # The idea here is: We send an E-mail to the participant containing a link with a unique url parameter to identify a specific event_registration
+    # prepared for that participant to fill in with details.
+     
+    @event_registration = EventRegistration.new
+    @event_registration.event_id = params[:event_id]
+    @event_registration.registration_token = EventRegistration.generate_url_token('registration_token')
+    respond_with(@event_registration)
+  end
+  
   private
 
     def event_registration_params
