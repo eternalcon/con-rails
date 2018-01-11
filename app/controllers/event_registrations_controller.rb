@@ -95,9 +95,10 @@ class EventRegistrationsController <  ApplicationController
   
   def send_registration_link
     @event_registration = EventRegistration.new
+    @event_registration.user = User.new
     @event_registration.event_id = params[:event_id]
     @event_registration.registration_token = EventRegistration.generate_url_token('registration_token')
-    
+    @event_registration.user.email = params[:event_registration.email]
     @event_registration.save!
     if @event_registration.save
       flash[:notice] = "Link has been sent"

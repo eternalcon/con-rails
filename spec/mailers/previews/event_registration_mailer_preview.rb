@@ -7,7 +7,14 @@ class EventRegistrationMailerPreview < ActionMailer::Preview
   def team_confirm
     EventRegistrationMailer.team_confirm(EventRegistration.first)  
   end
+  
   def payment_confirm
     EventRegistrationMailer.payment_confirm(EventRegistration.first)  
+  end
+  
+  def late_registration_link
+    @event_registration = EventRegistration.first
+    @event_registration.registration_token = EventRegistration.generate_url_token('registration_token')
+    EventRegistrationMailer.late_registration_link(@event_registration)  
   end
 end
