@@ -13,7 +13,7 @@ class EventRegistrationsController <  ApplicationController
   
   def index
     @event = Event.find(params[:event_id])
-    @event_registrations = @event.event_registrations
+    @event_registrations = @event.event_registrations.where(registration_token: nil) # only show proper event registrations, not prepared late registrations which haven't been filled in. 
     respond_with(@event_registrations) do |format|
       format.html
       format.xls # { send_data to_csv(@admin_event_registrations) }
