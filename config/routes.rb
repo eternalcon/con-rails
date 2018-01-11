@@ -13,8 +13,13 @@ Rails.application.routes.draw do
         get 'home'
       end  
       resources :event_registrations do
-        post 'mark_as_payed', on: :member
-        post 'resend_confirmation', on: :member
+        member do
+          post 'mark_as_payed'
+          post 'resend_confirmation'
+        end
+        collection do
+          get 'generate_late_registration'
+        end
       end
     end
     resources :event_registrations do
