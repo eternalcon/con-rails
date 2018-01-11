@@ -89,11 +89,22 @@ class EventRegistrationsController <  ApplicationController
     # However, when room assignment is done, we want to be able to allow more people in on an individual basis.
     # The idea here is: We send an E-mail to the participant containing a link with a unique url parameter to identify a specific event_registration
     # prepared for that participant to fill in with details.
-     
+    # TODO: Right now, we only display a form for entering the e-mail here. Everything else is handeled in the send_registration_link method.
+    # TODO: This would be ideal for AJAXifying so we don't display a full view but just a popup to enter the address and submit. 
+  end
+  
+  def send_registration_link
     @event_registration = EventRegistration.new
     @event_registration.event_id = params[:event_id]
     @event_registration.registration_token = EventRegistration.generate_url_token('registration_token')
-    respond_with(@event_registration)
+    
+    @event_registration.save!
+    if @event_registration.save
+      flash[:notice] = "Link has been sent"
+    else
+      render 'generate_late_registration' and return 
+    end
+    redirect_to events_path
   end
   
   private
