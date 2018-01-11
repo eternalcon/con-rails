@@ -28,13 +28,13 @@ class EventRegistration < ApplicationRecord
     return @total
   end
   
-  def generate_url_token(token_name)
-    found = false
-    while not found
+  def self.generate_url_token(token_name)
+    loop do 
       token = SecureRandom.urlsafe_base64
-      found = EventRegistration.exists?(token_name: token)
+      return token
+      break unless EventRegistration.exists?(token_name => token)
     end
-    return token
+    
   end
   
 end
