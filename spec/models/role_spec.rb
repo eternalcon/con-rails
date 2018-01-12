@@ -1,5 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Role, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe '#create' do
+    it 'should save a valid model' do
+      expect(create(:admin_role)).to be_truthy
+    end
+  end
 end

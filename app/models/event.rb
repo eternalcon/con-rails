@@ -3,36 +3,49 @@ class Event < ApplicationRecord
   has_many :participants, through: :event_registrations
   validates :name, :start_date, :end_date, presence: true
   validate :end_date_must_be_after_start_date
-  after_find do |event|
-    set_status  
+
+  after_find    :check_status_find
+  before_create :check_status_create
+
+
+  private
+
+  def check_status_find
+    check_status
+    save
   end
-   
-    def set_status
-      return unless errors.blank? # if we already hit an error when checking for the presence of all required attributes, we don't need to check the correct order of dates...
-      if (Time.now.utc.to_date.year < start_date.year) # The event happens in a future year - active event but registration disabled
-        self.status =  'pending'
-      elsif (Time.now.utc.to_date.year == start_date.year) && (Time.now.utc.to_date < start_date) # The event happens this year, but hasn't happened yet - Registration open
-        if self.participants.size > self.max_participants
-          self.status = 'full'
-        else
-          self.status = 'active'
-        end
-      #elsif Time.now.utc.to_date >= :start_date # We're in the same year as the event, but the event is too close to allow online registrations 
-      #  # TODO: figure out how close to the event is too close - one or two weeks in advance sounds reasonable. Will most likely not bee needed anyways since we book out too fast.
-      #  self.status = 'waiting'
-      elsif Time.now.utc.to_date > end_date # The event is in the past
-        self.status = 'past'
-      elsif Time.now.utc.to_date > start_date && Time.now.utc.to_date < end_date # Today is between start and end date - the event is currently on.
-        self.status = 'running'
+
+  def check_status_create
+    check_status
+  end
+
+
+  def check_status
+    return unless errors.blank? # if we already hit an error when checking for the presence of all required attributes, we don't need to check the correct order of dates...
+
+    if (Time.now.utc.to_date.year < start_date.year) # The event happens in a future year - active event but registration disabled
+      self.status =  'pending'
+    elsif (Time.now.utc.to_date.year == start_date.year) && (Time.now.utc.to_date < start_date) # The event happens this year, but hasn't happened yet - Registration open
+      if self.participants.size > self.max_participants
+        self.status = 'full'
+      else
+        self.status = 'active'
       end
-      self.save
-      
+    #elsif Time.now.utc.to_date >= :start_date # We're in the same year as the event, but the event is too close to allow online registrations
+    #  # TODO: figure out how close to the event is too close - one or two weeks in advance sounds reasonable. Will most likely not bee needed anyways since we book out too fast.
+    #  self.status = 'waiting'
+    elsif Time.now.utc.to_date > end_date # The event is in the past
+      self.status = 'past'
+    elsif Time.now.utc.to_date > start_date && Time.now.utc.to_date < end_date # Today is between start and end date - the event is currently on.
+      self.status = 'running'
     end
-    
-    def end_date_must_be_after_start_date
-      return unless errors.blank? # if we already hit an error when checking for the presence of all required attributes, we don't need to check the correct order of dates...
-      if end_date.present? && end_date <= start_date
-        errors.add(:end_date, "can't be the same or earlier than start date")
-      end
+  end
+
+
+  def end_date_must_be_after_start_date
+    return unless errors.blank? # if we already hit an error when checking for the presence of all required attributes, we don't need to check the correct order of dates...
+    if end_date.present? && end_date <= start_date
+      errors.add(:end_date, "can't be the same or earlier than start date")
     end
+  end
 end

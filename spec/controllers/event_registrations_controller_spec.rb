@@ -42,100 +42,105 @@ RSpec.describe EventRegistrationsController, type: :controller do
   let(:valid_session) { {} }
 
   describe "GET #index" do
+    login_admin
+
     it "returns a success response" do
-      event_registration = EventRegistration.create! valid_attributes
-      get :index, params: {}, session: valid_session
+      event_registration = create(:event_registration)
+      get :index, params: {event_id: event_registration.event_id}, session: valid_session
+
       expect(response).to be_success
     end
   end
 
   describe "GET #show" do
+    login_admin
+
     it "returns a success response" do
-      event_registration = EventRegistration.create! valid_attributes
+      event_registration = create(:event_registration)
       get :show, params: {id: event_registration.to_param}, session: valid_session
       expect(response).to be_success
     end
   end
-
-  describe "GET #new" do
-    it "returns a success response" do
-      get :new, params: {}, session: valid_session
-      expect(response).to be_success
-    end
-  end
-
-  describe "GET #edit" do
-    it "returns a success response" do
-      event_registration = EventRegistration.create! valid_attributes
-      get :edit, params: {id: event_registration.to_param}, session: valid_session
-      expect(response).to be_success
-    end
-  end
-
-  describe "POST #create" do
-    context "with valid params" do
-      it "creates a new EventRegistration" do
-        expect {
-          post :create, params: {event_registration: valid_attributes}, session: valid_session
-        }.to change(EventRegistration, :count).by(1)
-      end
-
-      it "redirects to the created event_registration" do
-        post :create, params: {event_registration: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(EventRegistration.last)
-      end
-    end
-
-    context "with invalid params" do
-      it "returns a success response (i.e. to display the 'new' template)" do
-        post :create, params: {event_registration: invalid_attributes}, session: valid_session
-        expect(response).to be_success
-      end
-    end
-  end
-
-  describe "PUT #update" do
-    context "with valid params" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
-
-      it "updates the requested event_registration" do
-        event_registration = EventRegistration.create! valid_attributes
-        put :update, params: {id: event_registration.to_param, event_registration: new_attributes}, session: valid_session
-        event_registration.reload
-        skip("Add assertions for updated state")
-      end
-
-      it "redirects to the event_registration" do
-        event_registration = EventRegistration.create! valid_attributes
-        put :update, params: {id: event_registration.to_param, event_registration: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(event_registration)
-      end
-    end
-
-    context "with invalid params" do
-      it "returns a success response (i.e. to display the 'edit' template)" do
-        event_registration = EventRegistration.create! valid_attributes
-        put :update, params: {id: event_registration.to_param, event_registration: invalid_attributes}, session: valid_session
-        expect(response).to be_success
-      end
-    end
-  end
-
-  describe "DELETE #destroy" do
-    it "destroys the requested event_registration" do
-      event_registration = EventRegistration.create! valid_attributes
-      expect {
-        delete :destroy, params: {id: event_registration.to_param}, session: valid_session
-      }.to change(EventRegistration, :count).by(-1)
-    end
-
-    it "redirects to the event_registrations list" do
-      event_registration = EventRegistration.create! valid_attributes
-      delete :destroy, params: {id: event_registration.to_param}, session: valid_session
-      expect(response).to redirect_to(event_registrations_url)
-    end
-  end
+  #
+  # describe "GET #new" do
+  #   it "returns a success response" do
+  #     get :new, params: {}, session: valid_session
+  #     expect(response).to be_success
+  #   end
+  # end
+  #
+  # describe "GET #edit" do
+  #   it "returns a success response" do
+  #     event_registration = EventRegistration.create! valid_attributes
+  #     get :edit, params: {id: event_registration.to_param}, session: valid_session
+  #     expect(response).to be_success
+  #   end
+  # end
+  #
+  # describe "POST #create" do
+  #   context "with valid params" do
+  #     it "creates a new EventRegistration" do
+  #       expect {
+  #         post :create, params: {event_registration: valid_attributes}, session: valid_session
+  #       }.to change(EventRegistration, :count).by(1)
+  #     end
+  #
+  #     it "redirects to the created event_registration" do
+  #       post :create, params: {event_registration: valid_attributes}, session: valid_session
+  #       expect(response).to redirect_to(EventRegistration.last)
+  #     end
+  #   end
+  #
+  #   context "with invalid params" do
+  #     it "returns a success response (i.e. to display the 'new' template)" do
+  #       post :create, params: {event_registration: invalid_attributes}, session: valid_session
+  #       expect(response).to be_success
+  #     end
+  #   end
+  # end
+  #
+  # describe "PUT #update" do
+  #   context "with valid params" do
+  #     let(:new_attributes) {
+  #       skip("Add a hash of attributes valid for your model")
+  #     }
+  #
+  #     it "updates the requested event_registration" do
+  #       event_registration = EventRegistration.create! valid_attributes
+  #       put :update, params: {id: event_registration.to_param, event_registration: new_attributes}, session: valid_session
+  #       event_registration.reload
+  #       skip("Add assertions for updated state")
+  #     end
+  #
+  #     it "redirects to the event_registration" do
+  #       event_registration = EventRegistration.create! valid_attributes
+  #       put :update, params: {id: event_registration.to_param, event_registration: valid_attributes}, session: valid_session
+  #       expect(response).to redirect_to(event_registration)
+  #     end
+  #   end
+  #
+  #   context "with invalid params" do
+  #     it "returns a success response (i.e. to display the 'edit' template)" do
+  #       event_registration = EventRegistration.create! valid_attributes
+  #       put :update, params: {id: event_registration.to_param, event_registration: invalid_attributes}, session: valid_session
+  #       expect(response).to be_success
+  #     end
+  #   end
+  # end
+  #
+  # describe "DELETE #destroy" do
+  #   it "destroys the requested event_registration" do
+  #     event_registration = EventRegistration.create! valid_attributes
+  #     expect {
+  #       delete :destroy, params: {id: event_registration.to_param}, session: valid_session
+  #     }.to change(EventRegistration, :count).by(-1)
+  #   end
+  #
+  #   it "redirects to the event_registrations list" do
+  #     event_registration = EventRegistration.create! valid_attributes
+  #     delete :destroy, params: {id: event_registration.to_param}, session: valid_session
+  #     expect(response).to redirect_to(event_registrations_url)
+  #   end
+  # end
 
 end

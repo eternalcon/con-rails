@@ -20,9 +20,9 @@ RSpec.describe Event, type: :model do
   
   # Test for event status switch based on date
   it "is pending if it happens in a future year" do
-    create(:event, start_date: Time.now + 2.years, end_date: Time.now + 2.years + 3.days)
-    
-    expect(@event.status).to eq "pending"
+    event = create(:event, start_date: Time.now + 2.years, end_date: Time.now + 2.years + 3.days)
+
+    expect(event.status).to eq "pending"
   end
   
   it "is active if it happens this year and far enough in the future" do
@@ -30,8 +30,10 @@ RSpec.describe Event, type: :model do
     # the distance needed from Time.now to make the event happen in the future might already result in the event being assigned a start date past new years, making the event pending instead of active.
     # It may be impossible to generate an event which still falls in the "active" category towards the year's end.
 
+    allow(Time).to  receive(:now).and_return(Time.parse('2018-02-01'))
+
     event = create(:event, start_date: Time.now + 2.days, end_date: Time.now + 5.days)
-    expect(event.status).to eq "active"
+    expect(Event.find(event.id).status).to eq "active"
   end
 #  it "is in waiting stage if it happens this year but is too close to allow online registration" do
 #    event = create(:event, start_date: Time.now + 2.years, end_date: Time.now + 2.years + 3.days)
@@ -39,8 +41,9 @@ RSpec.describe Event, type: :model do
 #  end
 
   it "is past if the end_date is earlier than Time.now" do
+
     event = create(:event, start_date: Time.now - 5.days, end_date: Time.now - 3.days)
-    expect(event.status).to eq "past"
+    expect(Event.find(event.id).status).to eq "past"
   end
 
 #  it "is full if the maximum number of spaces has been booked" do
