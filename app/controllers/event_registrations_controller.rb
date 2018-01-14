@@ -13,7 +13,7 @@ class EventRegistrationsController <  ApplicationController
   
   def index
     @event = Event.find(params[:event_id])
-    @event_registrations = @event.event_registrations
+    @event_registrations = @event.event_registrations.where(registration_token: nil) # only show proper event registrations, not prepared late registrations which haven't been filled in. 
     respond_with(@event_registrations) do |format|
       format.html
       format.xls # { send_data to_csv(@admin_event_registrations) }
@@ -56,11 +56,10 @@ class EventRegistrationsController <  ApplicationController
     respond_with(@event_registration)
   end
   
-  # No use yet - not implemented  
-  #def update
-  #  @event_registration.update(event_registration_params)
-  #  respond_with(@event_registration)
-  #end
+  def update
+    @event_registration.update(event_registration_params)
+    respond_with(@event_registration)
+  end
 
   def destroy
     @event_registration.destroy
@@ -81,6 +80,38 @@ class EventRegistrationsController <  ApplicationController
     EventRegistrationMailer.registration_confirm(@event_registration).deliver_later
     flash[:notice] = "Confirmation E-Mail has been sent out again."
       respond_with(@event_registration, :location => event_event_registrations_path)
+  end
+  
+  def generate_late_registration
+    # Method to add an event_registration that can be filled out by the participant even after the event is labelled full in the database
+    # Needed since we don't want to sell all available places online automatically.
+    # However, when room assignment is done, we want to be able to allow more people in on an individual basis.
+    # The idea here is: We send an E-mail to the participant containing a link with a unique url parameter to identify a specific event_registration
+    # prepared for that participant to fill in with details.
+    # TODO: Right now, we only display a form for entering the e-mail here. Everything else is handeled in the send_registration_link method.
+    # TODO: This would be ideal for AJAXifying so we don't display a full view but just a popup to enter the address and submit. 
+  end
+  
+  def send_registration_link
+    @event_registration = EventRegistration.new
+    #@event_registration.user = User.new
+    @event_registration.event_id = params[:event_id]
+    @event_registration.registration_token = EventRegistration.generate_url_token('registration_token')
+    #@event_registration.user.email = params[:event_registration.email]
+    @event_registration.save!
+    if @event_registration.save
+      EventRegistrationMailer.late_registration_link(params[:email], @event_registration).deliver_now
+      flash[:notice] = "Link has been sent"
+    else
+      render 'generate_late_registration' and return 
+    end
+    redirect_to events_path
+  end
+  
+  def late_registration
+    @event_registration = EventRegistration.find_by(registration_token: params[:registration_token])
+    @event_registration.update :user_id => current_user.id, :registration_token => NIL
+    render 'edit'
   end
   
   private
