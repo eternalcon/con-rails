@@ -1,9 +1,16 @@
 <%= simple_form_for(@freeform) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
+  <div class="hidden">
+    <%= f.input :event_id, :as => :hidden, :input_html => { :value => @freeform.event_id }  %>
   </div>
-
+  <div class="form-inputs">
+      <%= f.input :name %>
+      <%= f.input :description_de %>
+      <%= f.input :description_en %>
+      <%= f.input :language, as: :select, priority: [ "English" ], collection: [ "English", "German" ] %>
+      <%= f.input :min_age %>
+      <%= f.input :max_age %>
+      <%= f.input :max_participants %>
+  </div>
   <div class="form-actions">
     <%= f.button :submit %>
   </div>
