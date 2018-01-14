@@ -16,6 +16,6 @@ class EventRegistrationMailerPreview < ActionMailer::Preview
   def late_registration_link
     @event_registration = EventRegistration.first
     @event_registration.update registration_token: EventRegistration.generate_url_token('registration_token')
-    EventRegistrationMailer.late_registration_link(@event_registration)  
+    EventRegistrationMailer.late_registration_link("test@test.test", @event_registration)  
   end
 end
