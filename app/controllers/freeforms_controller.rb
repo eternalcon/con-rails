@@ -1,5 +1,6 @@
 class FreeformsController < ApplicationController
-  before_action :set_freeform, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  load_and_authorize_resource
 
   respond_to :html
 
@@ -14,7 +15,7 @@ class FreeformsController < ApplicationController
 
   def new
     @freeform = Freeform.new
-    respond_with(@freeform)
+    @freeform.event_id = params[:event_id]
   end
 
   def edit
@@ -37,11 +38,8 @@ class FreeformsController < ApplicationController
   end
 
   private
-    def set_freeform
-      @freeform = Freeform.find(params[:id])
-    end
-
+    
     def freeform_params
-      params[:freeform]
+      params.require(:freeform).permit(:event_id, :name, :description_de, :description_en, :language, :min_age, :max_age, :max_participants)
     end
 end

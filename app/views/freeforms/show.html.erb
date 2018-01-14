@@ -1,4 +1,4 @@
 <p id="notice"><%= notice %></p>
 
 <%= link_to 'Edit', edit_event_freeform_path(@freeform) %> |
-<%= link_to 'Back', event_freeforms_path %>
+<%= link_to 'Back', event_freeforms_path(@freeform.event_id) %>
