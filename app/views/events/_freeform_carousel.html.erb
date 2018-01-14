@@ -1,0 +1,31 @@
+<h2>Freeforms</h2>
+<div id="FreeformCarousel" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <h3><%= @event.freeforms.first.name %></h3>
+      <h4>Freeform for freeform.min_participants to <%= @event.freeforms.first.max_participants %> Participants between <%= @event.freeforms.first.min_age %> and <%= @event.freeforms.first.max_age %>   years.</h4>
+      <strong>Language: <%= @event.freeforms.first.language %></strong>
+      <p>
+        <%=raw @event.freeforms.first.send("description_#{I18n.locale}") %>
+      </p>
+    </div>
+    <% @event.freeforms.each do |freeform| %>
+      <div class="carousel-item">
+        <h3><%= freeform.name %></h3>
+        <h4>Freeform for freeform.min_participants to <%= freeform.max_participants %> Participants between <%= freeform.min_age %> and <%= freeform.max_age %>   years.</h4>
+        <strong>Language: <%= freeform.language %></strong>
+        <p>
+          <%=raw freeform.send("description_#{I18n.locale}") %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
