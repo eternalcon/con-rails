@@ -1,0 +1,13 @@
+Hi there!
+
+Looks like you have been in contact with Pittel in order to snatch one of the last available spaces at <%= @event_registration.event.name %>...
+Apparently, you have been lucky! You will be part of the fun soon enough!
+
+But before that, we still need some information about you and your party.
+
+Just head over to <%= url_for late_registration_event_event_registrations_url(@event_registration.event_id, locale: 'en', registration_token: @event_registration.registration_token) %> and fill in the required information.
+After your data has been processed, you will receive an additional mail with payment information and everything else you need to know.
+
+Enjoy the party!
+
+The Eternal Convention Crew
