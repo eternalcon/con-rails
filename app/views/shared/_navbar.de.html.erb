@@ -11,6 +11,9 @@
       <li class="nav-item active">
         <%= link_to "Über uns", page_path(id: "about"), class: "nav-link" %>
       </li>
+      <li class="nav-item active">
+        <%= link_to_if (current_user.role == "admin", "Admin Panel", event_registrations_path, class: "nav-link") %>
+      </li>
     </ul>
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
