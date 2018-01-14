@@ -58,6 +58,8 @@ class EventRegistrationsController <  ApplicationController
   
   def update
     @event_registration.update(event_registration_params)
+    EventRegistrationMailer.registration_confirm(@event_registration).deliver_later
+    EventRegistrationMailer.team_late_confirm(@event_registration).deliver_later
     respond_with(@event_registration)
   end
 
