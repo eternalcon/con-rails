@@ -7,6 +7,7 @@ class CreateFreeforms < ActiveRecord::Migration[5.1]
       t.string :language
       t.integer :min_age
       t.integer :max_age
+      t.integer :min_participants
       t.integer :max_participants
       t.references :event, foreign_key: true
 
