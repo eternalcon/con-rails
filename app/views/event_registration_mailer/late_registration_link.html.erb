@@ -8,6 +8,11 @@ Apparently, you have been lucky! You will be part of the fun soon enough!</p>
 <p>Just head over to <%= link_to "the registration page", late_registration_event_event_registrations_url(@event_registration.event_id, locale: 'en', registration_token: @event_registration.registration_token) %> and fill in the required information.</br>
 After your data has been processed, you will receive an additional mail with payment information and everything else you need to know.</p>
 
+
+<p>If you haven't registered a user account for The Eternal Con Website yet, you should probably do so first at <%= link_to "User Signup", new_user_registration_url %>. Otherwise, you would get redirected to the registration page and have to come back to this e-mail after confirming your registration to access the link again.< /br>
+If you already have registered your user account, just go ahead!
+
+</p>
 <p>Enjoy the party!</p>
 
 <p>The Eternal Convention Crew</p>
