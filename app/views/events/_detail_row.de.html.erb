@@ -14,7 +14,12 @@
     </p>
   </div>
   <div class="col-md-6">
-    <%= render "freeform_carousel" %>
+  <h2>Freeforms</h2>
+    <% if @event.freeforms.exists? %>
+      <%= render "freeform_carousel" %>
+    <% else %>
+      <h3>Bisher wurden noch keine Freeforms angekündigt.</h3>
+    <% end %>
   </div>
 </div>
 
