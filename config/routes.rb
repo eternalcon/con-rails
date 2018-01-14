@@ -20,6 +20,7 @@ Rails.application.routes.draw do
         collection do
           get 'generate_late_registration'
           post 'send_registration_link'
+          get 'late_registration'
         end
       end
     end
