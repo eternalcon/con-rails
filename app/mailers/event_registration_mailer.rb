@@ -1,3 +1,4 @@
+Rails.application.routes.default_url_options[:host] = 'localhost:3000'
 class EventRegistrationMailer < ApplicationMailer
   default from: 'info@eternal-con.de'
   layout 'mailer'
@@ -17,8 +18,9 @@ class EventRegistrationMailer < ApplicationMailer
     mail(to: @event_registration.user.email, subject: default_i18n_subject(event: @event_registration.event.name) + "Payment Confirmed!")
   end
   
-  def late_registration_link(event_registration)
+  def late_registration_link(email, event_registration)
     @event_registration = event_registration
-    mail(to: @event_registration.user.email, subject: default_i18n_subject(event: @event_registration.event.name))
+    @email = email
+    mail(to: @email, subject: default_i18n_subject(event: @event_registration.event.name))
   end
 end
