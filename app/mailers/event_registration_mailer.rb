@@ -23,4 +23,9 @@ class EventRegistrationMailer < ApplicationMailer
     @email = email
     mail(to: @email, subject: default_i18n_subject(event: @event_registration.event.name))
   end
+  
+  def team_late_confirm(event_registration)
+    @event_registration = event_registration
+    mail(to: ['andreas_pittelkow@web.de', 'info@eternal-con.de', '1812raevsky@gmail.com'], subject: '[Eternal Con Registration ] - Nachzügler-Anmeldung ausgefüllt für' + @event_registration.event.name)
+  end
 end
