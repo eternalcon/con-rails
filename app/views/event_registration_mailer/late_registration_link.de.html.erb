@@ -1,0 +1,13 @@
+<h3>Hallo!</h3>
+
+<p>Anscheinend hast du dich mit Pittel in Verbindung gesetzt, um einen der letzten Plätze auf <%= @event_registration.event.name %> abzugreifen...</br>
+Wie es aussieht, hast du Glück gehabt! Du wirst bald ein Teil des Chaos sein.</p>
+
+<p>Vorher brauchen wir allerdings noch ein paar Informationen von dir und ggf. deinen Mitreisenden.</p>
+
+<p>Geh einfach nach <%= link_to event_event_registrations_url(:registration_token => @event_registration.registration_token, :event_id => @event_registration.event_id) %> und fülle das Formular aus.</br>
+Nach Verarbeitung deiner Daten bekommst du eine weitere E-Mail mit den Zahlungsinformationen und allen weiteren nützlichen Informationen.</p>
+
+<p>Viel Spaß!</p>
+
+<p>The Eternal Convention Crew</p>

@@ -6,4 +6,5 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-AdminUser.create!(email: Rails.application.secrets[:activeadmin][:admin_email], password: Rails.application.secrets[:activeadmin][:admin_password], password_confirmation: Rails.application.secrets[:activeadmin][:admin_confirm]) if Rails.env.staging? || Rails.env.production?
+# Create the Admin role to be used by CanCanCan - Add more roles if needed.
+Role.create(name: 'Admin')

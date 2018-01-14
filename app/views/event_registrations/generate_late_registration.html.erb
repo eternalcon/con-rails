@@ -1,0 +1,5 @@
+<%= form_tag(send_registration_link_event_event_registrations_path, method: "post") do %>
+  <%= label_tag(:email, "Please enter the E-Mail Address you want to send a late registration link to:") %>
+  <%= email_field_tag 'email' %>
+  <%= submit_tag("Send Late Registration Link") %>
+<% end%>

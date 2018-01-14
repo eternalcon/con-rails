@@ -1,6 +1,6 @@
 class EventRegistration < ApplicationRecord
   belongs_to :event
-  belongs_to :user
+  belongs_to :user, optional: true
   has_and_belongs_to_many :participants
   accepts_nested_attributes_for :participants, reject_if: :all_blank, allow_destroy: true # accept participants upon creating a new event_registration
   validates_associated :participants # make sure the accepted participants all are valid participants before committing to database
@@ -27,4 +27,16 @@ class EventRegistration < ApplicationRecord
     end
     return @total
   end
+  
+  def self.generate_url_token(token_name)
+    # Instead of getting a token, returning and failing at validation due to unique constraints which would have the user try again to get a unique random token,
+    # we loop here until we get a random token which does not exist in the relevant column of the database yet
+    loop do 
+      token = SecureRandom.urlsafe_base64
+      return token
+      break unless EventRegistration.exists?(token_name => token)
+    end
+    
+  end
+  
 end

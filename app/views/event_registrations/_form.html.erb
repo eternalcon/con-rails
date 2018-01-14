@@ -1,16 +1,17 @@
-<div class="hidden">
-  <%= f.input :event_id, :as => :hidden, :input_html => { :value => @event_registration.event_id }  %>
-  <%= f.input :user_id, :as => :hidden, :input_html => { :value => @event_registration.user_id }  %>
-</div>
-<div class="row participant-form" id="participant-form">
-  <%= f.simple_fields_for :participants  do |participant| %>
-    <%= render 'participant_fields', f: participant %>
-  <% end -%>
-</div>
-<div class="row add-participant-row">
-  <%= link_to_add_association t(:add_participant), f, :participants, html_options: 'data-turbolinks="false"' %>   
-</div>
-<div class="form-actions">
-<%= f.submit t(:btn_registration), class: "btn btn-lg btn-default", value: t(:btn_registration) -%>
-</div>
-
+<%= simple_form_for @event_registration do |f| %>
+  <div class="hidden">
+    <%= f.input :event_id, :as => :hidden, :input_html => { :value => @event_registration.event_id }  %>
+    <%= f.input :user_id, :as => :hidden, :input_html => { :value => @event_registration.user_id }  %>
+  </div>
+  <div class="row participant-form" id="participant-form">
+    <%= f.simple_fields_for :participants  do |participant| %>
+      <%= render 'participant_fields', f: participant %>
+    <% end -%>
+  </div>
+  <div class="row add-participant-row">
+    <%= link_to_add_association t(:add_participant), f, :participants, html_options: 'data-turbolinks="false"' %>   
+  </div>
+  <div class="form-actions">
+  <%= f.submit t(:btn_registration), class: "btn btn-lg btn-default", value: t(:btn_registration) -%>
+  </div>
+<% end -%>

@@ -6,6 +6,8 @@
       <th>Registration No.</th>
       <th>Registered by E-Mail</th>
       <th>Participants</th>
+      <th>Payment Status</th>
+      <th colspan=2 >Options</th>
     </tr>
   </thead>
 
@@ -35,6 +37,9 @@
             </tbody>
           </table>
         </td>
+        <td><%= event_registration.payment_status %></td>
+        <td><%= button_to "Mark as payed", mark_as_payed_event_event_registration_path(event_registration.event, event_registration) %></td>
+        <td><%= button_to "Resend Confirmation", resend_confirmation_event_event_registration_path(event_registration.event, event_registration) %></td>
       </tr>
     <% end %>
   </tbody>

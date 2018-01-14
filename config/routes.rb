@@ -12,7 +12,17 @@ Rails.application.routes.draw do
       collection do
         get 'home'
       end  
-      resources :event_registrations
+      resources :event_registrations do
+        member do
+          post 'mark_as_payed'
+          post 'resend_confirmation'
+        end
+        collection do
+          get 'generate_late_registration'
+          post 'send_registration_link'
+          get 'late_registration'
+        end
+      end
     end
     resources :event_registrations do
       resources :participants, :users
