@@ -56,11 +56,10 @@ class EventRegistrationsController <  ApplicationController
     respond_with(@event_registration)
   end
   
-  # No use yet - not implemented  
-  #def update
-  #  @event_registration.update(event_registration_params)
-  #  respond_with(@event_registration)
-  #end
+  def update
+    @event_registration.update(event_registration_params)
+    respond_with(@event_registration)
+  end
 
   def destroy
     @event_registration.destroy
@@ -111,7 +110,7 @@ class EventRegistrationsController <  ApplicationController
   
   def late_registration
     @event_registration = EventRegistration.find_by(registration_token: params[:registration_token])
-    @event_registration.update :user_id => current_user.id
+    @event_registration.update :user_id => current_user.id, :registration_token => NIL
     render 'edit'
   end
   
