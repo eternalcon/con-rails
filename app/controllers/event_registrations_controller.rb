@@ -94,13 +94,11 @@ class EventRegistrationsController <  ApplicationController
   
   def send_registration_link
     @event_registration = EventRegistration.new
-    #@event_registration.user = User.new
     @event_registration.event_id = params[:event_id]
     @event_registration.registration_token = EventRegistration.generate_url_token('registration_token')
-    #@event_registration.user.email = params[:event_registration.email]
     @event_registration.save!
     if @event_registration.save
-      EventRegistrationMailer.late_registration_link(params[:email], @event_registration).deliver_now
+      EventRegistrationMailer.late_registration_link(params[:email], @event_registration).deliver_later
       flash[:notice] = "Link has been sent"
     else
       render 'generate_late_registration' and return 
