@@ -1,6 +1,12 @@
 # Preview all emails at http://localhost:3000/rails/mailers/event_registration_mailer
 #Rails.application.routes.default_url_options[:host] = 'localhost:3000'
+#Rails.application.config.action_mailer.default_url_options
 class EventRegistrationMailerPreview < ActionMailer::Preview
+#  include Rails.application.routes.url_helper
+  def default_url_options
+    Rails.application.config.action_mailer.default_url_options
+  end
+  
   def registration_confirm
     EventRegistrationMailer.registration_confirm(EventRegistration.first)  
   end
