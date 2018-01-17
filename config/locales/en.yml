@@ -36,6 +36,8 @@ en:
   event_registration_mailer:
     registration_confirm:
       subject: "[The Eternal Convention] - Congratulations! You are part of %{event}"
+      late_registration_link:
+      subject: "[The Eternal Convention] - Your link to register for %{event}"
 #  errors:
 #      models:
 #        participant:
