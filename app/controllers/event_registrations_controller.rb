@@ -41,7 +41,9 @@ class EventRegistrationsController <  ApplicationController
   end
 
   def edit
-  
+    if @event_registration.participants.empty?
+      @event_registration.participants.build
+    end
   end
 
   def create
@@ -111,7 +113,7 @@ class EventRegistrationsController <  ApplicationController
   def late_registration
     @event_registration = EventRegistration.find_by(registration_token: params[:registration_token])
     @event_registration.update :user_id => current_user.id, :registration_token => NIL
-    render 'edit'
+      redirect_to edit_event_event_registration_path( @event_registration.event_id, @event_registration.id )
   end
   
   private
