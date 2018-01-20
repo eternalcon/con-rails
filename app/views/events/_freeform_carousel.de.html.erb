@@ -11,7 +11,7 @@
     <% @event.freeforms.each do |freeform| %>
       <div class="carousel-item">
         <h3><%= freeform.name %></h3>
-        <h4>Freeform for <%= freeform.min_participants %> to <%= freeform.max_participants %> Participants between <%= freeform.min_age %> and <%= freeform.max_age %>   years.</h4>
+        <h4>Freeform für <%= freeform.min_participants %> bis <%= freeform.max_participants %> Teilnehmer zwischen <%= freeform.min_age %> und <%= freeform.max_age %> Jahren.</h4>
         <strong>Language: <%= freeform.language %></strong>
         <p>
           <%=raw freeform.send("description_#{I18n.locale}") %>
