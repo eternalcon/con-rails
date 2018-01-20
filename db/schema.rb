@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180111171906) do
+ActiveRecord::Schema.define(version: 20180114135125) do
 
   create_table "delayed_jobs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "priority", default: 0, null: false
@@ -55,6 +55,21 @@ ActiveRecord::Schema.define(version: 20180111171906) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "freeforms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "name"
+    t.text "description_de"
+    t.text "description_en"
+    t.string "language"
+    t.integer "min_age"
+    t.integer "max_age"
+    t.integer "min_participants"
+    t.integer "max_participants"
+    t.bigint "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_freeforms_on_event_id"
   end
 
   create_table "participants", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -108,5 +123,6 @@ ActiveRecord::Schema.define(version: 20180111171906) do
 
   add_foreign_key "event_registrations", "events"
   add_foreign_key "event_registrations", "users"
+  add_foreign_key "freeforms", "events"
   add_foreign_key "participants", "users"
 end

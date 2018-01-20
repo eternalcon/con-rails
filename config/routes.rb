@@ -23,10 +23,12 @@ Rails.application.routes.draw do
           get 'late_registration'
         end
       end
+      resources :freeforms
     end
     resources :event_registrations do
       resources :participants, :users
     end
+    resources :freeforms
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
