@@ -26,7 +26,7 @@
       <td><%= freeform.min_participants %></td>
       <td><%= freeform.max_participants %></td>
         <td><%= link_to 'Show', freeform %></td>
-        <td><%= link_to 'Edit', edit_freeform_path(freeform) %></td>
+        <td><%= link_to 'Edit', edit_event_freeform_path(freeform.event_id, freeform) %></td>
         <td><%= link_to 'Destroy', freeform, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
