@@ -2,7 +2,7 @@
   <div class="carousel-inner">
     <div class="carousel-item active">
       <h3><%= @event.freeforms.first.name %></h3>
-      <h4>Freeform for freeform.min_participants to <%= @event.freeforms.first.max_participants %> Participants between <%= @event.freeforms.first.min_age %> and <%= @event.freeforms.first.max_age %>   years.</h4>
+      <h4>Freeform for <%= freeform.min_participants %> to <%= @event.freeforms.first.max_participants %> Participants between <%= @event.freeforms.first.min_age %> and <%= @event.freeforms.first.max_age %>   years.</h4>
       <strong>Language: <%= @event.freeforms.first.language %></strong>
       <p>
         <%=raw @event.freeforms.first.send("description_#{I18n.locale}") %>
