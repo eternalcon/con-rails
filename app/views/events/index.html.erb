@@ -11,7 +11,7 @@
       <th>Youth Price</th>
       <th>Child Price</th>
       <th>Status</th>
-      <th colspan=4>Options</th>
+      <th colspan=5>Options</th>
     </tr>
   </thead>
 
@@ -30,6 +30,7 @@
         <td><%= link_to 'Delete Event', event_path(event), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <td><%= link_to 'Registrations for the Event', event_event_registrations_path(event) %></td>
         <td><%= link_to 'Send link for late registration', generate_late_registration_event_event_registrations_path(event) %></td>
+        <td><%= link_to 'Manage Freeforms', event_freeforms_path(event) %></td>
       </tr>
     <% end %>
   </tbody>
