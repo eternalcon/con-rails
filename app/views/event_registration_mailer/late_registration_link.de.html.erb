@@ -5,8 +5,15 @@ Wie es aussieht, hast du Glück gehabt! Du wirst bald ein Teil des Chaos sein.</
 
 <p>Vorher brauchen wir allerdings noch ein paar Informationen von dir und ggf. deinen Mitreisenden.</p>
 
-<p>Geh einfach nach <%= link_to event_event_registrations_url(:registration_token => @event_registration.registration_token, :event_id => @event_registration.event_id) %> und fülle das Formular aus.</br>
+<p>Geh einfach zur <%= link_to "Anmeldung", late_registration_event_event_registrations_url(:registration_token => @event_registration.registration_token, :event_id => @event_registration.event_id) %> und fülle das Formular aus.</br>
 Nach Verarbeitung deiner Daten bekommst du eine weitere E-Mail mit den Zahlungsinformationen und allen weiteren nützlichen Informationen.</p>
+
+<p>Solltest du dich noch nicht als Benutzer der Eternal Con Webseite registriert haben, machst du das am Besten vorher unter <%= link_to "Benutzer Anmelden", new_user_registration_url %> , da du sonst zunächst zur Registrierung weitergeleitet wirst. Nach Registrierung und Bestätigung deiner E-Mail kannst du dann dem Link oben tatsächlich auch folgen um deine Daten einzutragen.< /br>
+Wenn du bereits ein Benutzerkonto hast, kannst du sofort den Link oben verwenden.
+</p>
+
+<p><b>Wichtig: Der Link oben kann nur ein mal verwendet werden. Durch Klick auf den Link wird die damit angestoßene Anmeldung mit dem angemeldeten Benutzerkonto verknüpft. Alle die Anmeldungen betreffenden E-Mails werden an die Adresse des verwendeten Benutzerkontos versandt.</b></p>
+
 
 <p>Viel Spaß!</p>
 
