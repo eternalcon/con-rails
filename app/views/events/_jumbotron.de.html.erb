@@ -2,7 +2,7 @@
       <div class="jumbotron jumbotron-fluid">
         <div class="container">
           <h1 class="display-3">Herzlich willkommen zu <%= @event.name %></h1>
-          <p> <%= @event.name %> wird <strong>vom <%= l @event.start_date, format: :long %> bis zum <%= l @event.end_date, format: :long %></strong> auf der <a href=https://www.diejugendherbergen.de/jugendherbergen/bacharach/portrait/">Jugendherberge Burg Stahleck</a> in <a href="http://www.bacharach.de/startseite/">Bacharach am Rhein stattfinden.</a></p>
+          <p> <%= @event.name %> wird <strong>vom <%= l @event.start_date, format: :long %> bis zum <%= l @event.end_date, format: :long %></strong> auf der <a href="https://www.diejugendherbergen.de/jugendherbergen/bacharach/portrait/">Jugendherberge Burg Stahleck</a> in <a href="http://www.bacharach.de/startseite/">Bacharach am Rhein stattfinden.</a></p>
           <% if @event.status == "pending" %>
             <p>Merke dir das Datum, die Anmeldung für <%= @event.name %> öffnet am 1. Januar <%= @event.start_date.year %></p>
             <p><%= link_to "Anmelden ab 1. Januar!", new_event_event_registration_path(@event), class: "btn btn-primary btn-lg disabled", role: "button" %></p>
