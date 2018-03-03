@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180114135125) do
+ActiveRecord::Schema.define(version: 20180303122422) do
 
   create_table "delayed_jobs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "priority", default: 0, null: false
@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(version: 20180114135125) do
   create_table "event_registrations_participants", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "event_registration_id", null: false
     t.bigint "participant_id", null: false
+    t.index ["event_registration_id"], name: "fk_rails_dd30c791e8"
+    t.index ["participant_id"], name: "fk_rails_ac58f31357"
   end
 
   create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -123,6 +125,10 @@ ActiveRecord::Schema.define(version: 20180114135125) do
 
   add_foreign_key "event_registrations", "events"
   add_foreign_key "event_registrations", "users"
+  add_foreign_key "event_registrations_participants", "event_registrations"
+  add_foreign_key "event_registrations_participants", "participants"
   add_foreign_key "freeforms", "events"
   add_foreign_key "participants", "users"
+  add_foreign_key "roles_users", "roles"
+  add_foreign_key "roles_users", "users"
 end
