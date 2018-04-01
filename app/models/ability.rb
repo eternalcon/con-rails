@@ -10,6 +10,8 @@ class Ability
     can :create, EventRegistration # logged in users can create event registrations
     can :manage, EventRegistration, user_id: user.id # logged in users can do anything they like to their own event registrations
     can :read, Freeform
+    can :create, FfRegistration # logged in users can create event registrations
+    can :manage, FfRegistration, user_id: user.id # logged in users can do anything they like to their own event registrations
     return unless user.role? :admin
     can :manage, :all # finally we give all remaining permissions only to the admins
     # Define abilities for the passed in user here. For example:
