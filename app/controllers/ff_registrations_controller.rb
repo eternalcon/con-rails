@@ -28,12 +28,9 @@ class FfRegistrationsController < ApplicationController
     #end
     respond_with(@ff_registration)
   end
-    
-    
-    
-    
-  
-  
+  def show
+    respond_with(@ff_registration)
+  end  
   private
 
     def ff_registration_params
