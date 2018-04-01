@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
     before_action :authenticate_user!, :except => [ :home ]
 #    before_action :set_admin_event, only: [:show, :edit, :update, :destroy]
-    before_action :check_for_event_full, only: [:new, :create]
+#    before_action :check_for_event_full, only: [:new, :create]
     load_and_authorize_resource
     respond_to :html
 
