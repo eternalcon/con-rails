@@ -4,6 +4,9 @@
 <p>
   <%=raw @freeform.send("description_#{I18n.locale}") %>
 </p>
+<p>
+  <%= link_to "Jetzt anmelden!",  new_event_freeform_ff_registration_path(@freeform.event.id, @freeform.id), class: "btn btn-primary btn-lg", role: "button" %>
+</p>
 <% if can? :update, @freeform %>
   <%= link_to 'Edit', edit_event_freeform_path(@freeform) %>
 <% end %>
