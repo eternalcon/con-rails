@@ -4,14 +4,14 @@
     <%= f.input :freeform_id, :as => :hidden, :input_html => { :value => @ff_registration.freeform_id }  %>
   </div>
   <div>
-    Please select, which of the participants you registered for <%= @ff_registration.freeform.event.name %> you want to register for the freeform:
+    Bitte wähle aus, welche der Teilnehmer, die du für <%= @ff_registration.freeform.event.name %> angemeldet hast, du für das Freeform anmelden möchtest:
   </div>
   <div>
     <%= f.association :participants, label_method: :first_name, value_method: :id, include_blank: false, as: :check_boxes, :input_html => { :checked => false } %>
   </div>
   <div>
-    Based on the short description of the freeform on our website, please let the author know what about the game you are most interested in, so he can choose the perfect character for you.</br>
-    This information is only supposed to be a first assessment to get character casting started - the author will most likely get in contact with you for further information.
+    Basierend auf der kurzen Beschreibung des Freeforms auf unserer Homepage, teile dem Autor bitte kurz mit, was dich an dem Freeform besonders interessiert, damit er den perfekten Charakter für dich auswählen kann.</br>
+    Diese Information dient nur als erste Einschätzung - der Autor wird dich sicher für weitere Absprachen kontaktieren.
   </div>
   <div>
     <%= f.input :notes %>
