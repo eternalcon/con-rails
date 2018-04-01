@@ -1,0 +1,13 @@
+<%= simple_form_for @ff_registration do |f| %>
+  <div class="hidden">
+    <%= f.input :user_id, :as => :hidden, :input_html => { :value => @ff_registration.user_id }  %>
+    <%= f.input :freeform_id, :as => :hidden, :input_html => { :value => @ff_registration.freeform_id }  %>
+  </div>
+  <div>
+    <%= f.association :participants, label_method: :first_name, include_blank: false, as: :check_boxes, :input_html => { :checked => false } %>
+    <%= f.input :notes %>
+  </div>
+  <div class="form-actions">
+  <%= f.submit t(:btn_registration), class: "btn btn-lg btn-default", value: t(:btn_registration) -%>
+  </div>
+<% end -%>
