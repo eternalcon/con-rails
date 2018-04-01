@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180401111007) do
+ActiveRecord::Schema.define(version: 20180401112433) do
 
   create_table "delayed_jobs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "priority", default: 0, null: false
@@ -57,6 +57,16 @@ ActiveRecord::Schema.define(version: 20180401111007) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "ff_registrations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "freeform_id"
+    t.bigint "user_id"
+    t.text "notes"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["freeform_id"], name: "index_ff_registrations_on_freeform_id"
+    t.index ["user_id"], name: "index_ff_registrations_on_user_id"
   end
 
   create_table "freeforms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -128,6 +138,8 @@ ActiveRecord::Schema.define(version: 20180401111007) do
   add_foreign_key "event_registrations", "users"
   add_foreign_key "event_registrations_participants", "event_registrations"
   add_foreign_key "event_registrations_participants", "participants"
+  add_foreign_key "ff_registrations", "freeforms"
+  add_foreign_key "ff_registrations", "users"
   add_foreign_key "freeforms", "events"
   add_foreign_key "participants", "users"
   add_foreign_key "roles_users", "roles"
