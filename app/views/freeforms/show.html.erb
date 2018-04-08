@@ -1,4 +1,13 @@
-<p id="notice"><%= notice %></p>
-
-<%= link_to 'Edit', edit_event_freeform_path(@freeform) %> |
+<h3><%= @freeform.name %></h3>
+<h4>Freeform for <%= @freeform.min_participants %> to <%= @freeform.max_participants %> Participants between <%= @freeform.min_age %> and <%= @freeform.max_age %>   years.</h4>
+<strong>Language: <%= @freeform.language %></strong>
+<p>
+  <%=raw @freeform.send("description_#{I18n.locale}") %>
+</p>
+<p>
+  <%= link_to_if @freeform.status == "active", "Register Now!",  new_event_freeform_ff_registration_path(@freeform.event.id, @freeform.id), class: "btn btn-primary btn-lg", role: "button" %>
+</p>
+<% if can? :update, @freeform %>
+  <%= link_to 'Edit', edit_event_freeform_path(@freeform) %>
+<% end %>
 <%= link_to 'Back', event_freeforms_path(@freeform.event_id) %>

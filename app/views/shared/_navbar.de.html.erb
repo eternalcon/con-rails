@@ -11,11 +11,11 @@
       <li class="nav-item active">
         <%= link_to "Über uns", page_path(id: "about"), class: "nav-link" %>
       </li>
-      <li class="nav-item active">
-        <% if user_signed_in? %>
-          <%= link_to_if current_user.role?("admin"), "Admin Panel", events_path, class: "nav-link"%>
-        <% end %>
-      </li>
+      <% if user_signed_in? && current_user.role?("admin") %>
+        <li class="nav-item active">
+          <%= link_to "Admin Panel", events_path, class: "nav-link"%>
+        </li>
+      <% end %>
     </ul>
     <ul class="navbar-nav mr-auto">
       <li class="nav-item active">
