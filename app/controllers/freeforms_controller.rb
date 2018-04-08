@@ -40,6 +40,6 @@ class FreeformsController < ApplicationController
   private
     
     def freeform_params
-      params.require(:freeform).permit(:event_id, :name, :description_de, :description_en, :language, :min_age, :max_age, :min_participants, :max_participants)
+      params.require(:freeform).permit(:event_id, :name, :description_de, :description_en, :language, :min_age, :max_age, :min_participants, :max_participants, :author_email, :status)
     end
 end
