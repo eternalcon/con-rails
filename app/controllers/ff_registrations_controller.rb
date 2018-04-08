@@ -5,9 +5,8 @@ class FfRegistrationsController < ApplicationController
   
   def new
     @ff_registration = FfRegistration.new do |r|
-      r.freeform = Freeform.find_by(params[:freeform_id])
+      r.freeform_id = params[:freeform_id]
       r.user_id = current_user.id
-      #r.participants.build
       current_user.event_registrations.each do |e|
         r.participants += e.participants
       end
@@ -17,8 +16,6 @@ class FfRegistrationsController < ApplicationController
   def create
     params[:ff_registration][:participant_ids] ||= []
     @ff_registration = FfRegistration.new(ff_registration_params)
-    #@ff_registration.participants = params[:participant_ids] 
-    #@ff_registration.participants = 
     @ff_registration.save
     #if @ff_registration.save
     #  EventRegistrationMailer.registration_confirm(@event_registration).deliver_later
@@ -28,9 +25,11 @@ class FfRegistrationsController < ApplicationController
     #end
     respond_with(@ff_registration)
   end
+  
   def show
     respond_with(@ff_registration)
-  end  
+  end
+    
   private
 
     def ff_registration_params
