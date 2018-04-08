@@ -1,3 +1,26 @@
-FfRegistration#registration
+Hey!
 
-<%= @greeting %>, find me in app/views/ff_registration_mailer/registration.text.erb
+You just received a new registration for the Freeform "<%= @ff_registration.freeform.name -%>".
+The following people have registered for your game:
+<% @ff_registration.participants.each do |participant| %>
+  First Name: <%= participant.first_name %>
+  Last Name: <%= participant.last_name %>
+  Nickname: <%= participant.nickname %>
+  Age: <%= participant.age(Time.now) %>
+  Country of origin: <%= participant.country %>
+<% end %>
+
+The Contact E-Mail for the registration is <%= @ff_registration.user.email -%>.
+
+The player added the following note as a first info for character castiing:
+
+<%= @ff_registration.notes %>
+
+According to our database, <%= @ff_registration.freeform.participants.size -%> players of a maximum of <%= @ff_registration.freeform.max_participants -%> Participants have registered for your game up to date.
+
+Registration will automatically close once the maximum number of players is reached.
+Should you want to pause or stop signups early, please drop a mail to daniel@eternal-con.de
+
+Game On!
+
+The Eternal Convention Crew
