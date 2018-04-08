@@ -20,13 +20,12 @@ class FfRegistrationsController < ApplicationController
   def create
     params[:ff_registration][:participant_ids] ||= []
     @ff_registration = FfRegistration.new(ff_registration_params)
-    @ff_registration.save
-    #if @ff_registration.save
-    #  EventRegistrationMailer.registration_confirm(@event_registration).deliver_later
-    #  EventRegistrationMailer.team_confirm(@event_registration).deliver_later
-    #else
-    #  render 'new'
-    #end
+    if @ff_registration.save
+      FfRegistrationMailer.registration_confirm(@ff_registration).deliver_later
+      FfRegistrationMailer.registration(@ff_registration).deliver_later
+    else
+      render 'new'
+    end
     respond_with(@ff_registration)
   end
   
