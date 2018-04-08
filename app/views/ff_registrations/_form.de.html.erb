@@ -1,0 +1,22 @@
+<%= simple_form_for @ff_registration do |f| %>
+  <div class="hidden">
+    <%= f.input :user_id, :as => :hidden, :input_html => { :value => @ff_registration.user_id }  %>
+    <%= f.input :freeform_id, :as => :hidden, :input_html => { :value => @ff_registration.freeform_id }  %>
+  </div>
+  <div>
+    Bitte wähle aus, welche der Teilnehmer, die du für <%= @ff_registration.freeform.event.name %> angemeldet hast, du für das Freeform anmelden möchtest:
+  </div>
+  <div>
+    <%= f.association :participants, label_method: :first_name, value_method: :id, include_blank: false, as: :check_boxes, :input_html => { :checked => false } %>
+  </div>
+  <div>
+    Basierend auf der kurzen Beschreibung des Freeforms auf unserer Homepage, teile dem Autor bitte kurz mit, was dich an dem Freeform besonders interessiert, damit er den perfekten Charakter für dich auswählen kann.</br>
+    Diese Information dient nur als erste Einschätzung - der Autor wird dich sicher für weitere Absprachen kontaktieren.
+  </div>
+  <div>
+    <%= f.input :notes %>
+  </div>
+  <div class="form-actions">
+  <%= f.submit t(:btn_registration), class: "btn btn-lg btn-default", value: t(:btn_registration) -%>
+  </div>
+<% end -%>

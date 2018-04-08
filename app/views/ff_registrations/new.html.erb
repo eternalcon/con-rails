@@ -1,0 +1,16 @@
+<% content_for :title do %>
+  <title> Registration for <%= @ff_registration.freeform.name %> </title>
+<% end %>
+<div class="container-fluid">
+  <h1>Registration for <%= @ff_registration.freeform.name %></h1>
+  
+  <h3>Participation in this freeform will incur a participation fee of 10,-€ per person, payable in cash at check-in.</h3>
+  <p>
+    <%= render 'form', ff_registration: @ff_registration%>
+  </p>
+    
+</div>
+
+
+
+

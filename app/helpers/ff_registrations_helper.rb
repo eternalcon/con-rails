@@ -1,0 +1,2 @@
+module FfRegistrationsHelper
+end
