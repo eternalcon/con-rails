@@ -10,4 +10,4 @@
 <% if can? :update, @freeform %>
   <%= link_to 'Edit', edit_event_freeform_path(@freeform) %>
 <% end %>
-<%= link_to 'Back', event_freeforms_path(@freeform.event_id) %>
+<%= link_to 'Back', request.referer.present? ? request.referer : default_path %>
