@@ -23,9 +23,14 @@ Rails.application.routes.draw do
           get 'late_registration'
         end
       end
-      resources :freeforms
+      resources :freeforms do
+        resources :ff_registrations
+      end
     end
     resources :event_registrations do
+      resources :participants, :users
+    end
+    resources :ff_registrations do
       resources :participants, :users
     end
     resources :freeforms

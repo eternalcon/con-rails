@@ -28,17 +28,19 @@
 #
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
-
 de:
-   btn_registration: "Anmelden!"
-   add_participant: 'Weiterer Teilnehmer'
-   remove_participant: 'Teilnehmer entfernen'
-   participant_exists: "Teilnehmer existiert bereits"
-   event_registration_mailer:
+  btn_registration: "Anmelden!"
+  add_participant: 'Weiterer Teilnehmer'
+  remove_participant: 'Teilnehmer entfernen'
+  participant_exists: "Teilnehmer existiert bereits"
+  event_registration_mailer:
     registration_confirm:
       subject: "[The Eternal Convention] - Herzlichen Glückwunsch, du bist ein Teil von %{event}"
     late_registration_link:
       subject: "[The Eternal Convention] - Dein Link zur Anmeldung für %{event}"
+  ff_registration_mailer:
+    registration_confirm:
+      subject: "[The Eternal Convention] - Du hast dich erfolgreich für %{freeform_name} angemeldet!"
 #  errors:
 #      models:
 #        participant:
