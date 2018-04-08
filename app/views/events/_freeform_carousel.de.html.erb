@@ -8,7 +8,7 @@
         <%=raw @event.freeforms.first.send("description_#{I18n.locale}") %>
       </p>
       <p>
-        <%= link_to "Details", event_freeform_path(@event, @event.freeforms.first) %>
+        <%= link_to "Details / Anmeldung", event_freeform_path(@event, @event.freeforms.first) %>
       </p>
     </div>
     <% @event.freeforms.each do |freeform| %>
