@@ -1,0 +1,27 @@
+Hey!
+
+Du hast dich erfolgreich für das Freeform "<%= @ff_registration.freeform.name -%>" angemeldet.
+Folgende Personen wurden als Spieler registriert:
+<% @ff_registration.participants.each do |participant| %>
+  Vorname: <%= participant.first_name %>
+  Nachname: <%= participant.last_name %>
+  Spitzname: <%= participant.nickname %>
+  Alter: <%= participant.age(Time.now) %>
+  Herkunftsland: <%= participant.country %>
+<% end %>
+
+Die Kontaktadresse für diese Anmeldung ist <%= @ff_registration.user.email -%>.
+Du hast dem Autor des Freeforms folgende Informationen als Vorab-Info für das Charakter-Casting mitgeteilt:
+
+<%= @ff_registration.notes %>
+
+Hierbei handelt es sich nur um einen ersten Hinweis. Der Autor wird sich für das Charakter-Casting mit dir in Verbindung setzen.
+
+
+Teilnahme am Freeform kostet eine Teilnahmegebühr von 10,- € pro Person, die beim Check-In in Bar zu bezahlen ist.
+
+
+Viel Spaß!
+Game On!
+
+The Eternal Convention Crew

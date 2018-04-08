@@ -1,3 +1,28 @@
-FfRegistration#registration_confirm
+Hey!
 
-<%= @greeting %>, find me in app/views/ff_registration_mailer/registration_confirm.text.erb
+You successfully registered for the Freeform "<%= @ff_registration.freeform.name -%>".
+You registered the following participants for the game:
+<% @ff_registration.participants.each do |participant| %>
+  First Name: <%= participant.first_name %>
+  Last Name: <%= participant.last_name %>
+  Nickname: <%= participant.nickname %>
+  Age: <%= participant.age(Time.now) %>
+  Country of origin: <%= participant.country %>
+<% end %>
+
+The Contact E-Mail for the registration is <%= @ff_registration.user.email -%>.
+
+You sent the following message to the author to help with casting:
+
+<%= @ff_registration.notes %>
+
+This is only a first heads up though. The authors will get in contact with you regarding furter character casting.
+
+
+Participation in this freeform will incur a participation fee of 10,-€ per person payable in cash at checkin.
+
+
+Enjoy the game!
+Game On!
+
+The Eternal Convention Crew
