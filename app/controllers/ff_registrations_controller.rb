@@ -4,6 +4,10 @@ class FfRegistrationsController < ApplicationController
   respond_to :html
   
   def new
+    @freeform = Freeform.find (params[:freeform_id])
+    unless @freeform.status == "active"
+      redirect_to root_path
+    end
     @ff_registration = FfRegistration.new do |r|
       r.freeform_id = params[:freeform_id]
       r.user_id = current_user.id
