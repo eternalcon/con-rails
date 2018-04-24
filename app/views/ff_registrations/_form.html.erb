@@ -7,7 +7,7 @@
     Please select, which of the participants you registered for <%= @ff_registration.freeform.event.name %> you want to register for the freeform:
   </div>
   <div>
-    <%= f.association :participants, label_method: :first_name, value_method: :id, include_blank: false, as: :check_boxes, :input_html => { :checked => false } %>
+    <%= f.input :participant_ids, as: :check_boxes, collection: @ff_registration.participants, label_method: :first_name, value_method: :id, include_blank: false, :input_html => { :checked => false }  %>
   </div>
   <div>
     Based on the short description of the freeform on our website, please let the author know what about the game you are most interested in, so he can choose the perfect character for you.</br>

@@ -8,12 +8,11 @@ class FfRegistrationsController < ApplicationController
     unless @freeform.status == "active"
       redirect_to root_path
     end
-    @ff_registration = FfRegistration.new do |r|
-      r.freeform_id = params[:freeform_id]
-      r.user_id = current_user.id
-      current_user.event_registrations.each do |e|
-        r.participants += e.participants
-      end
+    @ff_registration = FfRegistration.new
+    @ff_registration.freeform_id = params[:freeform_id]
+    @ff_registration.user = current_user
+    current_user.event_registrations.each do |e|
+      @ff_registration.participants << e.participants
     end
   end
     
