@@ -5,7 +5,7 @@ class FreeformsController < ApplicationController
   respond_to :html
 
   def index
-    @event = Event.find(params[ :event_id ])
+    @event = Event.first #for now since finding by event_id breaks navbar at the moment... find(params[ :event_id ])
     @freeforms = @event.freeforms
     respond_with(@freeforms)
   end
