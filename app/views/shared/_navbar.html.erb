@@ -11,6 +11,11 @@
       <li class="nav-item active">
         <%= link_to "About Us", page_path(id: "about"), class: "nav-link" %>
       </li>
+      <% if user_signed_in? %>
+        <li class="nav-item active">
+          <%= link_to "Freeforms", event_freeforms_path(@event), class: "nav-link"%>
+        </li>
+      <% end %>
       <% if user_signed_in? && current_user.role?("admin") %>
         <li class="nav-item active">
           <%= link_to "Admin Panel", events_path, class: "nav-link"%>

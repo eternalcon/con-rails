@@ -5,7 +5,8 @@ class FreeformsController < ApplicationController
   respond_to :html
 
   def index
-    @freeforms = Freeform.all
+    @event = Event.find(params[ :event_id ])
+    @freeforms = @event.freeforms
     respond_with(@freeforms)
   end
 
