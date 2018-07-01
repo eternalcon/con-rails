@@ -38,10 +38,13 @@
         <li class="nav-item active">
           <%= link_to 'Benutzer anmelden', new_user_registration_path, class: "nav-link"  -%>
         </li>
+      <% end %>
         <li class="nav-item active">
           <%= link_to 'Impressum', page_path(id: "legal"), class: "nav-link"  -%>
         </li>
-      <% end %>
+        <li class="nav-item active">
+          <%= link_to 'Datenschutz', page_path(id: "privacy"), class: "nav-link"  -%>
+        </li>
     </ul>
   </div>
 </nav>

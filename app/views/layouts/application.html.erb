@@ -5,29 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <!-- JavaScript 
-    ================================================== -->
+    <!-- JavaScript ================================================== -->
     <%= javascript_include_tag "application", "data-turbolinks-track" => "reload" %>
+    <!-- Favicon ================================================== -->
     <%= favicon_link_tag %>
-
+    <!-- Title ================================================== -->
     <% if content_for?(:title) %>
       <%= content_for(:title) %>
     <% else %>
       <title>The Eternal Convention</title>
     <% end %>
+    <!-- Meta Tags ================================================== -->
     <%= csrf_meta_tags %>
+    <!-- Style Sheets ================================================== -->
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => "reload" %>
   </head>
-
+  <!-- Page Content ================================================== -->
   <body>
     <%= render "shared/flash" %>
     <%= render "shared/navbar" %>
-    <div class="container">
-      <main role="main">
+    <main>
+      <div class="container">
         <%= yield %>
-      </main>
-    </div>
-
+      </div>
+    </main>
     <footer class="container">
       <p>&copy; The Eternal Convention e.V. 2017</p>
     </footer>
