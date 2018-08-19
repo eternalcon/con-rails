@@ -47,7 +47,8 @@ Rails.application.configure do
   # Store uploaded files on the local file system in a temporary directory
   config.active_storage.service = :development
 
-
+  # activate livereload feature in development to auto-reload changed pages
+  config.middleware.insert_after ActionDispatch::Static, Rack::LiveReload
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
   # number of complex assets.
