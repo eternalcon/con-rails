@@ -2,6 +2,14 @@ test:
   service: Disk
   root: <%= Rails.root.join("tmp/storage") %>
 
+development:
+  service: Disk
+  root: <%= Rails.root.join("tmp/storage") %>
+production:
+# TODO: change file storage location if we start to allow file uploads somewhere!
+  service: Disk
+  root: <%= Rails.root.join("tmp/storage") %>
+
 local:
   service: Disk
   root: <%= Rails.root.join("storage") %>
