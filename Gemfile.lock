@@ -47,18 +47,29 @@ GEM
     airbrussh (1.3.0)
       sshkit (>= 1.6.1, != 1.7.0)
     arel (9.0.0)
+    ast (2.4.0)
     autoprefixer-rails (9.1.1)
       execjs
     backports (3.11.3)
     bcrypt (3.1.12)
+    better_errors (2.4.0)
+      coderay (>= 1.0.0)
+      erubi (>= 1.0.0)
+      rack (>= 0.9.0)
     bindex (0.5.0)
+    binding_of_caller (0.8.0)
+      debug_inspector (>= 0.0.1)
     bootsnap (1.3.1)
       msgpack (~> 1.0)
     bootstrap (4.1.3)
       autoprefixer-rails (>= 6.0.3)
       popper_js (>= 1.12.9, < 2)
       sass (>= 3.5.2)
+    brakeman (4.3.1)
     builder (3.2.3)
+    bundler-audit (0.6.0)
+      bundler (~> 1.2)
+      thor (~> 0.18)
     byebug (10.0.2)
     cancancan (2.2.0)
     capistrano (3.11.0)
@@ -132,6 +143,7 @@ GEM
     cucumber-wire (0.0.1)
     daemons (1.2.6)
     database_cleaner (1.7.0)
+    debug_inspector (0.0.3)
     delayed_job (4.1.5)
       activesupport (>= 3.0, < 5.3)
     delayed_job_active_record (4.1.3)
@@ -146,7 +158,12 @@ GEM
     devise-i18n (1.6.4)
       devise (>= 4.4)
     diff-lcs (1.3)
+    docile (1.3.1)
+    em-websocket (0.5.1)
+      eventmachine (>= 0.12.9)
+      http_parser.rb (~> 0.6.0)
     erubi (1.7.1)
+    eventmachine (1.2.7)
     execjs (2.7.0)
     factory_bot (4.11.0)
       activesupport (>= 3.0.0)
@@ -169,15 +186,26 @@ GEM
       pry (>= 0.9.12)
       shellany (~> 0.0)
       thor (>= 0.18.1)
+    guard-brakeman (0.8.3)
+      brakeman (>= 2.1.1)
+      guard (>= 2.0.0)
     guard-bundler (2.1.0)
       bundler (~> 1.0)
       guard (~> 2.2)
       guard-compat (~> 1.1)
+    guard-bundler-audit (0.1.4)
+      bundler-audit (>= 0.3.1)
+      guard (~> 2.0)
     guard-compat (1.2.1)
     guard-cucumber (1.5.4)
       cucumber (>= 1.3.0)
       guard-compat (~> 1.0)
       nenv (~> 0.1)
+    guard-livereload (2.5.2)
+      em-websocket (~> 0.5)
+      guard (~> 2.8)
+      guard-compat (~> 1.0)
+      multi_json (~> 1.8)
     guard-passenger (0.6.2)
       guard (>= 1.1.0)
       guard-compat (~> 1.1)
@@ -185,10 +213,15 @@ GEM
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
+    guard-rubocop (1.3.0)
+      guard (~> 2.0)
+      rubocop (~> 0.20)
     high_voltage (3.0.0)
+    http_parser.rb (0.6.0)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
     i18n_data (0.8.0)
+    jaro_winkler (1.5.1)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
@@ -196,6 +229,7 @@ GEM
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
+    json (2.1.0)
     launchy (2.4.3)
       addressable (~> 2.3)
     listen (3.1.5)
@@ -235,15 +269,21 @@ GEM
       nenv (~> 0.1)
       shellany (~> 0.0)
     orm_adapter (0.5.0)
+    parallel (1.12.1)
+    parser (2.5.1.2)
+      ast (~> 2.4.0)
     passenger (5.3.4)
       rack
       rake (>= 0.8.1)
     popper_js (1.14.3)
+    powerpack (0.1.2)
     pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
     public_suffix (3.0.3)
     rack (2.0.5)
+    rack-livereload (0.3.17)
+      rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.1)
@@ -277,6 +317,7 @@ GEM
       method_source
       rake (>= 0.8.7)
       thor (>= 0.19.0, < 2.0)
+    rainbow (3.0.0)
     rake (12.3.1)
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
@@ -305,6 +346,17 @@ GEM
       rspec-mocks (~> 3.8.0)
       rspec-support (~> 3.8.0)
     rspec-support (3.8.0)
+    rubocop (0.58.2)
+      jaro_winkler (~> 1.5.1)
+      parallel (~> 1.10)
+      parser (>= 2.5, != 2.5.1.1)
+      powerpack (~> 0.1)
+      rainbow (>= 2.2.2, < 4.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (~> 1.0, >= 1.0.1)
+    rubocop-rspec (1.28.0)
+      rubocop (>= 0.58.0)
+    ruby-progressbar (1.10.0)
     ruby_dep (1.5.0)
     sanitize_email (2.0.1)
     sass (3.5.7)
@@ -322,6 +374,11 @@ GEM
     simple_form (4.0.1)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
+    simplecov (0.16.1)
+      docile (~> 1.1)
+      json (>= 1.8, < 3)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.2)
     sixarm_ruby_unaccent (1.2.0)
     sort_alphabetical (1.1.0)
       unicode_utils (>= 1.2.2)
@@ -350,6 +407,7 @@ GEM
       thread_safe (~> 0.1)
     uglifier (4.1.18)
       execjs (>= 0.3.0, < 3)
+    unicode-display_width (1.4.0)
     unicode_utils (1.4.0)
     warden (1.2.7)
       rack (>= 1.0)
@@ -369,6 +427,8 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt (~> 3.1.7)
+  better_errors
+  binding_of_caller
   bootsnap (>= 1.1.0)
   bootstrap (>= 4.0.0.beta2.1)
   byebug
@@ -392,10 +452,14 @@ DEPENDENCIES
   factory_bot_rails
   faker
   guard
+  guard-brakeman
   guard-bundler
+  guard-bundler-audit
   guard-cucumber
+  guard-livereload (~> 2.5)
   guard-passenger
   guard-rspec
+  guard-rubocop
   high_voltage (~> 3.0.0)
   jbuilder (~> 2.5)
   jquery-rails
@@ -403,14 +467,17 @@ DEPENDENCIES
   listen (>= 3.0.5, < 3.2)
   mysql2 (>= 0.3.18, < 0.5)
   passenger
+  rack-livereload
   rails (>= 5.2, < 5.3)
   rails-controller-testing
   rails-i18n (~> 5.0.0)
   responders
   rspec-rails
+  rubocop-rspec
   sanitize_email
   sass-rails (~> 5.0)
   simple_form
+  simplecov
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)
