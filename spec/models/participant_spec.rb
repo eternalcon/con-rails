@@ -21,5 +21,8 @@ RSpec.describe Participant, type: :model do
     participant1 = Participant.create!(participant_attr)
     expect(participant2 = Participant.create(participant_attr)).to be_invalid
   end
-    
+  it "calculates the correct age of the participant based on its birthdate" do
+    participant = FactoryBot.create(:participant, birthdate: Faker::Date.birthday(10, 10))
+    expect(participant.age(Date.today)).to eq 10
+  end
 end
