@@ -63,10 +63,6 @@ gem 'high_voltage', '~> 3.0.0'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'rspec-rails'
-  # use factory_bot as replacement for fixtures
-  gem 'factory_bot_rails'
-  gem 'cucumber-rails', require: false
 end
 
 group :development do
@@ -103,12 +99,16 @@ group :development do
 end
 
 group :test do
-  gem 'rails-controller-testing'
+  #gem 'rails-controller-testing'
+  gem 'cucumber-rails', require: false
+  gem 'database_cleaner'
+  gem 'factory_bot_rails'
   gem 'faker'
   gem 'launchy'
   # database_cleaner is not required, but highly recommended
-  gem 'database_cleaner'
+  gem 'rspec-rails'
+  # use factory_bot as replacement for fixtures
   gem 'simplecov', require: false
-
+  gem 'shoulda-matchers', '~> 3.1'
 end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
