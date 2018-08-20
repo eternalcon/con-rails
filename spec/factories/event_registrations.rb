@@ -1,7 +1,7 @@
 FactoryBot.define do
-  factory :registration do
-    event { nil }
-    user { nil }
-    participant { nil }
+  factory :event_registration do
+    event
+    user
+    participant
   end
 end
