@@ -1,7 +1,8 @@
 class PagesController < ApplicationController
   include HighVoltage::StaticPage
-
-  #before_filter :authenticate
+  before_action :authenticate_user!
+#  load_and_authorize_resource
+  
   layout :layout_for_page
 
   private
