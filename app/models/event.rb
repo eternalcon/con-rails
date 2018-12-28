@@ -2,7 +2,7 @@ class Event < ApplicationRecord
   has_many :event_registrations
   has_many :participants, through: :event_registrations
   has_many :freeforms
-  validates :name, :start_date, :end_date, :registration_start_date, presence: true
+  validates :name, :start_date, :end_date, presence: true
   validate :end_date_must_be_after_start_date
   after_find do |event|
     set_status  
