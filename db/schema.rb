@@ -42,8 +42,6 @@ ActiveRecord::Schema.define(version: 2018_12_02_091155) do
   create_table "event_registrations_participants", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "event_registration_id", null: false
     t.bigint "participant_id", null: false
-    t.index ["event_registration_id"], name: "fk_rails_dd30c791e8"
-    t.index ["participant_id"], name: "fk_rails_ac58f31357"
   end
 
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -57,7 +55,7 @@ ActiveRecord::Schema.define(version: 2018_12_02_091155) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.date "registration_start_date"
+    t.date "registration_start_date", default: "2018-10-28"
   end
 
   create_table "ff_registrations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -145,8 +143,6 @@ ActiveRecord::Schema.define(version: 2018_12_02_091155) do
 
   add_foreign_key "event_registrations", "events"
   add_foreign_key "event_registrations", "users"
-  add_foreign_key "event_registrations_participants", "event_registrations"
-  add_foreign_key "event_registrations_participants", "participants"
   add_foreign_key "ff_registrations", "freeforms"
   add_foreign_key "ff_registrations", "users"
   add_foreign_key "ff_registrations_participants", "ff_registrations"
