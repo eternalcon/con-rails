@@ -10,9 +10,10 @@ class Event < ApplicationRecord
    
     def set_status
       return unless errors.blank? # if we already hit an error when checking for the presence of all required attributes, we don't need to check the correct order of dates...
-      if (Time.now.utc.to_date.year < start_date.year) # The event happens in a future year - active event but registration disabled
+      if (Time.now.utc.to_date < registration_start_date) # The event happens in a future year - active event but registration disabled
         self.status =  'pending'
-      elsif (Time.now.utc.to_date.year == start_date.year) && (Time.now.utc.to_date < start_date) # The event happens this year, but hasn't happened yet - Registration open
+      #elsif (Time.now.utc.to_date.year == start_date.year) && (Time.now.utc.to_date < start_date) # The event happens this year, but hasn't happened yet - Registration open
+      elsif (Time.now.utc.to_date >= registration_start_date) && (Time.now.utc.to_date < start_date) # Registration open between registration start date and start date.
         if self.participants.size > self.max_participants
           self.status = 'full'
         else

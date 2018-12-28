@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   scope "(:locale)", locale: /en|de/ do
     root "events#home"
-    get "/pages/:id" => "high_voltage/pages#show", :as => :page, :format => false
+    get "/pages/*id" => 'pages#show', as: :page, format: false
     devise_for :users
     #namespace :admin do
     #  resources :events do
