@@ -35,7 +35,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'rails-i18n', '~> 5.0.0' # For 5.0.x and 5.1.x
 # Use Bootstrap 4 for style - requiring Jquery
 gem 'jquery-rails'
-gem 'bootstrap', '~> 4.2.1'
+gem 'bootstrap', '4.1.1'
 # Use activeadmin for administration backend
 # ActiveAdmin is not able to handle nested resources after the second level properly
 # Therefore it's kind of useless for us right now - disable and build our own...
