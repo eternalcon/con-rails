@@ -13,7 +13,7 @@ gem 'mysql2', '>= 0.3.18', '< 0.5'
 gem 'passenger', require: "phusion_passenger/rack_handler"
 # Use SCSS for stylesheets
 #gem 'sass-rails'
-gem 'sassc'
+gem 'sassc-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
