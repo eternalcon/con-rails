@@ -34,7 +34,7 @@ set :application, "con-rails"
 
 set :repo_url, "git@github.com:eternalcon/con-rails.git"
 ask :branch, `git rev-parse --abbrev-ref master`.chomp
-set :rvm_ruby_version, '2.5.1@con-rails'
+set :rvm_ruby_version, '2.4.1@con-rails'
 
 set :delayed_job_queues, ['mailers']
 set :delayed_job_pools, {
