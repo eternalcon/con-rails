@@ -61,7 +61,7 @@ GEM
       debug_inspector (>= 0.0.1)
     bootsnap (1.3.2)
       msgpack (~> 1.0)
-    bootstrap (4.1.3)
+    bootstrap (4.1.1)
       autoprefixer-rails (>= 6.0.3)
       popper_js (>= 1.12.9, < 2)
       sass (>= 3.5.2)
@@ -425,12 +425,12 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   better_errors
   binding_of_caller
-  bootsnap (>= 1.1.0)
-  bootstrap (>= 4.0.0.beta2.1)
+  bootsnap (>= 1.3.1)
+  bootstrap (= 4.1.1)
   byebug
   cancancan (~> 2.0)
-  capistrano
-  capistrano-bundler
+  capistrano (~> 3.6)
+  capistrano-bundler (~> 1.5)
   capistrano-passenger (>= 0.1.1)
   capistrano-rails
   capistrano-rails-db
@@ -482,4 +482,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.16.3
+   1.17.3
