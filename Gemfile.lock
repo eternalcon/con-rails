@@ -438,8 +438,8 @@ DEPENDENCIES
   bootstrap (>= 4.0.0.beta2.1)
   byebug
   cancancan (~> 2.0)
-  capistrano
-  capistrano-bundler
+  capistrano (~> 3.6)
+  capistrano-bundler (~> 1.5)
   capistrano-passenger (>= 0.1.1)
   capistrano-rails
   capistrano-rails-db

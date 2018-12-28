@@ -74,8 +74,8 @@ group :development do
   gem "better_errors"
   gem "binding_of_caller"
   gem 'capistrano3-delayed-job', '>= 1.0'
-  gem 'capistrano'
-  gem 'capistrano-bundler'
+  gem 'capistrano', '~> 3.6'
+  gem 'capistrano-bundler', '~> 1.5'
   gem 'capistrano-passenger', '>= 0.1.1'
   gem 'capistrano-rails-db'
   gem 'guard'
