@@ -1,7 +1,7 @@
 <% content_for :title do %>
   <title> The Eternal Convention</title>
 <% end %>
-<% if @event.nil? || @event.empty? %> 
+<% if @event.nil? %> 
   <h1> Information about upcoming events will be made available shortly. </h1>
 <% else %>
   <%= render "jumbotron" %>
