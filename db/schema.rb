@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_02_091155) do
+ActiveRecord::Schema.define(version: 2018_12_30_112108) do
 
   create_table "delayed_jobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "priority", default: 0, null: false
@@ -29,11 +29,11 @@ ActiveRecord::Schema.define(version: 2018_12_02_091155) do
 
   create_table "event_registrations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "event_id"
-    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "payment_status", default: "open"
     t.string "registration_token"
+    t.bigint "user_id"
     t.index ["event_id"], name: "index_event_registrations_on_event_id"
     t.index ["registration_token"], name: "index_event_registrations_on_registration_token", unique: true
     t.index ["user_id"], name: "index_event_registrations_on_user_id"
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2018_12_02_091155) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.date "registration_start_date", default: "2018-10-28"
+    t.date "registration_start_date", default: "2018-10-30"
   end
 
   create_table "ff_registrations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -102,7 +102,7 @@ ActiveRecord::Schema.define(version: 2018_12_02_091155) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["first_name", "last_name", "birthdate"], name: "index_participants_on_first_name_and_last_name_and_birthdate", unique: true
+    t.index ["first_name", "last_name", "birthdate"], name: "index_participants_on_first_name_and_last_name_and_birthdate"
     t.index ["user_id"], name: "index_participants_on_user_id", unique: true
   end
 
