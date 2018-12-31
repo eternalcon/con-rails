@@ -5,8 +5,10 @@
   <%=raw @freeform.send("description_#{I18n.locale}") %>
 </p>
 <p>
-  <% if @freeform.status == "active" %>
-    <%= link_to "Jetzt anmelden!",  new_event_freeform_ff_registration_path(@freeform.event.id, @freeform.id), class: "btn btn-primary btn-lg", role: "button" %>
+  <% if freeform.status == "active" %>
+    <%= link_to "Register!",  new_event_freeform_ff_registration_path(freeform.event.id, freeform.id), class: "btn btn-primary btn-lg", role: "button" %>
+  <% else %>
+    Registration will be opened on <%= l freeform.registration_start_date -%>.
   <% end %>
 </p>
 <% if can? :update, @freeform %>

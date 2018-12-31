@@ -7,6 +7,8 @@
 <p>
   <% if @freeform.status == "active" %>
     <%= link_to "Jetzt anmelden!",  new_event_freeform_ff_registration_path(@freeform.event.id, @freeform.id), class: "btn btn-primary btn-lg", role: "button" %>
+  <% else %>
+    Anmeldung wird am <%= l freeform.registration_start_date -%> freigeschaltet.    
   <% end %>
 </p>
 <% if can? :update, @freeform %>
