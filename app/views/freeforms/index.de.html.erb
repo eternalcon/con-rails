@@ -13,6 +13,8 @@
         <th>Maximum Participants</th>
         <th>Registered Participants</th>
         <th>Status</th>
+        <th>Author E-Mail</th>
+        <th>Registration Start Date</th>
       <% end %>
       <th colspan="4"></th>
     </tr>
@@ -32,6 +34,8 @@
         <td><%= freeform.max_participants %></td>
         <td><%= freeform.participants.size %></td>
         <td><%= freeform.status %></td>
+        <td><%= freeform.author_email %></td>
+        <td><%= freeform.registration_start_date %></td>
       <% end %>
         <% if can? :update, @freeform %>
           <td><%= link_to 'Show', freeform %></td>
@@ -39,9 +43,9 @@
           <td><%= link_to 'Destroy', freeform, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           <td colspan="3">
           <% if freeform.status == "active" %>
-            <%= link_to "Register!",  new_event_freeform_ff_registration_path(freeform.event.id, freeform.id), class: "btn btn-primary btn-lg", role: "button" %>
+            <%= link_to "Jetzt anmelden!",  new_event_freeform_ff_registration_path(freeform.event.id, freeform.id), class: "btn btn-primary btn-lg", role: "button" %>
           <% else %>
-            Registration will be opened on <%= l freeform.registration_start_date -%>.
+          Anmeldung wird am <%= l freeform.registration_start_date -%> freigeschaltet.
           <% end %>
           </td>
         <% end %>

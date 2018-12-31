@@ -3,13 +3,8 @@ class EventRegistrationsController <  ApplicationController
   load_and_authorize_resource
   respond_to :html, :xls
 
-  # TODO: We need to handle existing participants in the whole thing for future events.
   # TODO: The first registered participant needs to be assigned to the user if it is not there already (or any other way of having the current_user.participant be set properly.
-  # TODO: We need to at least "recycle" existing participants when a record matching the entered data already exists in the database - i.e. only create the link between event_registration and participant
-  # TODO: Better would be updating the existing participant if changed info is entered on the non-unique fields.
-  # TODO: Maybe make the form autocomplete with AJAX when typing or something like that.
   # TODO: Not quite related to this controller, but it would be cool to add an option for users to claim "their" participant - i.e. if somebody else registered my name last year and now I want to do it myself,
-  # TODO: have the existing participant linked to my user.
   
   def index
     @event = Event.find(params[:event_id])
@@ -25,10 +20,10 @@ class EventRegistrationsController <  ApplicationController
       @event_registration = EventRegistration.new do |r|
         r.event_id = Event.find_by(status: 'active').id
         r.user_id = current_user.id
-        if current_user.participant.nil?
+        if current_user.participants.nil? # if the current user has never registered before, build empty participant hash.
           r.participants.build
         else
-          r.participants.build(current_user.participant.serializable_hash)
+          r.participants = current_user.participants # if the current user has previously been registered, prefill the participant array with all participants linked to that user via any event_registrations.
         end  
       end
     else
@@ -52,10 +47,11 @@ class EventRegistrationsController <  ApplicationController
     if @event_registration.save
       EventRegistrationMailer.registration_confirm(@event_registration).deliver_later
       EventRegistrationMailer.team_confirm(@event_registration).deliver_later
+      respond_with(@event_registration)
     else
       render 'new'
     end
-    respond_with(@event_registration)
+    
   end
   
   def update
