@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_30_112108) do
+ActiveRecord::Schema.define(version: 2018_12_31_124128) do
 
   create_table "delayed_jobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "priority", default: 0, null: false
@@ -89,6 +89,7 @@ ActiveRecord::Schema.define(version: 2018_12_30_112108) do
     t.datetime "updated_at", null: false
     t.string "author_email"
     t.string "status"
+    t.date "registration_start_date"
     t.index ["event_id"], name: "index_freeforms_on_event_id"
   end
 

@@ -13,6 +13,7 @@
       <%= f.input :max_participants %>
       <%= f.input :author_email %>
       <%= f.input :status %>
+      <%= f.input :registration_start_date, as: :date,  use_short_month: true %>
   </div>
   <div class="form-actions">
     <%= f.button :submit %>
