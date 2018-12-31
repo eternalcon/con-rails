@@ -13,6 +13,8 @@
         <th>Maximum Participants</th>
         <th>Registered Participants</th>
         <th>Status</th>
+        <th>Author E-Mail</th>
+        <th>Registration Start Date</th>
       <% end %>
       <th colspan="4"></th>
     </tr>
@@ -32,6 +34,8 @@
         <td><%= freeform.max_participants %></td>
         <td><%= freeform.participants.size %></td>
         <td><%= freeform.status %></td>
+        <td><%= freeform.author_email %></td>
+        <td><%= freeform.registration_start_date %></td>
       <% end %>
         <% if can? :update, @freeform %>
           <td><%= link_to 'Show', freeform %></td>
