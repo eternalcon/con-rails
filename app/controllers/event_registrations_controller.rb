@@ -11,7 +11,7 @@ class EventRegistrationsController <  ApplicationController
     @event_registrations = @event.event_registrations.where(registration_token: nil) # only show proper event registrations, not prepared late registrations which haven't been filled in. 
     respond_with(@event_registrations) do |format|
       format.html
-      format.xls # { send_data to_csv(@admin_event_registrations) }
+      format.xlsx { render xlsx: :index, filename: @event_registrations.event.name + "participants" }
     end
   end
 
