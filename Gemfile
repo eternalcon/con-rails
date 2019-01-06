@@ -61,6 +61,8 @@ gem "daemons"
 gem 'sanitize_email'
 # Static Pages with high_voltage
 gem 'high_voltage', '~> 3.0.0'
+# Excel export with to_spreadsheet
+gem 'to_spreadsheet'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

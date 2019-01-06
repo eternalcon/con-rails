@@ -1,0 +1,28 @@
+<table>
+  <thead>
+    <tr>
+      <th>Registration No.</th>
+      <th>Registered by E-Mail</th>
+      <th>  Participants</th>
+      <th>Payment Status</th>
+      <th colspan="2">  Options</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @event_registrations.each do |event_registration| %>
+      <tr>
+        <td><%= event_registration.id %></td>
+        <td><%= event_registration.user.email %></td>
+        <td>
+        <% event_registration.participants.each do |participant| %>
+          <%= participant.first_name %> <%= participant.last_name %>, <%= participant.birthdate %>, <%= participant.nickname %>, <%= participant.country %>, <%= participant.postcode %></br> 
+        <% end %>
+        </td>
+        <td><%= event_registration.payment_status %></td>
+        <td><%= button_to "Mark as payed", mark_as_payed_event_event_registration_path(event_registration.event, event_registration) %></td>
+        <td><%= button_to "Resend Confirmation", resend_confirmation_event_event_registration_path(event_registration.event, event_registration) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
