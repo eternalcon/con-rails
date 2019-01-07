@@ -3,7 +3,12 @@
     <tr>
       <th>Registration No.</th>
       <th>Registered by E-Mail</th>
-      <th>  Participants</th>
+      <th>First Name</th>
+        <th>Last Name</th>
+        <th>Birthdate</th>
+        <th>Nickname</th>
+        <th>Country</th>
+        <th>Postcode</td>
       <th>Payment Status</th>
       <th colspan="2">  Options</th>
     </tr>
@@ -14,15 +19,28 @@
       <tr>
         <td><%= event_registration.id %></td>
         <td><%= event_registration.user.email %></td>
-        <td>
-        <% event_registration.participants.each do |participant| %>
-          <%= participant.first_name %> <%= participant.last_name %>, <%= participant.birthdate %>, <%= participant.nickname %>, <%= participant.country %>, <%= participant.postcode %></br> 
-        <% end %>
-        </td>
-        <td><%= event_registration.payment_status %></td>
-        <td><%= button_to "Mark as payed", mark_as_payed_event_event_registration_path(event_registration.event, event_registration) %></td>
-        <td><%= button_to "Resend Confirmation", resend_confirmation_event_event_registration_path(event_registration.event, event_registration) %></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><%= event_registration.payment_status -%></td>
+        <td><%= button_to "Mark as payed", mark_as_payed_event_event_registration_path(event_registration.event, event_registration) -%></td>
+        <td><%= button_to "Resend Confirmation", resend_confirmation_event_event_registration_path(event_registration.event, event_registration) -%></td>
       </tr>
+        <% event_registration.participants.each do |participant| %>
+      <tr>
+        <td></td>
+        <td></td>
+        <td><%= participant.first_name -%></td>
+        <td><%= participant.last_name -%></td>
+        <td><%= participant.birthdate -%></td>
+        <td><%= participant.nickname -%></td>
+        <td><%= participant.country -%></td>
+        <td><%= participant.postcode -%></td
+      </tr>
+        <% end %>
     <% end %>
   </tbody>
 </table>
