@@ -63,6 +63,8 @@ gem 'sanitize_email'
 gem 'high_voltage', '~> 3.0.0'
 # Excel export with to_spreadsheet
 gem 'to_spreadsheet'
+# Logging with Lumberjack
+gem 'lumberjack'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
