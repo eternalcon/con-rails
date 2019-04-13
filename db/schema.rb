@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180402071458) do
+ActiveRecord::Schema.define(version: 2018_12_31_124128) do
 
-  create_table "delayed_jobs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "delayed_jobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "priority", default: 0, null: false
     t.integer "attempts", default: 0, null: false
     t.text "handler", null: false
@@ -27,26 +27,24 @@ ActiveRecord::Schema.define(version: 20180402071458) do
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
-  create_table "event_registrations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "event_registrations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "event_id"
-    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "payment_status", default: "open"
     t.string "registration_token"
+    t.bigint "user_id"
     t.index ["event_id"], name: "index_event_registrations_on_event_id"
     t.index ["registration_token"], name: "index_event_registrations_on_registration_token", unique: true
     t.index ["user_id"], name: "index_event_registrations_on_user_id"
   end
 
-  create_table "event_registrations_participants", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "event_registrations_participants", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "event_registration_id", null: false
     t.bigint "participant_id", null: false
-    t.index ["event_registration_id"], name: "fk_rails_dd30c791e8"
-    t.index ["participant_id"], name: "fk_rails_ac58f31357"
   end
 
-  create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.date "start_date"
     t.date "end_date"
@@ -57,9 +55,10 @@ ActiveRecord::Schema.define(version: 20180402071458) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "registration_start_date", default: "2018-10-30"
   end
 
-  create_table "ff_registrations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "ff_registrations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "freeform_id"
     t.bigint "user_id"
     t.text "notes"
@@ -69,14 +68,14 @@ ActiveRecord::Schema.define(version: 20180402071458) do
     t.index ["user_id"], name: "index_ff_registrations_on_user_id"
   end
 
-  create_table "ff_registrations_participants", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "ff_registrations_participants", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "ff_registration_id"
     t.bigint "participant_id"
     t.index ["ff_registration_id"], name: "index_ff_registrations_participants_on_ff_registration_id"
     t.index ["participant_id"], name: "index_ff_registrations_participants_on_participant_id"
   end
 
-  create_table "freeforms", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "freeforms", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.text "description_de"
     t.text "description_en"
@@ -90,10 +89,11 @@ ActiveRecord::Schema.define(version: 20180402071458) do
     t.datetime "updated_at", null: false
     t.string "author_email"
     t.string "status"
+    t.date "registration_start_date"
     t.index ["event_id"], name: "index_freeforms_on_event_id"
   end
 
-  create_table "participants", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "participants", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "nickname"
@@ -103,24 +103,24 @@ ActiveRecord::Schema.define(version: 20180402071458) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["first_name", "last_name", "birthdate"], name: "index_participants_on_first_name_and_last_name_and_birthdate", unique: true
+    t.index ["first_name", "last_name", "birthdate"], name: "index_participants_on_first_name_and_last_name_and_birthdate"
     t.index ["user_id"], name: "index_participants_on_user_id", unique: true
   end
 
-  create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "roles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "roles_users", id: false, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "roles_users", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "role_id", null: false
     t.bigint "user_id", null: false
     t.index ["role_id"], name: "index_roles_users_on_role_id"
     t.index ["user_id"], name: "index_roles_users_on_user_id"
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -144,8 +144,6 @@ ActiveRecord::Schema.define(version: 20180402071458) do
 
   add_foreign_key "event_registrations", "events"
   add_foreign_key "event_registrations", "users"
-  add_foreign_key "event_registrations_participants", "event_registrations"
-  add_foreign_key "event_registrations_participants", "participants"
   add_foreign_key "ff_registrations", "freeforms"
   add_foreign_key "ff_registrations", "users"
   add_foreign_key "ff_registrations_participants", "ff_registrations"

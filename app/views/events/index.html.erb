@@ -29,6 +29,7 @@
         <td><%= link_to 'Edit Event', edit_event_path(event) %></td>
         <td><%= link_to 'Delete Event', event_path(event), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <td><%= link_to 'Registrations for the Event', event_event_registrations_path(event) %></td>
+        <td><%= link_to 'Download Excel-File', event_event_registrations_path(event, format: :xlsx) -%></td>
         <td><%= link_to 'Send link for late registration', generate_late_registration_event_event_registrations_path(event) %></td>
         <td><%= link_to 'Manage Freeforms', event_freeforms_path(event) %></td>
       </tr>

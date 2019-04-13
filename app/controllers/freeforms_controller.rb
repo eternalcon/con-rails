@@ -5,7 +5,7 @@ class FreeformsController < ApplicationController
   respond_to :html
 
   def index
-    @event = Event.first #for now since finding by event_id breaks navbar at the moment... find(params[ :event_id ])
+    @event = Event.find(params[ :event_id ])
     @freeforms = @event.freeforms
     respond_with(@freeforms)
   end
@@ -41,6 +41,6 @@ class FreeformsController < ApplicationController
   private
     
     def freeform_params
-      params.require(:freeform).permit(:event_id, :name, :description_de, :description_en, :language, :min_age, :max_age, :min_participants, :max_participants, :author_email, :status)
+      params.require(:freeform).permit(:event_id, :name, :description_de, :description_en, :language, :min_age, :max_age, :min_participants, :max_participants, :author_email, :status, :registration_start_date)
     end
 end

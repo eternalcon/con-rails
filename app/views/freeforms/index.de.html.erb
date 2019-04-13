@@ -1,0 +1,60 @@
+<h1>Freeforms</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>German Description</th>
+      <th>English Description</th>
+      <th>Language</th>
+      <th>Minimum Age</th>
+      <th>Maximum Age</th>
+       <% if user_signed_in? && current_user.role?("admin") %>
+        <th>Minimum Participants</th>
+        <th>Maximum Participants</th>
+        <th>Registered Participants</th>
+        <th>Status</th>
+        <th>Author E-Mail</th>
+        <th>Registration Start Date</th>
+      <% end %>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @event.freeforms.each do |freeform| %>
+      <tr>
+        <td><%= freeform.name %></td>
+      <td><%= freeform.description_de %></td>
+      <td><%= freeform.description_en %></td>
+      <td><%= freeform.language %></td>
+      <td><%= freeform.min_age %></td>
+      <td><%= freeform.max_age %></td>
+      <% if user_signed_in? && current_user.role?("admin") %>
+        <td><%= freeform.min_participants %></td>
+        <td><%= freeform.max_participants %></td>
+        <td><%= freeform.participants.size %></td>
+        <td><%= freeform.status %></td>
+        <td><%= freeform.author_email %></td>
+        <td><%= freeform.registration_start_date %></td>
+      <% end %>
+        <% if can? :update, @freeform %>
+          <td><%= link_to 'Show', freeform %></td>
+          <td><%= link_to 'Edit', edit_event_freeform_path(freeform.event_id, freeform) %></td>
+          <td><%= link_to 'Destroy', freeform, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td colspan="3">
+          <% if freeform.status == "active" %>
+            <%= link_to "Jetzt anmelden!",  new_event_freeform_ff_registration_path(freeform.event.id, freeform.id), class: "btn btn-primary btn-lg", role: "button" %>
+          <% else %>
+          Anmeldung wird am <%= l freeform.registration_start_date -%> freigeschaltet.
+          <% end %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<% if can? :update, @freeform %>
+  <%= link_to 'New Freeform', new_event_freeform_path %>
+<% end %>

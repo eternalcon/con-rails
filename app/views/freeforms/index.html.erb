@@ -19,7 +19,7 @@
   </thead>
 
   <tbody>
-    <% @freeforms.each do |freeform| %>
+    <% @event.freeforms.each do |freeform| %>
       <tr>
         <td><%= freeform.name %></td>
       <td><%= freeform.description_de %></td>
@@ -39,7 +39,9 @@
           <td><%= link_to 'Destroy', freeform, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           <td colspan="3">
           <% if freeform.status == "active" %>
-            <%= link_to "Jetzt anmelden!",  new_event_freeform_ff_registration_path(freeform.event.id, freeform.id), class: "btn btn-primary btn-lg", role: "button" %>
+            <%= link_to "Register!",  new_event_freeform_ff_registration_path(freeform.event.id, freeform.id), class: "btn btn-primary btn-lg", role: "button" %>
+          <% else %>
+            Registration will be opened on <%= l freeform.registration_start_date -%>.
           <% end %>
           </td>
         <% end %>

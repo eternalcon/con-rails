@@ -1,7 +1,7 @@
 <div id="FreeformCarousel" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <% @event.freeforms.each do |freeform| %>
-    <% if freeform.id == 1 %>
+    <% if freeform == @event.freeforms.first %>
       <div class="carousel-item active">
     <% else %>
       <div class="carousel-item">
