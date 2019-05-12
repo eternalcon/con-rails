@@ -5,6 +5,7 @@
     <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }  %>
   </div>
   <div class="form-inputs">
+    <%= f.input :gamemaster %>
     <%= f.input :title %>
     <%= f.input :description_de %>
     <%= f.input :description_en %>
