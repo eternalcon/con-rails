@@ -2,6 +2,7 @@
   <%= f.error_notification %>
   <div class="hidden">
     <%= f.input :event_id, :as => :hidden, :input_html => { :value => @program_item.event_id }  %>
+    <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id }  %>
   </div>
   <div class="form-inputs">
     <%= f.input :title %>

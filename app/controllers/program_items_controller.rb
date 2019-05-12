@@ -29,7 +29,7 @@ class ProgramItemsController < ApplicationController
   def create
     @program_item = ProgramItem.new(program_item_params)
     @program_item.save
-    redirect_to event_program_items_path
+    respond_with(@program_item)
   end
 
   def update
@@ -48,6 +48,6 @@ class ProgramItemsController < ApplicationController
     end
 
     def program_item_params
-      params.require(:program_item).permit(:title, :description_de, :description_en, :start_time, :duration, :language, :min_age, :min_player_count, :max_player_count, :event_id)
+      params.require(:program_item).permit(:title, :description_de, :description_en, :start_time, :duration, :language, :min_age, :min_player_count, :max_player_count, :event_id, :user_id)
     end
 end

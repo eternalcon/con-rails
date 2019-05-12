@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_and_belongs_to_many :roles
   has_many :event_registrations
   has_many :participants, through: :event_registrations
+  has_many :program_items
   #has_one :participant #, :inverse_of => :user
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

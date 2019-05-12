@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_12_085015) do
+ActiveRecord::Schema.define(version: 2019_05_12_152734) do
 
   create_table "delayed_jobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "priority", default: 0, null: false
@@ -120,7 +120,9 @@ ActiveRecord::Schema.define(version: 2019_05_12_085015) do
     t.bigint "event_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["event_id"], name: "index_program_items_on_event_id"
+    t.index ["user_id"], name: "index_program_items_on_user_id"
   end
 
   create_table "roles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -167,6 +169,7 @@ ActiveRecord::Schema.define(version: 2019_05_12_085015) do
   add_foreign_key "freeforms", "events"
   add_foreign_key "participants", "users"
   add_foreign_key "program_items", "events"
+  add_foreign_key "program_items", "users"
   add_foreign_key "roles_users", "roles"
   add_foreign_key "roles_users", "users"
 end
