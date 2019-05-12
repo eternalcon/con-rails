@@ -5,6 +5,11 @@
   <p class="lead">
     The following games have already been announced for <%= @event.name %>.
   </p>
+  <p>
+    If there is no description for the game available, this could be because the 
+    game is offered in German language only. The German description will be 
+    visible in the Game Detail view accessible via the "Show" link.
+  <p>
 </div>
 <div class="row" >
   <div class="table-responsive">
@@ -41,8 +46,8 @@
             <td><%= program_item.min_age %></td>
             <td><%= program_item.min_player_count %></td>
             <td><%= program_item.max_player_count %></td>
+            <td><%= link_to 'Show', event_program_item_path(program_item.event_id, program_item) %></td>
             <% if can? :manage, program_item %>
-              <td><%= link_to 'Show', event_program_item_path(program_item.event_id, program_item) %></td>
               <td><%= link_to 'Edit', edit_event_program_item_path(program_item.event_id, program_item) %></td>
               <td><%= link_to 'Delete', event_program_item_path(program_item.event_id, program_item), method: :delete, data: { confirm: 'Are you sure?' } %></td>
             <% else %>

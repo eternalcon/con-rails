@@ -152,8 +152,10 @@
   <div class="col">
   </div>
   <div class="col">
-    <%= link_to 'Edit', edit_event_program_item_path( @program_item.event_id, @program_item) %> |
-    <%= link_to 'Back', event_program_items_path(@program_item.event_id)%>
+    <% if can? :manage, @program_item %>
+      <%= link_to 'Edit', edit_event_program_item_path( @program_item.event_id, @program_item) %> |
+      <%= link_to 'Back', event_program_items_path(@program_item.event_id)%>
+    <% end %>
   </div>
   <div class="col">
   </div>
