@@ -30,9 +30,10 @@
         <td><%= program_item.min_age %></td>
         <td><%= program_item.min_player_count %></td>
         <td><%= program_item.max_player_count %></td>
-        <% if can? :edit, program_item %>
+        <% if can? :manage, program_item %>
           <td><%= link_to 'Show', event_program_item_path(program_item.event_id, program_item) %></td>
           <td><%= link_to 'Edit', edit_event_program_item_path(program_item.event_id, program_item) %></td>
+          <td><%= link_to 'Delete', event_program_item_path(program_item.event_id, program_item), method: :delete, data: { confirm: 'Are you sure?' } %></td
         <% end %>
       </tr>
     <% end %>

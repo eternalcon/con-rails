@@ -7,7 +7,7 @@ class ProgramItemsController < ApplicationController
   respond_to :html
 
   def index
-    @event = Event.find(params[ :event_id ])
+    #@event = Event.find(params[ :event_id ])
     @program_items = @event.program_items
     respond_with(@program_items)
   end
@@ -17,7 +17,7 @@ class ProgramItemsController < ApplicationController
   end
 
   def new
-    @event = Event.find (params[:event_id])
+    #@event = Event.find (params[:event_id])
     @program_item = ProgramItem.new
     @program_item.event_id = params[:event_id]
     respond_with(@program_item)
@@ -28,8 +28,11 @@ class ProgramItemsController < ApplicationController
 
   def create
     @program_item = ProgramItem.new(program_item_params)
-    @program_item.save
-    respond_with(@program_item)
+    if @program_item.save
+      redirect_to event_program_items_path(@event)
+    else
+      render 'new'
+    end
   end
 
   def update
@@ -39,7 +42,7 @@ class ProgramItemsController < ApplicationController
 
   def destroy
     @program_item.destroy
-    respond_with(@program_item)
+    redirect_to event_program_items_path(@event)
   end
 
   private
