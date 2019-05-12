@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Program Items</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description de</th>
+      <th>Description en</th>
+      <th>Start time</th>
+      <th>Duration</th>
+      <th>Language</th>
+      <th>Min age</th>
+      <th>Min player count</th>
+      <th>Max player count</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @event.program_items.each do |program_item| %>
+      <tr>
+        <td><%= program_item.title %></td>
+        <td><%= program_item.description_de %></td>
+        <td><%= program_item.description_en %></td>
+        <td><%= program_item.start_time %></td>
+        <td><%= program_item.duration %></td>
+        <td><%= program_item.language %></td>
+        <td><%= program_item.min_age %></td>
+        <td><%= program_item.min_player_count %></td>
+        <td><%= program_item.max_player_count %></td>
+        <td><%= link_to 'Show', event_program_item_path(program_item.event_id, program_item) %></td>
+        <td><%= link_to 'Edit', edit_event_program_item_path(program_item.event_id, program_item) %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Program Item', new_event_program_item_path(@event.id) %>

@@ -1,0 +1,21 @@
+<%= simple_form_for(@program_item) do |f| %>
+  <%= f.error_notification %>
+  <div class="hidden">
+    <%= f.input :event_id, :as => :hidden, :input_html => { :value => @program_item.event_id }  %>
+  </div>
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input :description_de %>
+    <%= f.input :description_en %>
+    <%= f.input :start_time, as: :datetime, use_short_month: true %>
+    <%= f.input :duration %>
+    <%= f.input :language, as: :select, collection: [ "English", "German", "French", "Dutch", "Italian" ]  %>
+    <%= f.input :min_age %>
+    <%= f.input :min_player_count %>
+    <%= f.input :max_player_count %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

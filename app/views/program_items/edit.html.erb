@@ -1,0 +1,6 @@
+<h1>Editing Program Item</h1>
+
+<%= render 'form', program_item: @program_item %>
+
+<td><%= link_to 'Show', event_program_item_path(@program_item.event_id, @program_item) %></td>
+<%= link_to 'Back', request.referer.present? ? request.referer : default_path %>

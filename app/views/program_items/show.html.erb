@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @program_item.title %>
+</p>
+
+<p>
+  <strong>Description de:</strong>
+  <%= @program_item.description_de %>
+</p>
+
+<p>
+  <strong>Description en:</strong>
+  <%= @program_item.description_en %>
+</p>
+
+<p>
+  <strong>Start time:</strong>
+  <%= @program_item.start_time %>
+</p>
+
+<p>
+  <strong>Duration:</strong>
+  <%= @program_item.duration %>
+</p>
+
+<p>
+  <strong>Language:</strong>
+  <%= @program_item.language %>
+</p>
+
+<p>
+  <strong>Min age:</strong>
+  <%= @program_item.min_age %>
+</p>
+
+<p>
+  <strong>Min player count:</strong>
+  <%= @program_item.min_player_count %>
+</p>
+
+<p>
+  <strong>Max player count:</strong>
+  <%= @program_item.max_player_count %>
+</p>
+
+<%= link_to 'Edit', edit_event_program_item_path(@program_item, @program_item.event_id) %> |
+<%= link_to 'Back', event_program_items_path(@program_item.event_id)%>
