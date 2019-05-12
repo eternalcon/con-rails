@@ -37,7 +37,7 @@
               <% if program_item.description_en == nil || program_item.description_en.empty? %>
                 No English description available.
               <% else %>
-                <%=raw program_item.send("description_#{I18n.locale}") %>
+                <%= program_item.description_en %>
               <% end %>
             </td>
             <td><%= l program_item.start_time.in_time_zone("Berlin"), format: :long %></td>
