@@ -1,0 +1,70 @@
+<div class="row" >
+  <h1 class="display-1">Angekündigte Spielrunden</h1><br />
+</div>
+<div class="row">
+  <p class="lead">
+    Bisher wurden die folgenden Spielerunden für <%= @event.name %> angekündigt:
+  </p>
+  <p>
+    Falls in der Tabelle keine Beschreibung angezeigt wird, wurde vom Spielleiter
+    vermutlich nur eine Beschreibung in Englischer Sprache angegeben, da die Runde
+    auf Englisch stattfindet. Diese kann in der Detailansicht eingesehen werden.
+  <p>
+</div>
+<div class="row" >
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Titel</th>
+          <th scope="col">Spielleiter</th>
+          <th scope="col">Beschreibung</th>
+          <th scope="col">Geplante Anfangszeit</th>
+          <th scope="col">Dauer</th>
+          <th scope="col">Sprache</th>
+          <th scope="col">Mindestalter</th>
+          <th scope="col">Mindestanzahl Spieler</th>
+          <th scope="col">Maximalanzahl Spieler</th>
+          <th scope="col" colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @event.program_items.each do |program_item| %>
+          <tr>
+            <td><%= program_item.title %></td>
+            <td><%= program_item.gamemaster %></td>
+            <td>
+              <% if program_item.description_de == nil || program_item.description_de.empty? %>
+                Keine deutsche Beschreibung angegeben.
+              <% else %>
+                <%= program_item.description_de %>
+              <% end %>
+            </td>
+            <td><%= l program_item.start_time.in_time_zone("Berlin"), format: :long %></td>
+            <td><%= program_item.duration %></td>
+            <td><%= program_item.language %></td>
+            <td><%= program_item.min_age %></td>
+            <td><%= program_item.min_player_count %></td>
+            <td><%= program_item.max_player_count %></td>
+            <td><%= link_to 'Details', event_program_item_path(program_item.event_id, program_item) %></td>
+            <% if can? :manage, program_item %>
+              <td><%= link_to 'Editieren', edit_event_program_item_path(program_item.event_id, program_item) %></td>
+              <td><%= link_to 'Löschen', event_program_item_path(program_item.event_id, program_item), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% else %>
+              <td></td>
+              <td></td>
+              <td></td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row" >
+  <% if user_signed_in? %>
+    <%= link_to 'Neue Spielrunde anbieten', new_event_program_item_path(@event.id) %>
+  <% else %>
+    <div> Um Spielrunden anzubieten musst du eingeloggt sein! </div>
+  <% end %>
+</div>

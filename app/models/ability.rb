@@ -6,12 +6,15 @@ class Ability
     user ||= User.new # check if we have an user, if not, create a new one (guest users with no user account)
     can :home, Event #allow anybody to access the home method on events controller since that's our root.
     can :late_registration, EventRegistration # Everybody should be able to access the late registration method if sent a link.
+    can :read, ProgramItem
     return unless user.present?
     can :create, EventRegistration # logged in users can create event registrations
     can :manage, EventRegistration, user_id: user.id # logged in users can do anything they like to their own event registrations
     can :read, Freeform
     can :create, FfRegistration # logged in users can create event registrations
     can :manage, FfRegistration, user_id: user.id # logged in users can do anything they like to their own event registrations
+    can :create, ProgramItem # logged in users can create program items
+    can :manage, ProgramItem, user_id: user.id # logged in users can do anything they like to their own event registrations
     return unless user.role? :admin
     can :manage, :all # finally we give all remaining permissions only to the admins
     # Define abilities for the passed in user here. For example:

@@ -1,0 +1,170 @@
+<div class="row">
+  <div class="col">
+  </div>
+  <div class="col">
+    <h1><%= @program_item.title %></h1>
+    </div>
+    <div class="col">
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+  </div>
+  <div class="col">
+    <h2>Deutsche Beschreibung</h2>
+  </div>
+  <div class="col">
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+  </div>
+  <div class="col">
+    <% if @program_item.description_de == nil || @program_item.description_de.empty? %>
+      Keine Beschreibung in deutscher Sprache angegeben.
+    <% else %>
+      <%= @program_item.description_de %>
+    <% end %>
+  </div>
+  <div class="col">
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+  </div>
+  <div class="col">
+    <h2>Englische Beschreibung</h2>
+  </div>
+  <div class="col">
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+  </div>
+  <div class="col">
+    <% if @program_item.description_en == nil || @program_item.description_en.empty? %>
+      No English description provided.
+    <% else %>
+      <%= @program_item.description_de %>
+    <% end %>
+  </div>
+  <div class="col">
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+  </div>
+  <div class="col">
+    <h2>Geplante Anfangszeit</h2>
+  </div>
+  <div class="col">
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+  </div>
+  <div class="col">
+    <%= @program_item.start_time %>
+  </div>
+  <div class="col">
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+  </div>
+  <div class="col">
+    <h2>Dauer</h2>
+  </div>
+  <div class="col">
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+  </div>
+  <div class="col">
+    <%= @program_item.duration %>
+  </div>
+  <div class="col">
+  </div></div>
+<div class="row">
+  <div class="col">
+  </div>
+  <div class="col">
+    <h2>Sprache</h2>
+  </div>
+  <div class="col">
+  </div></div>
+</div>
+<div class="row">
+  <div class="col">
+  </div>
+  <div class="col">
+    <%= @program_item.language %>
+  </div>
+  <div class="col">
+  </div></div>
+</div>
+<div class="row">
+  <div class="col">
+  </div>
+  <div class="col">
+    <h2>Mindestalter für Spieler</h2>
+  </div>
+  <div class="col">
+  </div></div>
+</div>
+<div class="row">
+  <div class="col">
+  </div>
+  <div class="col">
+    <%= @program_item.min_age %>
+  </div>
+  <div class="col">
+  </div></div>
+</div>
+<div class="row">
+  <div class="col">
+  </div>
+  <div class="col">
+    <h2>Mindestanzahl an Spielern</h2>
+  </div>
+  <div class="col">
+  </div></div>
+</div>
+<div class="row">
+  <div class="col">
+    <%= @program_item.min_player_count %>
+  </div>
+  <div class="col">
+  </div></div>
+</div>
+<div class="row">
+  <div class="col">
+  </div>
+  <div class="col">
+    <h2>Maximalanzahl an Spielern</h2>
+  </div>
+  <div class="col">
+  </div></div>
+</div>
+<div class="row">
+  <div class="col">
+  </div>
+    <div class="col">
+    <%= @program_item.max_player_count %>
+  </div>
+  <div class="col">
+  </div></div>
+</div>
+<div class="row">
+  <div class="col">
+  </div>
+  <div class="col">
+    <% if can? :manage, @program_item %>
+      <%= link_to 'Editieren', edit_event_program_item_path( @program_item.event_id, @program_item) %> |
+    <% end %>
+    <%= link_to 'Zurück', event_program_items_path(@program_item.event_id)%>
+  </div>
+  <div class="col">
+  </div>
+</div>
