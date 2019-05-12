@@ -1,49 +1,160 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @program_item.title %>
-</p>
-
-<p>
-  <strong>Description de:</strong>
-  <%= @program_item.description_de %>
-</p>
-
-<p>
-  <strong>Description en:</strong>
-  <%= @program_item.description_en %>
-</p>
-
-<p>
-  <strong>Start time:</strong>
-  <%= @program_item.start_time %>
-</p>
-
-<p>
-  <strong>Duration:</strong>
-  <%= @program_item.duration %>
-</p>
-
-<p>
-  <strong>Language:</strong>
-  <%= @program_item.language %>
-</p>
-
-<p>
-  <strong>Min age:</strong>
-  <%= @program_item.min_age %>
-</p>
-
-<p>
-  <strong>Min player count:</strong>
-  <%= @program_item.min_player_count %>
-</p>
-
-<p>
-  <strong>Max player count:</strong>
-  <%= @program_item.max_player_count %>
-</p>
-
-<%= link_to 'Edit', edit_event_program_item_path( @program_item.event_id, @program_item) %> |
-<%= link_to 'Back', event_program_items_path(@program_item.event_id)%>
+<div class="row">
+  <div class="col">
+  </div>
+  <div class="col">
+    <h1><%= @program_item.title %></h1>
+    </div>
+    <div class="col">
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+  </div>
+  <div class="col">
+    <h2>German Description</h2>
+  </div>
+  <div class="col">
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+  </div>
+  <div class="col">
+    <%= @program_item.description_de %>
+  </div>
+  <div class="col">
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+  </div>
+  <div class="col">
+    <h2>English Description</h2>
+  </div>
+  <div class="col">
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+  </div>
+  <div class="col">
+    <%= @program_item.description_en %>
+  </div>
+  <div class="col">
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+  </div>
+  <div class="col">
+    <h2>Start time:</h2>
+  </div>
+  <div class="col">
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+  </div>
+  <div class="col">
+    <%= @program_item.start_time %>
+  </div>
+  <div class="col">
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+  </div>
+  <div class="col">
+    <h2>Duration:</h2>
+  </div>
+  <div class="col">
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+  </div>
+  <div class="col">
+    <%= @program_item.duration %>
+  </div>
+  <div class="col">
+  </div></div>
+<div class="row">
+  <div class="col">
+  </div>
+  <div class="col">
+    <h2>Language:</h2>
+  </div>
+  <div class="col">
+  </div></div>
+</div>
+<div class="row">
+  <div class="col">
+  </div>
+  <div class="col">
+    <%= @program_item.language %>
+  </div>
+  <div class="col">
+  </div></div>
+</div>
+<div class="row">
+  <div class="col">
+  </div>
+  <div class="col">
+    <h2>Min age:</h2>
+  </div>
+  <div class="col">
+  </div></div>
+</div>
+<div class="row">
+  <div class="col">
+  </div>
+  <div class="col">
+    <%= @program_item.min_age %>
+  </div>
+  <div class="col">
+  </div></div>
+</div>
+<div class="row">
+  <div class="col">
+  </div>
+  <div class="col">
+    <h2>Min player count:</h2>
+  </div>
+  <div class="col">
+  </div></div>
+</div>
+<div class="row">
+  <div class="col">
+    <%= @program_item.min_player_count %>
+  </div>
+  <div class="col">
+  </div></div>
+</div>
+<div class="row">
+  <div class="col">
+  </div>
+  <div class="col">
+    <h2>Max player count:</h2>
+  </div>
+  <div class="col">
+  </div></div>
+</div>
+<div class="row">
+  <div class="col">
+  </div>
+    <div class="col">
+    <%= @program_item.max_player_count %>
+  </div>
+  <div class="col">
+  </div></div>
+</div>
+<div class="row">
+  <div class="col">
+  </div>
+  <div class="col">
+    <%= link_to 'Edit', edit_event_program_item_path( @program_item.event_id, @program_item) %> |
+    <%= link_to 'Back', event_program_items_path(@program_item.event_id)%>
+  </div>
+  <div class="col">
+  </div>
+</div>
