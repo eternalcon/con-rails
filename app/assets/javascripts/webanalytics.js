@@ -1,4 +1,4 @@
-<!-- Matomo -->
+// Matomo Web Analytics
 <script type="text/javascript">
   var _paq = window._paq || [];
   /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
@@ -16,4 +16,4 @@
   })();
 </script>
 <noscript><p><img src="//stats.eternal-con.de/matomo.php?idsite=1&amp;rec=1" style="border:0;" alt="" /></p></noscript>
-<!-- End Matomo Code -->
+//<!-- End Matomo Code -->
