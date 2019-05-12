@@ -1,7 +1,8 @@
 class ProgramItemsController < ApplicationController
   before_action :set_program_item, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :except => [ :index ]
   load_and_authorize_resource
+  skip_authorize_resource :only => :index
 
   respond_to :html
 

@@ -30,9 +30,10 @@
         <td><%= program_item.min_age %></td>
         <td><%= program_item.min_player_count %></td>
         <td><%= program_item.max_player_count %></td>
-        <td><%= link_to 'Show', event_program_item_path(program_item.event_id, program_item) %></td>
-        <td><%= link_to 'Edit', edit_event_program_item_path(program_item.event_id, program_item) %></td>
-
+        <% if can? :edit, program_item %>
+          <td><%= link_to 'Show', event_program_item_path(program_item.event_id, program_item) %></td>
+          <td><%= link_to 'Edit', edit_event_program_item_path(program_item.event_id, program_item) %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -40,4 +41,11 @@
 
 <br>
 
-<%= link_to 'New Program Item', new_event_program_item_path(@event.id) %>
+
+<% if user_signed_in? %>  
+  <%= link_to 'New Program Item', new_event_program_item_path(@event.id) %>
+<% else %>
+  <div> Please log in to announce your games! </div>
+<% end %>
+
+
