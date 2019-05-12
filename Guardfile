@@ -127,7 +127,7 @@ guard 'brakeman', :run_on_start => true do
   watch('Gemfile')
 end
 
-guard :rubocop do
+guard :rubocop, cli: ['--require rubocop-performance'] do
   watch(%r{.+\.rb$})
   watch(%r{(?:.+/)?\.rubocop(?:_todo)?\.yml$}) { |m| File.dirname(m[0]) }
 end

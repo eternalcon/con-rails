@@ -94,6 +94,7 @@ group :development do
   gem 'guard-brakeman'
   gem 'guard-rubocop'
   gem 'rubocop-rspec'
+  gem 'rubocop-performance'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 

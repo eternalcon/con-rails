@@ -1,6 +1,8 @@
-<% if flash[:notice] %>
-  <div class="alert alert-info alert-dismissible fade show" role="alert"><%= notice %></div>
-<% end %>
-<% if flash[:alert] %>
-  <div class="alert alert-danger alert-dismissible fade show" role="alert"><%= alert %></div>
-<% end %>
+<div class="row">
+  <% if flash[:notice] %>
+    <div class="alert alert-info alert-dismissible fade show" role="alert"><%= notice %></div>
+  <% end %>
+  <% if flash[:alert] %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert"><%= alert %></div>
+  <% end %>
+</div>

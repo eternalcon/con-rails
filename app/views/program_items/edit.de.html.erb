@@ -1,0 +1,6 @@
+<h1>Spielrunde bearbeiten</h1>
+
+<%= render 'form', program_item: @program_item %>
+
+<td><%= link_to 'Details', event_program_item_path(@program_item.event_id, @program_item) %></td>
+<%= link_to 'Zurück', request.referer.present? ? request.referer : default_path %>
