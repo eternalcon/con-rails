@@ -20,7 +20,11 @@
   <div class="col">
   </div>
   <div class="col">
-    <%= @program_item.description_de %>
+    <% if @program_item.description_de == nil || @program_item.description_de.empty? %>
+      Keine Beschreibung in deutscher Sprache angegeben.
+    <% else %>
+      <%= @program_item.description_de %>
+    <% end %>
   </div>
   <div class="col">
   </div>
@@ -38,7 +42,11 @@
   <div class="col">
   </div>
   <div class="col">
-    <%= @program_item.description_en %>
+    <% if @program_item.description_en == nil || @program_item.description_en.empty? %>
+      No English description provided.
+    <% else %>
+      <%= @program_item.description_de %>
+    <% end %>
   </div>
   <div class="col">
   </div>
