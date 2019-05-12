@@ -20,7 +20,6 @@ class ProgramItemsController < ApplicationController
     #@event = Event.find (params[:event_id])
     @program_item = ProgramItem.new
     @program_item.event_id = params[:event_id]
-    respond_with(@program_item)
   end
 
   def edit

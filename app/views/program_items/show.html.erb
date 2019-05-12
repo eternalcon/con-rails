@@ -45,5 +45,5 @@
   <%= @program_item.max_player_count %>
 </p>
 
-<%= link_to 'Edit', edit_event_program_item_path(@program_item, @program_item.event_id) %> |
+<%= link_to 'Edit', edit_event_program_item_path( @program_item.event_id, @program_item) %> |
 <%= link_to 'Back', event_program_items_path(@program_item.event_id)%>

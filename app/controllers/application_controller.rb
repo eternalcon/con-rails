@@ -6,8 +6,8 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery prepend:true, with: :exception
   before_action :set_locale
-  # Since we need information about the active event everywhere, we set it in the application controller now.
   
+  # Since we need information about the active event everywhere, we set it in the application controller now.
   before_action :find_active_event
  
   def set_locale
