@@ -50,6 +50,6 @@ class ProgramItemsController < ApplicationController
     end
 
     def program_item_params
-      params.require(:program_item).permit(:title, :description_de, :description_en, :start_time, :duration, :language, :min_age, :min_player_count, :max_player_count, :event_id, :user_id)
+      params.require(:program_item).permit(:title, :description_de, :description_en, :start_time, :duration, :language, :min_age, :min_player_count, :max_player_count, :event_id, :user_id, :gamemaster)
     end
 end
