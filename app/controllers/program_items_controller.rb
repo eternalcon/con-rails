@@ -1,8 +1,8 @@
 class ProgramItemsController < ApplicationController
   before_action :set_program_item, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, :except => [ :index ]
+  before_action :authenticate_user!, :except => [ :index, :show ]
   load_and_authorize_resource
-  skip_authorize_resource :only => :index
+  # skip_authorize_resource only: [ :index, :show ]
 
   respond_to :html
 
@@ -50,6 +50,6 @@ class ProgramItemsController < ApplicationController
     end
 
     def program_item_params
-      params.require(:program_item).permit(:title, :description_de, :description_en, :start_time, :duration, :language, :min_age, :min_player_count, :max_player_count, :event_id, :user_id)
+      params.require(:program_item).permit(:title, :description_de, :description_en, :start_time, :duration, :language, :min_age, :min_player_count, :max_player_count, :event_id, :user_id, :gamemaster)
     end
 end
