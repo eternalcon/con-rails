@@ -9,7 +9,7 @@ de:
       default_message: "Bitte den Fehler unten korrigieren:"
     # Examples
     labels:
-      defaults:
+      defaults: 
         password: 'Passwort'
         first_name: 'Vorname' 
         last_name: 'Nachname'
@@ -17,6 +17,17 @@ de:
         nickname: 'Spitzname für Badge'
         country: 'Herkunftsland'
         postcode: 'Für Deutsche - Postleitzahl'
+      program_item:
+        gamemaster: 'Spielleiter'
+        title: 'Title deines Spiels'
+        description_de: 'Beschreibung in Deutsch (falls vorhanden)'
+        description_en: 'Beschreibung in Englisch (falls vorhanden)'
+        start_time: 'Geplante Anfangszeit' 
+        duration: 'Ungefähre Dauer des Spiels'
+        language: 'Sprache, in der das Spiel angeboten wird'
+        min_age: 'Minimales Alter der Spieler'
+        min_player_count: 'Minimale Spieleranzahl'
+        max_player_count: 'Maximale Spieleranzahl'
     placeholders:
       defaults:
         first_name: 'Vorname' 
@@ -37,6 +48,17 @@ de:
     # include_blanks:
     #   defaults:
     #     age: 'Rather not say'
-    # prompts:
+    prompts:
     #   defaults:
     #     age: 'Select your age'
+    options:
+      program_item:
+        start_time:
+          Friday_Evening: 'Freitag Abend'
+          Saturday_Morning: 'Samstag Morgen'
+          Saturday_Afternoon: 'Samstag Nachmittag'
+          Saturday_Evening: 'Samstag Abend'
+          Sunday_Morning: 'Sonntag Morgen'
+          Sunday_Afternoon: 'Sonntag Nachmittag'
+          Sunday_Evening: 'Sonntag Abend'
+          Monday_Morning: 'Montag Morgen'
