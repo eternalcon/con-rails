@@ -1,3 +1,4 @@
+<div class="modal hide fade" id="ProgramItemShow" tabindex="-1" role="dialog" data-backdrop="true" data-keyboard="true">Loading...</div>
 <div class="row" >
   <h1 class="display-1">Angekündigte Spielrunden</h1><br />
 </div>
@@ -40,16 +41,18 @@
                 <%= program_item.description_de %>
               <% end %>
             </td>
-            <td><%= l program_item.start_time.in_time_zone("Berlin"), format: :long %></td>
+            <td><%= program_item.start_time %></td>
             <td><%= program_item.duration %></td>
             <td><%= program_item.language %></td>
             <td><%= program_item.min_age %></td>
             <td><%= program_item.min_player_count %></td>
             <td><%= program_item.max_player_count %></td>
-            <td><%= link_to 'Details', event_program_item_path(program_item.event_id, program_item) %></td>
+            <td>              
+              <%= link_to 'Details', event_program_item_path(program_item.event_id, program_item), remote: true, class: 'btn btn-primary static-popup-link' %>
+            </td>
             <% if can? :manage, program_item %>
-              <td><%= link_to 'Editieren', edit_event_program_item_path(program_item.event_id, program_item) %></td>
-              <td><%= link_to 'Löschen', event_program_item_path(program_item.event_id, program_item), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= link_to 'Editieren', edit_event_program_item_path(program_item.event_id, program_item),class: "btn btn-primary" %></td>
+              <td><%= link_to 'Löschen', event_program_item_path(program_item.event_id, program_item),class: "btn btn-danger", method: :delete, data: { confirm: 'Are you sure?' } %></td>
             <% else %>
               <td></td>
               <td></td>

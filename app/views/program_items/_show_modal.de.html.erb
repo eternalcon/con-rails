@@ -8,36 +8,36 @@
         </button>
       </div>
       <div class="modal-body">
-        <h2>German Description</h2>
+        <h2>Beschreibung in Deutsch</h2>
         <% if @program_item.description_de == nil || @program_item.description_de.empty? %>
-          No German description provided.
+          Keine Beschreibung in deutscher Sprache angegeben.
         <% else %>
           <%= @program_item.description_de %>
         <% end %>
-        <h2>English Description</h2>
+        <h2>Beschreibung in Englisch</h2>
         <% if @program_item.description_en == nil || @program_item.description_en.empty? %>
-          No English description provided.
+          Keine Beschreibung in Englisch verfügbar.
         <% else %>
           <%= @program_item.description_de %>
         <% end %>
-        <h2>Planned Start time:</h2>
+        <h2>Geplante Anfangszeit:</h2>
         <%= @program_item.start_time %>
-        <h2>Approximate Duration:</h2>
+        <h2>Ungefähre Dauer:</h2>
         <%= @program_item.duration %>
-        <h2>Language:</h2>
+        <h2>Sprache:</h2>
         <%= @program_item.language %>
-        <h2>Minimum player age:</h2>
+        <h2>Mindestalter:</h2>
         <%= @program_item.min_age %>
-        <h2>Minimum number of Players:</h2>
+        <h2>Mindest-Spieleranzahl:</h2>
         <%= @program_item.min_player_count %>
-        <h2>Maximum number of Players:</h2>
+        <h2>Maximale Spieleranzahl:</h2>
         <%= @program_item.max_player_count %>
       </div>
       <div class="modal-footer">
         <% if can? :manage, @program_item %>
-          <%= link_to 'Edit', edit_event_program_item_path( @program_item.event_id, @program_item), class: "btn btn-primary" %>
+          <%= link_to 'Ändern', edit_event_program_item_path( @program_item.event_id, @program_item), class: "btn btn-primary" %>
         <% end %>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Schließen</button>
       </div>
     <div>
   </div>
