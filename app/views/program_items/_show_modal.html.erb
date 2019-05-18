@@ -1,0 +1,43 @@
+
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title" id="ProgramnItemShowTitle"><%= @program_item.title %></h1>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h2>German Description</h2>
+        <% if @program_item.description_de == nil || @program_item.description_de.empty? %>
+          No German description provided.
+        <% else %>
+          <%= @program_item.description_de %>
+        <% end %>
+        <h2>English Description</h2>
+        <% if @program_item.description_en == nil || @program_item.description_en.empty? %>
+          No English description provided.
+        <% else %>
+          <%= @program_item.description_de %>
+        <% end %>
+        <h2>Planned Start time:</h2>
+        <%= @program_item.start_time %>
+        <h2>Approximate Duration:</h2>
+        <%= @program_item.duration %>
+        <h2>Language:</h2>
+        <%= @program_item.language %>
+        <h2>Minimum player age:</h2>
+        <%= @program_item.min_age %>
+        <h2>Minimum number of Players:</h2>
+        <%= @program_item.min_player_count %>
+        <h2>Maximum number of Players:</h2>
+        <%= @program_item.max_player_count %>
+      </div>
+      <div class="modal-footer">
+        <% if can? :manage, @program_item %>
+          <%= link_to 'Edit', edit_event_program_item_path( @program_item.event_id, @program_item), class: "btn btn-primary" %>
+        <% end %>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    <div>
+  </div>

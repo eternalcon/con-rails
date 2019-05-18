@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_12_164009) do
+ActiveRecord::Schema.define(version: 2019_05_18_080319) do
 
   create_table "delayed_jobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "priority", default: 0, null: false
@@ -111,7 +111,7 @@ ActiveRecord::Schema.define(version: 2019_05_12_164009) do
     t.string "title"
     t.text "description_de"
     t.text "description_en"
-    t.datetime "start_time"
+    t.string "start_time"
     t.decimal "duration", precision: 10
     t.string "language"
     t.integer "min_age"

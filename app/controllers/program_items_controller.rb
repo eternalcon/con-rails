@@ -4,7 +4,7 @@ class ProgramItemsController < ApplicationController
   load_and_authorize_resource
   # skip_authorize_resource only: [ :index, :show ]
 
-  respond_to :html
+  respond_to :html, :js
 
   def index
     #@event = Event.find(params[ :event_id ])
@@ -36,7 +36,7 @@ class ProgramItemsController < ApplicationController
 
   def update
     @program_item.update(program_item_params)
-    respond_with(@program_item)
+    redirect_to event_program_items_path(@event)
   end
 
   def destroy
