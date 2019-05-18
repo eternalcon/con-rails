@@ -64,13 +64,15 @@ gem 'sanitize_email'
 # Static Pages with high_voltage
 gem 'high_voltage', '~> 3.0.0'
 # Excel export with to_spreadsheet
-gem 'to_spreadsheet'
+# After fixing security vulnerabilities from rubyzip, to_spreadseet throws errors
+# disabled for now.
+# gem 'to_spreadsheet'
 # Logging with Lumberjack
 gem 'lumberjack'
 # Explicitly require rubyzip. It is a dependency in version 1.0.0 but security
 # vulnerabilities exist < 1.2.2 so we require a safe version explicitly.
 # Could be removed once dependent gems update
-gem 'rubyzip', '~> 1.2.2'
+#gem 'rubyzip', '~> 1.2.2'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
