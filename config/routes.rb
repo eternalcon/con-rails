@@ -11,7 +11,8 @@ Rails.application.routes.draw do
     resources :events do
       collection do
         get 'home'
-      end  
+      end
+      resources :program_items  
       resources :event_registrations do
         member do
           post 'mark_as_payed'
@@ -34,6 +35,8 @@ Rails.application.routes.draw do
       resources :participants, :users
     end
     resources :freeforms
+    resources :program_items  
+
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

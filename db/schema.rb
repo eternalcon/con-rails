@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_31_124128) do
+ActiveRecord::Schema.define(version: 2019_05_18_080319) do
 
   create_table "delayed_jobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "priority", default: 0, null: false
@@ -107,6 +107,25 @@ ActiveRecord::Schema.define(version: 2018_12_31_124128) do
     t.index ["user_id"], name: "index_participants_on_user_id", unique: true
   end
 
+  create_table "program_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title"
+    t.text "description_de"
+    t.text "description_en"
+    t.string "start_time"
+    t.decimal "duration", precision: 10
+    t.string "language"
+    t.integer "min_age"
+    t.integer "min_player_count"
+    t.integer "max_player_count"
+    t.bigint "event_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.string "gamemaster"
+    t.index ["event_id"], name: "index_program_items_on_event_id"
+    t.index ["user_id"], name: "index_program_items_on_user_id"
+  end
+
   create_table "roles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -150,6 +169,8 @@ ActiveRecord::Schema.define(version: 2018_12_31_124128) do
   add_foreign_key "ff_registrations_participants", "participants"
   add_foreign_key "freeforms", "events"
   add_foreign_key "participants", "users"
+  add_foreign_key "program_items", "events"
+  add_foreign_key "program_items", "users"
   add_foreign_key "roles_users", "roles"
   add_foreign_key "roles_users", "users"
 end

@@ -5,14 +5,17 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarsExampleDefault">         <!--TODO: proper id if necessary -->
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
+      <li class="nav-item <%= 'active' if current_page?(root_path) %>">
          <%= link_to "Home", root_path, class: "nav-link" %>
       </li>
-      <li class="nav-item active">
+      <li class="nav-item <%= 'active' if current_page?(event_program_items_path(@event)) %>">
+         <%= link_to "Game Announcements", event_program_items_path(@event), class: "nav-link" %>
+      </li>
+      <li class="nav-item <%= 'active' if current_page?(page_path(id: "about")) %>">
         <%= link_to "About Us", page_path(id: "about"), class: "nav-link" %>
       </li>
       <% if user_signed_in? && current_user.role?("admin") %>
-        <li class="nav-item active">
+        <li class="nav-item <%= 'active' if current_page?(events_path) %>">
           <%= link_to "Admin Panel", events_path, class: "nav-link"%>
         </li>
       <% end %>

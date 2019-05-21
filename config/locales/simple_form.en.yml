@@ -19,6 +19,17 @@ en:
         nickname: 'Nickname for Badge'
         country: 'Country of Residence'
         postcode: 'German residents only - Postcode'
+      program_item:
+        gamemaster: 'Game Master'
+        title: 'Title of your Game'
+        description_de: 'German Language Description (if available)'
+        description_en: 'English Language Description (if available)'
+        start_time: 'Planned Start Time' 
+        duration: 'Approximate Duration of your Game'
+        language: 'Language the game is played in'
+        min_age: 'Minimum player age for your game'
+        min_player_count: 'Minimum amount of players needed'
+        max_player_count: 'Maximum amount of players'
     placeholders:
       defaults:
         #first_name: 'Vorname' 
@@ -27,7 +38,7 @@ en:
         nickname: 'Nickname for Badge'
         country: 'Country of Residence'
         postcode: 'German residents only - Postcode'
-        
+          
     #     password: 'Password'
     #   user:
     #     new:
@@ -41,6 +52,17 @@ en:
     # include_blanks:
     #   defaults:
     #     age: 'Rather not say'
-    # prompts:
+    prompts:
     #   defaults:
     #     age: 'Select your age'
+    options:
+      program_item:
+        start_time:
+          Friday_Evening: 'Friday Evening'
+          Saturday_Morning: 'Saturday Morning'
+          Saturday_Afternoon: 'Saturday Afternoon'
+          Saturday_Evening: 'Saturday Evening'
+          Sunday_Morning: 'Sunday Morning'
+          Sunday_Afternoon: 'Sunday Afternoon'
+          Sunday_Evening: 'Sunday Evening'
+          Monday_Morning: 'Monday Morning'

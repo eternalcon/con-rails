@@ -99,7 +99,7 @@ end
   config.active_support.deprecation = :notify
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
-  config.log_formatter = ::Logger::Formatter.new
+  #config.log_formatter = ::Logger::Formatter.new
 
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
@@ -110,6 +110,16 @@ end
     logger.formatter = config.log_formatter
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
+
+  # Use the ActionDispatch request id as the unit of work id. This will use just the first chunk of the request id.
+  # If you want to use an abbreviated request id for terseness, change the last argument to `true`
+  config.middleware.insert_after ActionDispatch::RequestId, Lumberjack::Rack::RequestId, false
+  # Use a custom unit of work id to each request
+  # config.middleware.insert(0, Lumberjack::Rack::UnitOfWork)
+  # Change the logger to use Lumberjack
+  log_file_path = Rails.root + "log" + "#{Rails.env}.log"
+  config.logger = Lumberjack::Logger.new(log_file_path, :level => :warn, :roll => :daily, :buffer_size => 8192, :flush_seconds => 30 )
+  config.logger.formatter.add(Hash, :pretty_print)  # use the Formatter::PrettyPrintFormatter for all Hashes
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
