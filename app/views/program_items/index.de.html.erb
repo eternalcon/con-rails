@@ -41,7 +41,7 @@
                 <%= program_item.description_de %>
               <% end %>
             </td>
-            <td><%= program_item.start_time %></td>
+            <td><%= t program_item.start_time %></td>
             <td><%= program_item.duration %></td>
             <td><%= program_item.language %></td>
             <td><%= program_item.min_age %></td>
@@ -66,8 +66,8 @@
 </div>
 <div class="row" >
   <% if user_signed_in? %>
-    <%= link_to 'Neue Spielrunde anbieten', new_event_program_item_path(@event.id) %>
+    <%= link_to 'Neue Spielrunde anbieten', new_event_program_item_path(@event.id), class: 'btn btn-primary' %>
   <% else %>
-    <div> Um Spielrunden anzubieten musst du eingeloggt sein! </div>
+    <div> Um Spielrunden anzubieten musst du <%= link_to 'eingeloggt', new_user_session_path, class: 'btn btn-primary' %> sein! </div>
   <% end %>
 </div>
