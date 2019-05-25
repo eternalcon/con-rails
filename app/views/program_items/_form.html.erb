@@ -12,9 +12,9 @@
     <%= f.input :start_time, as: :select, collection: [ :Friday_Evening, :Saturday_Morning, :Saturday_Afternoon, :Saturday_Evening, :Sunday_Morning, :Sunday_Afternoon, :Sunday_Evening, :Monday_Morning ] %>
     <%= f.input :duration %>
     <%= f.input :language, as: :select, collection: [ "English", "German", "French", "Dutch", "Italian" ]  %>
-    <%= f.input :min_age %>
-    <%= f.input :min_player_count %>
-    <%= f.input :max_player_count %>
+    <%= f.input :min_age, input_html: { value: '15' } %>
+    <%= f.input :min_player_count, input_html: { value: '2' } %>
+    <%= f.input :max_player_count, input_html: { value: '4' } %>
   </div>
 
   <div class="form-actions">
