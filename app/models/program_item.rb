@@ -4,7 +4,7 @@ class ProgramItem < ApplicationRecord
   validates :title, presence: true
   validates :description_en, presence: { :unless => :description_de? }
   validates :description_de, presence: {:unless => :description_en? }
-  validates :min_player_count, numericality: { :greater_than => 0 }
-  validates :max_player_count, numericality: { :greater_than => 0 }
-  validates :min_age, numericality: { :greater_than => 0 }
+  validates :min_player_count, numericality: { :greater_than_or_equal => 0 }
+  validates :max_player_count, numericality: { :greater_than_or_equal => 0 }
+  validates :min_age, numericality: { :greater_than_or_equal => 0 }
 end
