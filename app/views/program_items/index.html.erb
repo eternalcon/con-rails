@@ -66,8 +66,8 @@
 </div>
 <div class="row" >
   <% if user_signed_in? %>
-    <%= link_to 'New Program Item', new_event_program_item_path(@event.id) %>
+    <%= link_to 'Announce your game!', new_event_program_item_path(@event.id), class: 'btn btn-primary' %>
   <% else %>
-    <div> Please log in to announce your games! </div>
+    <div>Please <%= link_to 'log in', new_user_session_path, class: 'btn btn-primary' %>  to announce your games! </div>
   <% end %>
 </div>
